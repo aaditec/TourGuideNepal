@@ -46,7 +46,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtnewname"
+            android:id="@+id/txtusername"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
         android:id="@+id/newinputemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Your email"
+        android:hint="Your FullName"
         app:helperText="Required"
         app:helperTextTextColor="@color/design_default_color_primary_dark"
         app:endIconMode="clear_text"
@@ -73,7 +73,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtnewemail"
+            android:id="@+id/txtfullname"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_width="match_parent"
@@ -100,7 +100,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtnewpass"
+            android:id="@+id/etpass"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:inputType="textPassword"
@@ -128,7 +128,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtnewconfirm"
+            android:id="@+id/etconpass"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:inputType="textPassword"
@@ -138,7 +138,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnsignup"
+        android:id="@+id/btnregister1"
         android:text="create an account"
         android:textSize="20dp"
         android:layout_width="match_parent"
@@ -169,7 +169,7 @@
 
         <TextView
             android:text="Sign In"
-            android:id="@+id/linklogin"
+            android:id="@+id/btnlogin1"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
