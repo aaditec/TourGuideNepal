@@ -56,33 +56,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/newinputemail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Your email"
-        app:helperText="Required"
-        app:helperTextTextColor="@color/design_default_color_primary_dark"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/email"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-
-        app:layout_constraintTop_toTopOf="@+id/newinputname"
-        app:layout_constraintEnd_toEndOf="@+id/newinputname"
-        app:layout_constraintStart_toStartOf="@+id/newinputname"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtnewemail"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/newinputpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
