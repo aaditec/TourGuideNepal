@@ -24,10 +24,31 @@
                 android:src="@drawable/tourlogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/newinputfullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full name"
+        app:helperText="Required"
+        app:helperTextTextColor="@color/design_default_color_primary_dark"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/fullperson"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="35dp"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtfullname"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -40,9 +61,8 @@
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/person"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
         android:layout_marginEnd="35dp"
-        app:layout_constraintTop_toBottomOf="@+id/tourlogo"
+
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -53,6 +73,35 @@
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/newinputphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone number"
+                app:helperText="Required"
+                app:helperTextTextColor="@color/design_default_color_primary_dark"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/phone"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="35dp"
+                app:prefixText="+977"
+                app:prefixTextColor="@color/white"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtnewphone"
+                    android:maxLength="10"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -67,9 +116,6 @@
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
 
-        app:layout_constraintTop_toTopOf="@+id/newinputemail"
-        app:layout_constraintEnd_toEndOf="@+id/newinputemail"
-        app:layout_constraintStart_toStartOf="@+id/newinputemail"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -95,9 +141,6 @@
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
 
-        app:layout_constraintTop_toTopOf="@+id/newinputpass"
-        app:layout_constraintEnd_toEndOf="@+id/newinputpass"
-        app:layout_constraintStart_toStartOf="@+id/newinputpass"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -118,10 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="35dp"
-        android:layout_marginRight="35dp"
-        app:layout_constraintStart_toStartOf="@+id/newinputconfirm"
-        app:layout_constraintTop_toBottomOf="@+id/newinputconfirm"
-        app:layout_constraintEnd_toEndOf="@+id/newinputconfirm"/>
+        android:layout_marginRight="35dp"/>
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -129,9 +169,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/btnsignup"
-        app:layout_constraintStart_toStartOf="@id/btnsignup"
-        app:layout_constraintEnd_toEndOf="@id/btnsignup"
         tools:ignore="MissingConstraints">
 
         <TextView
