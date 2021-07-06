@@ -9,15 +9,16 @@ import android.widget.TextView
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var btnlogin: Button
-    private lateinit var register: TextView
+    private lateinit var linkregister: TextView
     private lateinit var txtname: TextView
     private lateinit var txtpass: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         btnlogin = findViewById(R.id.btnlogin)
-        register = findViewById(R.id.register)
+        linkregister = findViewById(R.id.linkregister)
         txtname = findViewById(R.id.txtname)
         txtpass = findViewById(R.id.txtpass)
 
@@ -25,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
             login()
 
         }
-        register.setOnClickListener {
+        linkregister.setOnClickListener {
 
             val intent = Intent(this, Signup::class.java)
             startActivity(intent)
