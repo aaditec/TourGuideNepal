@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/everest"
-    android:alpha="0.9"
     tools:context=".LoginActivity">
+
 
     <ImageView
         android:id="@+id/tourlogo"
-        android:src="@drawable/secondlogo"
         android:layout_width="400dp"
-        android:layout_gravity="center"
         android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:alpha=".9"
+        android:src="@drawable/secondlogo"
         tools:ignore="MissingConstraints" />
-
 
     <androidx.cardview.widget.CardView
         android:layout_marginTop="40dp"
@@ -26,6 +26,7 @@
         android:backgroundTint="#f1f5eb"
         app:cardElevation="100dp"
         app:cardCornerRadius="50dp"
+        android:alpha=".9"
         tools:ignore="MissingConstraints">
         <LinearLayout
             android:orientation="vertical"
@@ -123,7 +124,6 @@
             android:id="@+id/btnlogin"
             android:text="login"
             android:textSize="16dp"
-            android:shadowRadius="50dp"
             app:backgroundTint="#08a896"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
