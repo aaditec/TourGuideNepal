@@ -15,10 +15,4 @@
 
     </style>
 
-    <style name="noactionbar">
-
-        no title
-                <item name="windowActionBar">false</item>
-                <item name="windowNoTitle">true</item>
-    </style>
 </resources>
