@@ -30,6 +30,7 @@ class Signup : AppCompatActivity() {
         etpass = findViewById(R.id.etpass)
         etconfigpass = findViewById(R.id.etconpass)
         txtnewphone = findViewById(R.id.txtnewphone)
+        register1 = findViewById(R.id.btnregister1)
 
         register1.setOnClickListener {
             signup()
