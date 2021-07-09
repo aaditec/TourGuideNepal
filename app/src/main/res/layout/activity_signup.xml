@@ -58,7 +58,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtfullname"
+            android:id="@+id/etname"
             android:background="@color/white"
             android:textStyle="bold"
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtusername"
+            android:id="@+id/etuser"
             android:background="@color/white"
             android:textStyle="bold"
             android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtnewphone"
+                    android:id="@+id/etphone"
                     android:maxLength="10"
                     android:background="@color/white"
                     android:textStyle="bold"
@@ -163,7 +163,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/btnregister1"
+                    android:id="@+id/btnsignup"
                     android:text="create an account"
                     android:textSize="20dp"
                     app:backgroundTint="#0593a3"
@@ -195,7 +195,7 @@
 
         <TextView
             android:text="Sign In"
-            android:id="@+id/btnlogin1"
+            android:id="@+id/btnlog"
             android:textStyle="bold"
             android:textSize="20dp"
             android:textColor="#faf8f7"
