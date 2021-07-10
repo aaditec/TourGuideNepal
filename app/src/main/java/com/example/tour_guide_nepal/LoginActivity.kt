@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.finalassignment.API.ServiceBuilder
 import com.example.finalassignment.Repository.UserRepository
 import com.google.android.material.snackbar.Snackbar
@@ -29,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
         linkregister = findViewById(R.id.linkregister)
         txtname = findViewById(R.id.txtname)
         txtpass = findViewById(R.id.txtpass)
+
 
         btnlogin.setOnClickListener {
             login()
