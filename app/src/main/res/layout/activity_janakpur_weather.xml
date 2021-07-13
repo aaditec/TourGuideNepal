@@ -6,17 +6,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/weather5"
     android:orientation="vertical"
-    tools:context=".weather.kathmandu_weatherActivity"
+    tools:context=".weather.janakpur_weatherActivity">
     android:padding="25dp">
-
     <RelativeLayout
         android:id="@+id/mainContainer"
         android:layout_width="376dp"
         android:layout_height="691dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:visibility="visible">
 
         <LinearLayout
@@ -31,7 +30,7 @@
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kathmandu, Nepal"
+                android:text="Janakpur, Nepal"
                 android:textColor="@color/black"
                 android:textSize="24dp" />
 
@@ -68,7 +67,7 @@
                 android:layout_gravity="center"
                 android:background="#6ccdf0"
                 android:fontFamily="sans-serif-thin"
-                android:text="21°C"
+                android:text="28°C"
                 android:textColor="@color/black"
                 android:textSize="90dp" />
 
@@ -372,10 +371,9 @@
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginBottom="23dp"
-            tools:srcCompat="@drawable/kathmanduweather" />
+            tools:srcCompat="@drawable/janakpur" />
 
     </RelativeLayout>
-
 
     <ProgressBar
         android:id="@+id/loader"

@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal">
+        <activity android:name=".weather.solukhumbhu_weatherActivity"></activity>
+        <activity android:name=".weather.janakpur_weatherActivity" />
+        <activity android:name=".weather.pokhara_weatherActivity" />
+        <activity android:name=".weather.dolakha_weatherActivity" />
+        <activity android:name=".weather.mustang_weatherActivity" />
+        <activity android:name=".weather.gorkha_weatherActivity" />
+        <activity android:name=".weather.lumbini_weatherActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,9 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
