@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f8e8fc"
-    tools:context=".place_details.chitwan_detail_activity">
+    tools:context=".place_details.mustang_detail_activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="396dp"
         android:layout_height="271dp"
-        android:background="@drawable/chitwan"
+        android:background="@drawable/mustang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,7 +24,7 @@
             android:layout_marginLeft="28dp"
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif-black"
-            android:text="Chitwan"
+            android:text="Mustang"
             android:textColor="@color/white"
             android:textSize="28sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +49,8 @@
             android:layout_marginTop="24dp"
             android:fontFamily="casual"
             android:textStyle="bold"
-            android:text="welcome to the Chitwan ..."
-            android:textColor="@color/white"
+            android:text="welcome to the Mustang ..."
+            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -80,7 +79,7 @@
             android:orientation="horizontal">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/chitwanmap"
+                android:id="@+id/mustangmap"
                 android:layout_width="0dp"
                 android:layout_height="168dp"
                 android:layout_margin="10dp"
@@ -117,7 +116,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/chitwanweather"
+                android:id="@+id/mustangweather"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_margin="10dp"
@@ -252,7 +251,8 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="281dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="281dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
