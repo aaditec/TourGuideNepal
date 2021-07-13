@@ -2,6 +2,8 @@ package com.example.tour_guide_nepal.maps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tour_guide_nepal.R
+import com.example.tour_guide_nepal.databinding.ActivityDolakhaMapBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -9,7 +11,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.example.tour_guide_nepal.maps.databinding.ActivityDolakhaMapBinding
 
 class dolakha_map_activity : AppCompatActivity(), OnMapReadyCallback {
 
