@@ -28,9 +28,9 @@ class Select_cityFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_select_city, container, false)
 
         kathmandu = view.findViewById(R.id.kathmandu)
-
-        startActivity(Intent(activity,kathmandu_detail_activity::class.java))
-
+    kathmandu.setOnClickListener {
+    startActivity(Intent(activity, kathmandu_detail_activity::class.java))
+    }
        return view
     }
 
