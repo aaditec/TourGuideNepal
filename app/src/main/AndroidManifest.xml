@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tour_guide_nepal">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +16,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal">
-        <activity android:name=".Select_place_Activity"></activity>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".maps.tanahun_map_activity"
+            android:label="@string/title_activity_tanahun_map"></activity>
+        <activity
+            android:name=".maps.kathmandu_map_activity"
+            android:label="@string/title_activity_kathmandu_map" />
+        <activity android:name=".maps.janakpur_map_activity" />
+        <activity
+            android:name=".maps.gorkha_map_activity"
+            android:label="@string/title_activity_gorkha_map" />
+        <activity
+            android:name=".maps.solukhumbu_map_activity"
+            android:label="@string/title_activity_solukhumbu_map" />
+        <activity
+            android:name=".maps.pokhara_map_activity"
+            android:label="@string/title_activity_pokhara_map" />
+        <activity
+            android:name=".maps.mustang_map_activity"
+            android:label="@string/title_activity_mustang_map" />
+        <activity
+            android:name=".maps.dolakha_map_activity"
+            android:label="@string/title_activity_dolakha_map" />
+        <activity
+            android:name=".maps.lumbini_map_activity"
+            android:label="@string/title_activity_lumbini_map" />
+        <activity
+            android:name=".maps.chitwan_map_activity"
+            android:label="@string/title_activity_chitwan_map" />
+        <activity android:name=".Select_place_Activity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +65,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
