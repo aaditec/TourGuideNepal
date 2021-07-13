@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal">
+        <activity android:name=".place_details.tanahun_detail_activity"></activity>
+        <activity android:name=".place_details.solukhumbu_detail_activity" />
+        <activity android:name=".place_details.pokhara_detail_activity" />
+        <activity android:name=".place_details.mustang_detail_activity" />
+        <activity android:name=".place_details.lumbini_detail_activity" />
+        <activity android:name=".place_details.kathmandu_detail_activity" />
+        <activity android:name=".place_details.janakpur_detail_activity" />
+        <activity android:name=".place_details.gorkha_detail_activity" />
+        <activity android:name=".place_details.dolakha_detail_activity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
