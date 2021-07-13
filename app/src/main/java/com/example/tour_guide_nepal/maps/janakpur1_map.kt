@@ -12,16 +12,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class dolakha_map_activity : AppCompatActivity(), OnMapReadyCallback {
+class janakpur1_map : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
+        setContentView(R.layout.activity_janakpur1_map)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -39,17 +36,19 @@ class dolakha_map_activity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val dolokha = LatLng(27.6781, 86.0779)
-        // Add a marker in dolokha and move the camera
+        val janakpur = LatLng(26.73267, 85.924789)
+        // Add a marker in janakpur and move the camera
         mMap.addMarker(
-            MarkerOptions().position(dolokha)
-                .title("dolokha")
+            MarkerOptions().position(janakpur)
+                .title("janakpur")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
         )
         mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(dolokha, 15F), 3000, null
+            CameraUpdateFactory.newLatLngZoom(janakpur, 15F), 3000, null
         )
-        //  mMap.moveCamera(CameraUpdateFactory.newLatLng(dolokha))
+        //  mMap.moveCamera(CameraUpdateFactory.newLatLng(janakpur))
         mMap.uiSettings.isZoomControlsEnabled = true
+
+
     }
 }
