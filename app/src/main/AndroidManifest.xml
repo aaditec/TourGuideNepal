@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal">
-        <activity android:name=".weather.solukhumbhu_weatherActivity"></activity>
+        <activity android:name=".place_details.chitwan_detailActivity"></activity>
+        <activity android:name=".place_details.place_MainActivity" />
+        <activity android:name=".weather.solukhumbhu_weatherActivity" />
         <activity android:name=".weather.janakpur_weatherActivity" />
         <activity android:name=".weather.pokhara_weatherActivity" />
         <activity android:name=".weather.dolakha_weatherActivity" />
