@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
     android:background="@drawable/everest"
     tools:context=".LoginActivity">
 
@@ -201,3 +205,4 @@
 
 
 </LinearLayout>
+
