@@ -9,15 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal">
-        <activity android:name=".place_details.chitwan_detailActivity"></activity>
-        <activity android:name=".place_details.place_MainActivity" />
-        <activity android:name=".weather.solukhumbhu_weatherActivity" />
-        <activity android:name=".weather.janakpur_weatherActivity" />
-        <activity android:name=".weather.pokhara_weatherActivity" />
-        <activity android:name=".weather.dolakha_weatherActivity" />
-        <activity android:name=".weather.mustang_weatherActivity" />
-        <activity android:name=".weather.gorkha_weatherActivity" />
-        <activity android:name=".weather.lumbini_weatherActivity" />
+        <activity android:name=".Select_place_Activity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
