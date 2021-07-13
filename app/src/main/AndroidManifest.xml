@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal">
-        <activity android:name=".Select_place_Activity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBz_lA1ESnGPWp85rn4d_BT4-wIUlH_qbg" />
     </application>
 
 </manifest>
