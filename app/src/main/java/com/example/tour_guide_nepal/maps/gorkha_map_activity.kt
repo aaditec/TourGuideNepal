@@ -15,13 +15,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 class gorkha_map_activity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private lateinit var binding: ActivityGorkhaMapBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityGorkhaMapBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager

@@ -9,19 +9,19 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class pokhara_map_activity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private lateinit var binding: ActivityPokharaMapBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityPokharaMapBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -40,10 +40,17 @@ class pokhara_map_activity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val pokhara = LatLng(28.9985065, 83.8473015)
+        // Add a marker in pokhara and move the camera
+        mMap.addMarker(
+            MarkerOptions().position(pokhara)
+                .title("pokhara")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+        )
+        mMap.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(pokhara, 15F), 3000, null
+        )
+        //  mMap.moveCamera(CameraUpdateFactory.newLatLng(pokhara))
+        mMap.uiSettings.isZoomControlsEnabled = true
     }
 }
