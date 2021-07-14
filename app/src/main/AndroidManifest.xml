@@ -63,6 +63,7 @@
         <activity android:name=".place_details.janakpur_detail_activity" />
         <activity android:name=".place_details.gorkha_detail_activity" />
         <activity android:name=".place_details.dolakha_detail_activity" />
+        <activity android:name=".place_details.chitwan_detail_activity" />
 
 
         <activity android:name=".LoginActivity" >
