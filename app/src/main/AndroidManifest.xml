@@ -19,9 +19,26 @@
         android:theme="@style/Theme.Tour_Guide_Nepal">
 
         <activity android:name=".maps.kathmandu_map_activity"></activity>
+        <activity android:name=".maps.chitwan_map_activity"></activity>
+        <activity android:name=".maps.dolakha_map_activity"></activity>
+        <activity android:name=".maps.gorkha_map_activity"></activity>
+        <activity android:name=".maps.lumbini_map_activity"></activity>
+        <activity android:name=".maps.mustang_map_activity"></activity>
+        <activity android:name=".maps.pokhara_map_activity"></activity>
+        <activity android:name=".maps.solukhumbu_map_activity"></activity>
+        <activity android:name=".maps.tanahun_map_activity"></activity>
+
 
         <activity android:name=".weather.Tanahun_weatherActivity"></activity>
         <activity android:name=".weather.kathmandu_weatherActivity"></activity>
+        <activity android:name=".weather.chitwan_weatherActivity"></activity>
+        <activity android:name=".weather.dolakha_weatherActivity"></activity>
+        <activity android:name=".weather.gorkha_weatherActivity"></activity>
+        <activity android:name=".weather.janakpur_weatherActivity"></activity>
+        <activity android:name=".weather.lumbini_weatherActivity"></activity>
+        <activity android:name=".weather.mustang_weatherActivity"></activity>
+        <activity android:name=".weather.pokhara_weatherActivity"></activity>
+        <activity android:name=".weather.solukhumbhu_weatherActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
