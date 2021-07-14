@@ -352,7 +352,7 @@
                         android:id="@+id/about"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Softwarican"
+                        android:text="Encoders"
                         android:textColor="@color/black"
                         android:textSize="15dp" />
                 </LinearLayout>
