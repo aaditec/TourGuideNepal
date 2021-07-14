@@ -18,7 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal">
 
+        <activity android:name=".maps.kathmandu_map_activity"></activity>
+
         <activity android:name=".weather.Tanahun_weatherActivity"></activity>
+        <activity android:name=".weather.kathmandu_weatherActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

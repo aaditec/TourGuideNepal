@@ -66,6 +66,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/lumbini"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/lumbini"
@@ -98,6 +99,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/solukhumbu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/everest"
@@ -130,6 +132,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/chitwan"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/chitwan"
@@ -164,6 +167,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/dolakha"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/dolakha"
@@ -196,6 +200,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/mustang"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/mustang"
@@ -228,6 +233,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/pokhara"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/pokhara"
@@ -260,6 +266,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/gorkha"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/gorkha"
@@ -292,6 +299,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/janakpur"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/janakpur"
@@ -324,6 +332,7 @@
                 android:layout_margin="5dp">
 
                 <LinearLayout
+                    android:id="@+id/tanahun"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/tanahun"

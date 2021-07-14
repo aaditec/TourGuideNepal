@@ -3,7 +3,6 @@ package com.example.tour_guide_nepal.maps
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tour_guide_nepal.R
-import com.example.tour_guide_nepal.databinding.ActivityKathmanduMapBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -14,15 +13,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class kathmandu_map_activity : AppCompatActivity(), OnMapReadyCallback {
-
     private lateinit var mMap: GoogleMap
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
+        setContentView(R.layout.activity_kathmandu_map)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -41,7 +36,7 @@ class kathmandu_map_activity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val kathmandu = LatLng(27.700769, 85.300140)
-        // Add a marker in kathmandu and move the camera
+        // Add a marker in mustang and move the camera
         mMap.addMarker(
             MarkerOptions().position(kathmandu)
                 .title("kathmandu")
@@ -54,3 +49,4 @@ class kathmandu_map_activity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled = true
     }
 }
+
