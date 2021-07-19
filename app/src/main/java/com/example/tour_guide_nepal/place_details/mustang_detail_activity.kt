@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.mustang_map_activity
@@ -20,6 +22,15 @@ class mustang_detail_activity : AppCompatActivity() {
 
         mustangmap = findViewById(R.id.mustangmap)
         mustangweather = findViewById(R.id.mustangweather)
+
+        val imagelist = ArrayList<SlideModel>()
+
+        imagelist.add(SlideModel("https://www.welcomenepal.com/uploads/destination/mustang-tk-adventure.jpeg","Mustang"))
+        imagelist.add(SlideModel("https://www.nepalguideinfo.com/new/wp-content/uploads/2017/04/upper_mustang_mansoon-768x388.jpg","Mustang"))
+        imagelist.add(SlideModel("https://www.nepaltraveladventure.com/blog/wp-content/uploads/2018/08/upper-mustang-trek-2-800x334.jpg","Mustang"))
+
+        val imageSlider = findViewById<ImageSlider>(R.id.mustangimage)
+        imageSlider.setImageList(imagelist)
 
 
         mustangmap.setOnClickListener {

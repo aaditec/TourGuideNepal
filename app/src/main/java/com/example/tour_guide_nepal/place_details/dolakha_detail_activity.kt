@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.dolakha_map_activity
@@ -20,6 +22,15 @@ class dolakha_detail_activity : AppCompatActivity() {
 
         dolokhamap = findViewById(R.id.dolakhamap)
         dolokhaweather = findViewById(R.id.dolakhaweather)
+
+        val imagelist = ArrayList<SlideModel>()
+
+        imagelist.add(SlideModel("https://nepaltraveller.com/laravel-filemanager/photos/32/kalinchowk.jpg","Kalinchowk,Dolakha"))
+        imagelist.add(SlideModel("https://www.mountainecotreks.com/pagegallery/sailung-village-trek87.jpg","Sailung,Dolakha"))
+        imagelist.add(SlideModel("http://photos.wikimapia.org/p/00/00/69/97/21_big.jpg","Dolakha"))
+
+        val imageSlider = findViewById<ImageSlider>(R.id.dolakhaimage)
+        imageSlider.setImageList(imagelist)
 
 
         dolokhamap.setOnClickListener {

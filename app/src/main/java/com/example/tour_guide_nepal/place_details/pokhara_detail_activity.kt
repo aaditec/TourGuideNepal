@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.pokhara_map_activity
@@ -21,6 +23,14 @@ class pokhara_detail_activity : AppCompatActivity() {
         pokharamap = findViewById(R.id.pokharamap)
         pokharaweather = findViewById(R.id.pokharaweather)
 
+        val imagelist = ArrayList<SlideModel>()
+
+        imagelist.add(SlideModel("https://img.traveltriangle.com/blog/wp-content/uploads/2018/10/Phewa-Lake-Cover.jpg","Pokhara"))
+        imagelist.add(SlideModel("https://www.traveltipsor.com/wp-content/uploads/2015/01/Paragliding-In-Pokhara.jpg","Pokhara"))
+        imagelist.add(SlideModel("https://www.wondersofnepal.com/wp-content/uploads/2019/11/nepal-pokhara-9.jpg","Pokhara"))
+
+        val imageSlider = findViewById<ImageSlider>(R.id.pokharaimage)
+        imageSlider.setImageList(imagelist)
 
         pokharamap.setOnClickListener {
             val intent = Intent(this, pokhara_map_activity::class.java)
