@@ -18,6 +18,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
+ 
+        <activity android:name=".Hotelbooking_Activity"></activity>
+        <activity android:name=".Response.nearbyplacesresponse" />
+        <activity android:name=".nearbyplaces.tanahun_nearbyplaces" />
+        <activity android:name=".nearbyplaces.solukhumbu_nearbyplaces" />
+        <activity android:name=".nearbyplaces.solukhumbhu_nearbypalces" />
+        <activity android:name=".nearbyplaces.pokhara_nearbyplaces" />
+        <activity android:name=".nearbyplaces.mustang_nearbyplaces" />
+        <activity android:name=".nearbyplaces.lumbini_nearbyplaces" />
+        <activity android:name=".nearbyplaces.kathmandu_nearbyplaces" />
+        <activity android:name=".nearbyplaces.kathmandu_nearybypalces" />
+        <activity android:name=".nearbyplaces.janakpur_nearbyplaces" />
+        <activity android:name=".nearbyplaces.gorkha_nearbyplaces" />
+        <activity android:name=".nearbyplaces.dolakha_nearbyplaces" />
+        <activity android:name=".nearbyplaces.chitwan_nearbyplaces" />
+        <activity android:name=".weather.Tanahun_weatherActivity" />
+ 
         <activity android:name=".near"></activity>
         <activity android:name=".fragments.Selectplaces" />
         <activity android:name=".maps.kathmandu_map_activity" />
@@ -39,6 +56,7 @@
         <activity android:name=".weather.mustang_weatherActivity" />
         <activity android:name=".weather.pokhara_weatherActivity" />
         <activity android:name=".weather.solukhumbhu_weatherActivity" />
+ 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -63,7 +81,9 @@
         <activity android:name=".place_details.janakpur_detail_activity" />
         <activity android:name=".place_details.gorkha_detail_activity" />
         <activity android:name=".place_details.dolakha_detail_activity" />
+ 
         <activity android:name=".place_details.chitwan_detail_activity" />
+ 
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

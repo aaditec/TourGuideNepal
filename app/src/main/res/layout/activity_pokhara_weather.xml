@@ -324,7 +324,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="87dp"
                     android:layout_weight="1"
                     android:background="#c6e8f7"
                     android:gravity="center"
@@ -353,9 +353,9 @@
                         android:id="@+id/about"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Softwarican"
+                        android:text="Encoders"
                         android:textColor="@color/black"
-                        android:textSize="15dp" />
+                    android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
