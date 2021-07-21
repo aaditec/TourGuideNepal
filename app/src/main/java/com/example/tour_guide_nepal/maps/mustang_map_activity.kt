@@ -20,7 +20,7 @@ class mustang_map_activity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_mustang_map)
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

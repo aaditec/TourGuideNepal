@@ -35,6 +35,7 @@ class RegistrationTesting {
             .perform(ViewActions.typeText("test"))
         Espresso.onView(withId(R.id.etconpass)).perform(ViewActions.closeSoftKeyboard())
             .perform(ViewActions.typeText("test"))
+
         Espresso.onView(withId(R.id.btnsignup)).perform(ViewActions.closeSoftKeyboard())
             .perform(ViewActions.click())
         Thread.sleep(3000)

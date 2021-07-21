@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun populateList() {
         lstTitle = ArrayList<String>()
-        lstTitle.add("Select Places")
+        lstTitle.add("Home")
         lstTitle.add("Profile")
         lstTitle.add("About Us")
         lstFragments = ArrayList<Fragment>()

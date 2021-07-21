@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#f2e9e9"
+    android:id="@+id/selectplaces"
     tools:context=".fragments.Select_cityFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:background="@drawable/lred"
+        android:text="Welcome To Tour Guide Nepal"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="283dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/tourguide" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="If You Want To Check Out Epic Destination For Make Your Easier Travel You Can Click On Visit Place Button"
+        android:textStyle="italic"
+        android:textSize="20dp"
+        />
+    <Button
+        android:id="@+id/selectplace"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Select Places Fragment"
-        android:textSize="20sp"/>
+        android:text="Visit Places"
+        android:gravity="center"
+         />
 
-</RelativeLayout>
+
+</LinearLayout>

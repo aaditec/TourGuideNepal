@@ -92,7 +92,7 @@ class Tanahun_weatherActivity : AppCompatActivity() {
 
         }
 
-        override fun doInBackground(vararg p0: String?): String? {
+        override fun doInBackground(vararg params: String?): String? {
             var response:String?
             try{
                 response = URL("https://api.openweathermap.org/data/2.5/weather?q=$CITY&units=metric&appid=$API").readText(
@@ -103,8 +103,6 @@ class Tanahun_weatherActivity : AppCompatActivity() {
             }
             return response
         }
-
-
 
 
     }
