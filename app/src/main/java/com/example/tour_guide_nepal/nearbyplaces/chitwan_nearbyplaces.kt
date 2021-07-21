@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.service.model.NearByPlaceModel
 import com.example.tour_guide_nepal.view.adapter.NearByPlacesAdapter
+import com.example.tour_guide_nepal.view.ui.RealTimeMap
 import com.example.tour_guide_nepal.viewmodel.NearByPlacesViewModel
 import kotlinx.android.synthetic.main.activity_chitwan_nearbyplaces.*
 import kotlinx.android.synthetic.main.near_by_places.*
+import org.jetbrains.anko.startActivity
 import java.lang.Exception
 
 class chitwan_nearbyplaces : AppCompatActivity() {
@@ -55,7 +57,8 @@ class chitwan_nearbyplaces : AppCompatActivity() {
 
         Cafe.setOnClickListener { getPlaces("Cafe") }
 
-        Zoo.setOnClickListener { getPlaces("Zoo") }
+        Livemap.setOnClickListener { startActivity<RealTimeMap>()
+         }
 
 
 
@@ -72,8 +75,8 @@ class chitwan_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.700239
-        current_long = 85.337639
+        current_lat = 27.5833
+        current_long = 84.5167
 
         current_location = "$current_lat,$current_long"
     }

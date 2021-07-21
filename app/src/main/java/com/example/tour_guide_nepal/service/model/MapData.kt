@@ -1,4 +1,4 @@
-package com.example.finalassignment.service.model
+package com.example.tour_guide_nepal.service.model
 
 class MapData
 {

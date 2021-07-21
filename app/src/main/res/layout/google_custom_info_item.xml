@@ -7,7 +7,7 @@
     <data class="InfoWindowBinding">
         <variable
             name="mapDataModel"
-            type="com.example.finalassignment.service.model.MapData" />
+            type="com.example.tour_guide_nepal.service.model.MapData" />
     </data>
 
 <LinearLayout

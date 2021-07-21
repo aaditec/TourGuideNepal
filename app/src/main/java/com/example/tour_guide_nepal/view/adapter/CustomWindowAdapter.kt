@@ -3,7 +3,7 @@ package com.example.tour_guide_nepal.view.adapter
 import android.content.Context
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.example.finalassignment.service.model.MapData
+import com.example.tour_guide_nepal.service.model.MapData
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.databinding.InfoWindowBinding
 import com.google.android.gms.maps.GoogleMap

@@ -14,8 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import com.example.finalassignment.service.model.MapData
+import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.databinding.ActivityRealTimeMapBinding
+import com.example.tour_guide_nepal.service.model.MapData
 import com.example.tour_guide_nepal.view.adapter.CustomWindowAdapter
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -51,7 +52,7 @@ class RealTimeMap : AppCompatActivity(), OnMapReadyCallback, LocationListener,Go
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_real_time_map)
+        //    setContentView(R.layout.activity_real_time_map)
 
 
         activityRealTimeMapBinding = DataBindingUtil.setContentView(this,R.layout.activity_real_time_map)

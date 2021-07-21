@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,18 @@
     android:background="#06a14c"
     android:padding="30dp"
     tools:context=".nearbyplaces.mustang_nearbyplaces">
+    <data>
 
+        <variable
+            name="MainNearByPlacesRespopnse"
+            type="com.example.tour_guide_nepal.service.response.NearByPlacesRespopnse" />
+
+
+    </data>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,6 +31,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/Busstation"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -48,6 +57,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Restaurent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -79,7 +89,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/Hospital">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="100dp"
@@ -114,7 +125,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:id="@+id/Atm">
                     <androidx.cardview.widget.CardView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
@@ -140,7 +152,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/Hotel">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="100dp"
@@ -165,6 +178,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Policestation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -201,6 +215,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/Shopingmall"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -226,6 +241,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Cafe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -254,6 +270,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Livemap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -281,9 +298,10 @@
 
                 </LinearLayout>
 
+
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</layout>
