@@ -1,6 +1,6 @@
 package com.example.tour_guide_nepal.service.model
 
-import com.example.finalassignment.service.response.NearByPlacesRespopnse
+import com.example.tour_guide_nepal.service.response.NearByPlacesRespopnse
 
 
 import com.google.gson.annotations.Expose

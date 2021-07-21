@@ -6,7 +6,7 @@
     <data class="PlacesItemBinding">
         <variable
             name="NearByViewModel"
-            type="com.example.nearbyplaceskotlinmvvm.service.model.NearByPlaceModel" />
+            type="com.example.tour_guide_nepal.service.model.NearByPlaceModel" />
     </data>
 
 

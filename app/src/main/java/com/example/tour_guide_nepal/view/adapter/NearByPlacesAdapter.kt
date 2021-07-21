@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalassignment.view.ui.DetailsActivity
+import com.example.tour_guide_nepal.view.ui.DetailsActivity
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.databinding.PlacesItemBinding
 import com.example.tour_guide_nepal.service.model.NearByPlaceModel

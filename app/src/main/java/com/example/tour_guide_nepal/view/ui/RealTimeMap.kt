@@ -51,7 +51,7 @@ class RealTimeMap : AppCompatActivity(), OnMapReadyCallback, LocationListener,Go
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //    setContentView(R.layout.activity_real_time_map)
+        //setContentView(R.layout.activity_real_time_map)
 
 
         activityRealTimeMapBinding = DataBindingUtil.setContentView(this,R.layout.activity_real_time_map)

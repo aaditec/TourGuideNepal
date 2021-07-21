@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import com.example.finalassignment.service.model.MapData
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.databinding.InfoWindowBinding
-import com.example.tour_guide_nepal.service.model.MapData
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 

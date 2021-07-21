@@ -1,6 +1,6 @@
 package com.example.tour_guide_nepal.service.repository
 
-import com.example.finalassignment.service.response.NearByPlacesRespopnse
+import com.example.tour_guide_nepal.service.response.NearByPlacesRespopnse
 import io.reactivex.Observable
 import io.reactivex.Observer
 import okhttp3.ResponseBody
