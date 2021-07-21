@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Response.nearbyplacesresponse"></activity>
+        <activity android:name=".Hotelbooking_Activity"></activity>
+        <activity android:name=".Response.nearbyplacesresponse" />
         <activity android:name=".nearbyplaces.tanahun_nearbyplaces" />
         <activity android:name=".nearbyplaces.solukhumbu_nearbyplaces" />
         <activity android:name=".nearbyplaces.solukhumbhu_nearbypalces" />
