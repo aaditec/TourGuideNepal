@@ -53,6 +53,7 @@
                         android:layout_height="match_parent"/>
 
                     <EditText
+                        android:id="@+id/etfullname"
                         android:hint="Enter Full name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -65,6 +66,7 @@
                         android:layout_height="match_parent"/>
 
                     <EditText
+                        android:id="@+id/etemail"
                         android:hint="Enter email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -77,6 +79,7 @@
                         android:layout_height="match_parent"/>
 
                     <EditText
+                        android:id="@+id/etphonenumber"
                         android:hint="Enter phone number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -89,11 +92,13 @@
                         android:layout_height="match_parent"/>
 
                     <EditText
+                        android:id="@+id/etguestnumber"
                         android:hint="Enter guest number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
                     <Button
+                        android:id="@+id/btnbook"
                         android:text="book"
                         android:textStyle="bold"
                         android:layout_gravity="center"
