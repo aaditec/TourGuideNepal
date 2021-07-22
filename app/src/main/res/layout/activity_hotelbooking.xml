@@ -19,8 +19,14 @@
             android:background="#899c8e"
             android:orientation="vertical">
 
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/hotelimage"/>
+
             <TextView
-                android:text="HOTEL BOOKING FORM"
+                android:text="HOTEL BOOKING"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -40,64 +46,135 @@
                     android:padding="20dp"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="200dp"
-                        android:background="@drawable/hotelimage"/>
 
                     <TextView
+                        android:layout_marginTop="10dp"
                         android:text="Full Name"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
-                    <EditText
-                        android:id="@+id/etfullname"
-                        android:hint="Enter Full name"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:background="#B2BEB5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="40dp"/>
 
                     <TextView
+
+                        android:layout_marginTop="30dp"
                         android:text="Email"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
-                    <EditText
-                        android:id="@+id/etemail"
-                        android:hint="Enter email"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="eg: something@email.com"
+                        android:background="#B2BEB5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="40dp"/>
 
                     <TextView
+
+                        android:layout_marginTop="30dp"
                         android:text="Phone Number"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
-                    <EditText
-                        android:id="@+id/etphonenumber"
-                        android:hint="Enter phone number"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint=""
+                        android:background="#B2BEB5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="40dp"/>
 
                     <TextView
+                        android:layout_marginTop="30dp"
+                        android:text="Room Type"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <AutoCompleteTextView
+                        android:text="Please select"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"/>
+
+                    <TextView
+                        android:layout_marginTop="30dp"
                         android:text="No.of guest"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
-                    <EditText
-                        android:id="@+id/etguestnumber"
-                        android:hint="Enter guest number"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:background="#B2BEB5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="40dp"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                    <TextView
+                    android:text="Arrival Date/Time"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="date"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:text="Departure Date"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_marginLeft="50dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="date"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:text="Special Requests"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:background="#B2BEB5"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"/>
 
                     <Button
+                        android:layout_marginTop="30dp"
                         android:id="@+id/btnbook"
                         android:text="book"
                         android:textStyle="bold"
