@@ -24,7 +24,7 @@ interface HotelBookAPI {
     ):Response<DeleteBookHotelResponse>
 
     //Get all Book hotel
-    @PUT("bookhotel/all")
+    @PUT("bookhotel/{userid}")
     suspend fun getallBookHotel(
         @Header("Authorization") token:String
     ):Response<GetAllBookHotelResponse>
