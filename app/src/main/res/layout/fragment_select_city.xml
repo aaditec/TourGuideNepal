@@ -9,34 +9,71 @@
     android:id="@+id/selectplaces"
     tools:context=".fragments.Select_cityFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="164dp"
-        android:background="@drawable/lred"
-        android:text="Welcome To Tour Guide Nepal"
-        android:textSize="35dp"
-        android:textStyle="bold" />
 
-    <ImageView
+    <LinearLayout
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="283dp"
+        android:layout_height="400dp"
         android:scaleType="fitXY"
-        android:src="@drawable/tourguide" />
+        android:orientation="vertical"
+        android:background="@drawable/dashboardimage">
+
+        <TextView
+            android:layout_marginTop="180dp"
+            android:text="Welcome to"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:text="Tour Guide of Nepal"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="Make your travel easier, better"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="If You Want To Check Out Epic Destination For Make Your Easier Travel You Can Click On Visit Place Button"
-        android:textStyle="italic"
-        android:textSize="20dp"
-        />
-    <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Click to check new places"
+        android:textStyle="bold"
+        android:textColor="#910415"
+        android:textSize="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/selectplace"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Visit Places"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_rectangle"
         android:gravity="center"
-         />
+        android:text="Visit Places"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
 
 
 </LinearLayout>

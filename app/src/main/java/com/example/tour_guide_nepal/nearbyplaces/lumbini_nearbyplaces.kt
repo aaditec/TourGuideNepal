@@ -59,7 +59,7 @@ class lumbini_nearbyplaces : AppCompatActivity() {
 
         Cafe.setOnClickListener { getPlaces("Cafe") }
 
-        Livemap.setOnClickListener { startActivity<RealTimeMap>()
+        Livemap.setOnClickListener { getPlaces("Zoo")
         }
 
 

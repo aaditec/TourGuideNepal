@@ -18,8 +18,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#06a14c">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -292,10 +297,17 @@
                         android:layout_gravity="center"/>
 
                 </LinearLayout>
-
-
             </LinearLayout>
 
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nearByPlacesRecycle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="#EBE7E7"
+
+                />
         </LinearLayout>
     </ScrollView>
 
