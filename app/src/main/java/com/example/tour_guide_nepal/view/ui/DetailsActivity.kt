@@ -59,7 +59,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
     private var currentLongitude: Double? = null
     private var lat: Double? = null
     private var long: Double? = null
-    private var activityDetailsBinding: ActivityDetailsBinding? = null
+    private var activitydetailsBinding: ActivityDetailsBinding? = null
     private var location: Location? = null
     open internal var map: GoogleMap? = null
     internal var AddressLocatiomarker: Marker? = null
@@ -84,7 +84,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_details)
 
-        activityDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
+        activitydetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
 
         hours = intent.getStringExtra("hours")
         address = intent.getStringExtra("address")
@@ -97,7 +97,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         mapFragment!!.getMapAsync(this)
 
-        activityDetailsBinding!!.bottomSheet.setOnClickListener { bottomSheetShow() }
+        activitydetailsBinding!!.bottomSheet.setOnClickListener { bottomSheetShow() }
     }
 
     private fun showData() {
@@ -112,19 +112,19 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
             Log.d("DetailsActivity", "Exception: $e")
         }
 
-        activityDetailsBinding!!.name.text = name
-        activityDetailsBinding!!.rating.text = rating
+        activitydetailsBinding!!.name.text = name
+        activitydetailsBinding!!.rating.text = rating
         //activityDetailsBinding!!.totalRating.text = totalRating
 
         if (hours == "open") {
-            activityDetailsBinding!!.open.setTextColor(Color.GREEN)
-            activityDetailsBinding!!.open.textSize = 18F
+            activitydetailsBinding!!.open.setTextColor(Color.GREEN)
+            activitydetailsBinding!!.open.textSize = 18F
 
         } else {
-            activityDetailsBinding!!.open.setTextColor(Color.RED)
+            activitydetailsBinding!!.open.setTextColor(Color.RED)
         }
-        activityDetailsBinding!!.open.text = hours
-        activityDetailsBinding!!.address.text = address
+        activitydetailsBinding!!.open.text = hours
+        activitydetailsBinding!!.address.text = address
     }
 
 
