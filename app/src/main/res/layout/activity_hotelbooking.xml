@@ -96,6 +96,20 @@
                         android:layout_height="40dp"/>
 
                     <TextView
+                        android:layout_marginTop="10dp"
+                        android:text="Hotel Name"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ethotelname"
+                        android:background="#B2BEB5"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+
+                    <TextView
                         android:layout_marginTop="30dp"
                         android:text="Room Type"
                         android:textStyle="bold"
@@ -103,7 +117,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
-                    <AutoCompleteTextView
+                    <Spinner
                         android:id="@+id/etroomtype"
                         android:text="Please select"
                         android:layout_width="match_parent"

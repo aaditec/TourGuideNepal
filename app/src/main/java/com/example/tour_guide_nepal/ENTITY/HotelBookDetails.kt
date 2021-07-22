@@ -11,12 +11,16 @@ data class HotelBookDetails (
     @ColumnInfo(name = "fullname") val fullname:String? = null,
     @ColumnInfo(name = "email") val email:String? = null,
     @ColumnInfo(name = "phone") val phone:String? = null,
+    @ColumnInfo(name = "hotelname") val hotelname:String? = null,
+    @ColumnInfo(name = "roomtype") val roomtype:String? = null,
     @ColumnInfo(name = "datefrom") val datefrom:String? = null,
     @ColumnInfo(name = "dateto") val dateto:String? = null,
     @ColumnInfo(name = "numberofpeople") val numberofpeople:String? = null,
     @ColumnInfo(name = "comments") val comments:String? = null,
 ):Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -33,6 +37,8 @@ data class HotelBookDetails (
         parcel.writeString(fullname)
         parcel.writeString(email)
         parcel.writeString(phone)
+        parcel.writeString(hotelname)
+        parcel.writeString(roomtype)
         parcel.writeString(datefrom)
         parcel.writeString(dateto)
         parcel.writeString(numberofpeople)
