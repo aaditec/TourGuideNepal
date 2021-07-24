@@ -19,34 +19,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".Hotelbooking_Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-
-
-        <activity android:name=".view.ui.DetailsActivity"></activity>
-        <activity android:name=".view.ui.RealTimeMap"></activity>
+        <activity android:name=".HotelBookingDetailedInfoActivity"></activity>
+        <activity android:name=".HotelBookingInfo" />
+        <activity android:name=".Hotelbooking_Activity" />
+        <activity android:name=".view.ui.DetailsActivity" />
+        <activity android:name=".view.ui.RealTimeMap" />
         <activity android:name=".nearbyplaces.tanahun_nearbyplaces" />
         <activity android:name=".nearbyplaces.solukhumbu_nearbyplaces" />
-
         <activity android:name=".nearbyplaces.pokhara_nearbyplaces" />
         <activity android:name=".nearbyplaces.mustang_nearbyplaces" />
         <activity android:name=".nearbyplaces.lumbini_nearbyplaces" />
         <activity android:name=".nearbyplaces.kathmandu_nearbyplaces" />
-
         <activity android:name=".nearbyplaces.janakpur_nearbyplaces" />
         <activity android:name=".nearbyplaces.gorkha_nearbyplaces" />
         <activity android:name=".nearbyplaces.dolakha_nearbyplaces" />
         <activity android:name=".nearbyplaces.chitwan_nearbyplaces" />
         <activity android:name=".weather.Tanahun_weatherActivity" />
- 
-
         <activity android:name=".fragments.Selectplaces" />
         <activity android:name=".maps.kathmandu_map_activity" />
         <activity android:name=".maps.chitwan_map_activity" />
@@ -57,7 +45,6 @@
         <activity android:name=".maps.pokhara_map_activity" />
         <activity android:name=".maps.solukhumbu_map_activity" />
         <activity android:name=".maps.tanahun_map_activity" />
-
         <activity android:name=".weather.kathmandu_weatherActivity" />
         <activity android:name=".weather.chitwan_weatherActivity" />
         <activity android:name=".weather.dolakha_weatherActivity" />
@@ -67,7 +54,6 @@
         <activity android:name=".weather.mustang_weatherActivity" />
         <activity android:name=".weather.pokhara_weatherActivity" />
         <activity android:name=".weather.solukhumbhu_weatherActivity" />
- 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -92,9 +78,7 @@
         <activity android:name=".place_details.janakpur_detail_activity" />
         <activity android:name=".place_details.gorkha_detail_activity" />
         <activity android:name=".place_details.dolakha_detail_activity" />
- 
         <activity android:name=".place_details.chitwan_detail_activity" />
- 
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

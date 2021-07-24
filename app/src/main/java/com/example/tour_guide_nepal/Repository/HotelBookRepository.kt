@@ -40,10 +40,10 @@ class HotelBookRepository : MyApiRequest() {
     }
 
     //get all bookHotel
-    suspend fun getallBookHotel():GetAllBookHotelResponse{
+    suspend fun getallBookHotel(id: String):GetAllBookHotelResponse{
         return apiRequest {
             HotelBookAPI.getallBookHotel(
-                ServiceBuilder.token!!
+                ServiceBuilder.token!!,id
             )
         }
     }
