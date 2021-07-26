@@ -9,12 +9,15 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.mustang_map_activity
+import com.example.tour_guide_nepal.nearbyplaces.mustang_nearbyplaces
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
+import com.example.tour_guide_nepal.weather.dolakha_weatherActivity
 import com.example.tour_guide_nepal.weather.mustang_weatherActivity
 
 class mustang_detail_activity : AppCompatActivity() {
     private lateinit var mustangmap : ConstraintLayout
     private lateinit var mustangweather : ConstraintLayout
+    private lateinit var mustangnear : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +25,7 @@ class mustang_detail_activity : AppCompatActivity() {
 
         mustangmap = findViewById(R.id.mustangmap)
         mustangweather = findViewById(R.id.mustangweather)
+        mustangnear = findViewById(R.id.mustangnear)
 
         val imagelist = ArrayList<SlideModel>()
 
@@ -41,6 +45,9 @@ class mustang_detail_activity : AppCompatActivity() {
             val intent = Intent(this, mustang_weatherActivity::class.java)
             startActivity(intent)
         }
-
+        mustangnear.setOnClickListener {
+            val intent = Intent(this, mustang_nearbyplaces::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -9,12 +9,14 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.dolakha_map_activity
+import com.example.tour_guide_nepal.nearbyplaces.dolakha_nearbyplaces
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
 import com.example.tour_guide_nepal.weather.dolakha_weatherActivity
 
 class dolakha_detail_activity : AppCompatActivity() {
     private lateinit var dolokhamap : ConstraintLayout
     private lateinit var dolokhaweather : ConstraintLayout
+    private lateinit var dolakhanear : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,7 @@ class dolakha_detail_activity : AppCompatActivity() {
 
         dolokhamap = findViewById(R.id.dolakhamap)
         dolokhaweather = findViewById(R.id.dolakhaweather)
+        dolakhanear = findViewById(R.id.dolakhanear)
 
         val imagelist = ArrayList<SlideModel>()
 
@@ -39,6 +42,10 @@ class dolakha_detail_activity : AppCompatActivity() {
         }
         dolokhaweather.setOnClickListener {
             val intent = Intent(this, dolakha_weatherActivity::class.java)
+            startActivity(intent)
+        }
+        dolakhanear.setOnClickListener {
+            val intent = Intent(this, dolakha_nearbyplaces::class.java)
             startActivity(intent)
         }
 

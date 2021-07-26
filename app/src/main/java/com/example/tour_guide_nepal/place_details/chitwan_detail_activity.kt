@@ -8,11 +8,13 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
+import com.example.tour_guide_nepal.nearbyplaces.chitwan_nearbyplaces
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
 
 class chitwan_detail_activity : AppCompatActivity() {
     private lateinit var chitwanmap : ConstraintLayout
     private lateinit var chitwanweather : ConstraintLayout
+    private lateinit var chitwannear : ConstraintLayout
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +23,7 @@ class chitwan_detail_activity : AppCompatActivity() {
 
         chitwanmap = findViewById(R.id.chitwanmap)
         chitwanweather = findViewById(R.id.chitwanweather)
+        chitwannear = findViewById(R.id.chitwannear)
 
         val imagelist = ArrayList<SlideModel>()
 
@@ -38,6 +41,10 @@ class chitwan_detail_activity : AppCompatActivity() {
         }
         chitwanweather.setOnClickListener {
             val intent = Intent(this, chitwan_weatherActivity::class.java)
+            startActivity(intent)
+        }
+        chitwannear.setOnClickListener {
+            val intent = Intent(this, chitwan_nearbyplaces::class.java)
             startActivity(intent)
         }
 

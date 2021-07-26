@@ -9,12 +9,15 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.solukhumbu_map_activity
+import com.example.tour_guide_nepal.nearbyplaces.solukhumbu_nearbyplaces
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
+import com.example.tour_guide_nepal.weather.dolakha_weatherActivity
 import com.example.tour_guide_nepal.weather.solukhumbhu_weatherActivity
 
 class solukhumbu_detail_activity : AppCompatActivity() {
     private lateinit var solukhumbumap : ConstraintLayout
     private lateinit var solukhumbuweather : ConstraintLayout
+    private lateinit var solukhumbunear : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +25,7 @@ class solukhumbu_detail_activity : AppCompatActivity() {
 
         solukhumbumap = findViewById(R.id.solukhumbumap)
         solukhumbuweather = findViewById(R.id.solukhumbuweather)
+ 
 
         val imagelist = ArrayList<SlideModel>()
 
@@ -31,6 +35,9 @@ class solukhumbu_detail_activity : AppCompatActivity() {
 
         val imageSlider = findViewById<ImageSlider>(R.id.solukhumbuimage)
         imageSlider.setImageList(imagelist)
+ 
+        solukhumbunear = findViewById(R.id.solukhumbunear)
+ 
 
         solukhumbumap.setOnClickListener {
             val intent = Intent(this, solukhumbu_map_activity::class.java)
@@ -40,6 +47,9 @@ class solukhumbu_detail_activity : AppCompatActivity() {
             val intent = Intent(this, solukhumbhu_weatherActivity::class.java)
             startActivity(intent)
         }
-
+        solukhumbunear.setOnClickListener {
+            val intent = Intent(this, solukhumbu_nearbyplaces::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -19,7 +19,7 @@ class tanahun_map_activity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_tanahun_map)
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/selectplaces"
+    tools:context=".fragments.Selectplaces">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/kathmandu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/kathmandu"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/kathmanduname"
+                        android:text="Kathmandu"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Capital city of Nepal"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/lumbini"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/lumbini"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Lumbini"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Birthplace of Gautam Buddha"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/solukhumbu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/everest"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Solukhumbu"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Tallest mountain of the world"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/chitwan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/chitwan"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Chitwan"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Suaraha, Chitwan national park"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/dolakha"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/dolakha"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Dolakha"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Kalichowk Bhagawati heritage "
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/mustang"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/mustang"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Mustang"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Sky caves"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/pokhara"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/pokhara"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Pokhara"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Fewa lake"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/gorkha"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gorkha"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Gorkha"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Gorkha Durbar"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/janakpur"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/janakpur"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Janakpur"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Janakpur temple, Home of Sita"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardElevation="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:id="@+id/tanahun"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/tanahun"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Tanahun"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="Manung Kot"
+                        android:textSize="16dp"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:textColor="#ffff03"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
