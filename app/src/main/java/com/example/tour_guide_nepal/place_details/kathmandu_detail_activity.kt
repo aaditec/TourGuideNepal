@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.kathmandu_map_activity
@@ -23,7 +25,20 @@ class kathmandu_detail_activity : AppCompatActivity() {
 
         kathmandumap = findViewById(R.id.kathmandumap)
         kathmanduweather = findViewById(R.id.kathmanduweather)
+ 
+
+        val imagelist = ArrayList<SlideModel>()
+
+        imagelist.add(SlideModel("https://img.traveltriangle.com/blog/wp-content/uploads/2015/10/Swayambhunath-in-Kathmandu-Valley-Swayambhunath-temple-is-among-the-best-Nepal-places-to-visit-near-Kathmandu-valley.jpg","Kathmandu"))
+        imagelist.add(SlideModel("https://wallpaperaccess.com/full/2143422.jpg","Kathmandu"))
+        imagelist.add(SlideModel("https://ichef.bbci.co.uk/news/976/cpsprodpb/E2B6/production/_118183085_gettyimages-1232492703.jpg","Kathmandu"))
+
+        val imageSlider = findViewById<ImageSlider>(R.id.kathmanduimage)
+        imageSlider.setImageList(imagelist)
+
+ 
         kathmandunear = findViewById(R.id.kathmandunear)
+ 
 
         kathmandumap.setOnClickListener {
             val intent = Intent(this, kathmandu_map_activity::class.java)
