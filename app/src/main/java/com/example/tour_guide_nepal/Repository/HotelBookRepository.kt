@@ -2,6 +2,7 @@ package com.example.tour_guide_nepal.Repository
 
 import com.example.finalassignment.API.MyApiRequest
 import com.example.finalassignment.API.ServiceBuilder
+import com.example.tour_guide_nepal.API.HotelBookAPI
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
 import com.example.tour_guide_nepal.Response.BookHotelResponse
 import com.example.tour_guide_nepal.Response.DeleteBookHotelResponse
@@ -9,13 +10,13 @@ import com.example.tour_guide_nepal.Response.GetAllBookHotelResponse
 import com.example.tour_guide_nepal.Response.UpdateBookHotelResponse
 
 class HotelBookRepository : MyApiRequest() {
-    private val HotelBookAPI =
-        ServiceBuilder.buildService(com.example.tour_guide_nepal.API.HotelBookAPI::class.java)
+    private val hotelBookAPI =
+        ServiceBuilder.buildService(HotelBookAPI::class.java)
 
     //Book Hotel
     suspend fun bookHotel(hotelBookDetails: HotelBookDetails): BookHotelResponse{
         return apiRequest {
-            HotelBookAPI.bookHotel(
+            hotelBookAPI.bookHotel(
                 ServiceBuilder.token!!,hotelBookDetails
             )
         }
@@ -24,7 +25,7 @@ class HotelBookRepository : MyApiRequest() {
     //update bookHotel
     suspend fun updateBookHotel(id: String,hotelBookDetails: HotelBookDetails):UpdateBookHotelResponse{
         return apiRequest {
-            HotelBookAPI.updateBookHotel(
+            hotelBookAPI.updateBookHotel(
                 ServiceBuilder.token!!,id,hotelBookDetails
             )
         }
@@ -33,7 +34,7 @@ class HotelBookRepository : MyApiRequest() {
     //Delete bookHotel
     suspend fun deletebookHotel(id: String):DeleteBookHotelResponse{
         return apiRequest {
-            HotelBookAPI.deletebookHotel(
+            hotelBookAPI.deletebookHotel(
                 ServiceBuilder.token!!,id
             )
         }
@@ -42,7 +43,7 @@ class HotelBookRepository : MyApiRequest() {
     //get all bookHotel
     suspend fun getallBookHotel(id: String):GetAllBookHotelResponse{
         return apiRequest {
-            HotelBookAPI.getallBookHotel(
+            hotelBookAPI.getallBookHotel(
                 ServiceBuilder.token!!,id
             )
         }
