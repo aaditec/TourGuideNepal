@@ -1,10 +1,13 @@
 package com.example.tour_guide_nepal
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.finalassignment.API.ServiceBuilder
@@ -21,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var txtname: TextView
     private lateinit var txtpass: TextView
     private lateinit var linearLayout: LinearLayout
+    private lateinit var forgotpass: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +34,14 @@ class LoginActivity : AppCompatActivity() {
         linkregister = findViewById(R.id.linkregister)
         txtname = findViewById(R.id.txtname)
         txtpass = findViewById(R.id.txtpass)
+        forgotpass = findViewById(R.id.forgotpass)
 
 
+        forgotpass.setOnClickListener {
+
+            val intent = Intent(this, forgotpassword_activity::class.java)
+            startActivity(intent)
+        }
         btnlogin.setOnClickListener {
             login()
 
@@ -43,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
 
 
     private fun login() {

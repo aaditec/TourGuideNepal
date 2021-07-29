@@ -45,14 +45,13 @@ class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickLi
                     val lstBookDetails = response.data
                     withContext(Dispatchers.Main) {
 
-                        myAdapter = HotelBookViewAdapter(this@HotelBookingInfo,lstHotelBookView)
 
                         recyclerview.adapter =
                             HotelBookViewAdapter(this@HotelBookingInfo, lstBookDetails!!)
 
                         recyclerview.layoutManager =
                             LinearLayoutManager(this@HotelBookingInfo)
-                        recyclerview.adapter = myAdapter
+
                     }
                 }
             } catch (ex: Exception) {

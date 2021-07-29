@@ -76,17 +76,13 @@ class kathmandu_nearbyplaces : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     private fun getMyLatLong()
     {
-
         var locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
         current_lat = 27.700769
         current_long = 85.300140
-
         current_location = "$current_lat,$current_long"
     }
-
 
 
     private fun getPlaces(keyword: String)
