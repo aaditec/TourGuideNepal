@@ -25,17 +25,7 @@ class HotelBookViewAdapter(
     val lstHotelBookView:MutableList<HotelBookDetails>
 ) : RecyclerView.Adapter<HotelBookViewAdapter.HotelBookViewHolder>() {
 
-    private lateinit var mlistener : onItemClickListener
-
-    interface onItemClickListener{
-        fun onItemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(listener: onItemClickListener){
-        mlistener = listener
-    }
-
-    class HotelBookViewHolder(view: View, listener: onItemClickListener) : RecyclerView.ViewHolder(view) {
+    class HotelBookViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val fullname : TextView
         val bemail : TextView
         val cnumber : TextView
@@ -57,21 +47,15 @@ class HotelBookViewAdapter(
             datefrom = view.findViewById(R.id.bdatefrom)
             dateto = view.findViewById(R.id.bdateto)
             comments = view.findViewById(R.id.bcomment)
-            update=view.findViewById(R.id.update)
+            update=view.findViewById(R.id.editupdate)
             delete=view.findViewById(R.id.delete)
-
-            itemView.setOnClickListener {
-                listener.onItemClick(adapterPosition)
             }
         }
-
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelBookViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.hotelbooking_custom_layout,parent,false)
-        return HotelBookViewHolder(view,mlistener)
+        return HotelBookViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: HotelBookViewHolder, position: Int) {

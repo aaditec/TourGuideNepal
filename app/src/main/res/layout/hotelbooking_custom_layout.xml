@@ -227,7 +227,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/update"
+                android:id="@+id/editupdate"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"

@@ -20,6 +20,7 @@
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
         <activity android:name=".HotelBookingDetailedInfoActivity"></activity>
+        <activity android:name=".Hotelform_update_activity"/>
         <activity android:name=".HotelBookingInfo" />
         <activity android:name=".Hotelbooking_Activity" />
         <activity android:name=".view.ui.DetailsActivity" />
