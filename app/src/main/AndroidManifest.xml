@@ -19,14 +19,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
-        <activity android:name=".video.pokhara_video_activity"></activity>
-        <activity android:name=".video.mustang_detail_activity" />
+        <activity android:name=".video.gorkha_video_activity">
+
+        </activity>
+        <activity android:name=".video.dolakha_video_activity" >
+
+        </activity>
+        <activity android:name=".video.janakpur_video_activity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".video.kathmandu_video_activity" >
+
+        </activity>
         <activity android:name=".video.lumbini_video_activity" />
-        <activity android:name=".video.kathmandu_video_activity" />
-        <activity android:name=".video.janakpur_video_activity" />
-        <activity android:name=".video.gorkha_video_activity" />
-        <activity android:name=".video.dolakha_video_activity" />
-        <activity android:name=".video.chitwan_video_activity" />
+        <activity android:name=".video.mustang_video_activity" />
+        <activity android:name=".video.pokhara_video_activity" />
+        <activity android:name=".video.solukhumbu_video_activity" />
+        <activity android:name=".video.tanahun_video_activity" />
+        <activity android:name=".video.Chitwan_video_activity">
+
+        </activity>
         <activity android:name=".HotelBookingDetailedInfoActivity" />
         <activity android:name=".HotelBookingInfo" />
         <activity android:name=".Hotelbooking_Activity" />
