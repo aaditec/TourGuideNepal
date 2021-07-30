@@ -25,10 +25,10 @@ class forgotpassword_activity : AppCompatActivity() {
         }
         firebaseAuth?.sendPasswordResetEmail(emailR)?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                Toast.makeText(this, "reset email sent", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "reset email sent", Toast.LENGTH_SHORT).show()
 
             } else {
-                Toast.makeText(this, "reset email not sent", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "reset email not sent", Toast.LENGTH_SHORT).show()
             }
         }
     }
