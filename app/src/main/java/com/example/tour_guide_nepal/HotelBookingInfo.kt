@@ -16,11 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickListener {
+class HotelBookingInfo : AppCompatActivity(){
     private lateinit var recyclerview: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
-    private lateinit var lstHotelBookView:MutableList<HotelBookDetails>
-    private lateinit var myAdapter : HotelBookViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,19 +37,17 @@ class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickLi
             try {
                 val hotelBookDetails = HotelBookDetails()
                 val hotelBookRepository = HotelBookRepository()
-                val response = hotelBookRepository.getallBookHotel(hotelBookDetails._id!!)
+                val response = hotelBookRepository.getallBookHotel()
                 if (response.data != null) {
 
                     val lstBookDetails = response.data
                     withContext(Dispatchers.Main) {
 
-
-                        recyclerview.adapter =
-                            HotelBookViewAdapter(this@HotelBookingInfo, lstBookDetails!!)
-
-                        recyclerview.layoutManager =
-                            LinearLayoutManager(this@HotelBookingInfo)
-
+ 
+                        val adapter = HotelBookViewAdapter(this@HotelBookingInfo,lstBookDetails)
+                        recyclerview.layoutManager=LinearLayoutManager(this@HotelBookingInfo)
+                        recyclerview.adapter=adapter
+ 
                     }
                 }
             } catch (ex: Exception) {
@@ -73,12 +69,5 @@ class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickLi
             Toast.makeText(this, "refreshed", Toast.LENGTH_SHORT).show()
         }
 
-    }
-
-    override fun onItemClick(position: Int) {
-        //Toast.makeText(this, "onclick $position", Toast.LENGTH_LONG).show()
-        val intent = Intent(this,HotelBookingDetailedInfoActivity::class.java)
-        intent.putExtra("hotelbookinfo",lstHotelBookView[position])
-        startActivity(intent)
     }
 }
