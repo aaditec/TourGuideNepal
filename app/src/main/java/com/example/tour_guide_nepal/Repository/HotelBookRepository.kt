@@ -1,7 +1,7 @@
 package com.example.tour_guide_nepal.Repository
 
-import com.example.finalassignment.API.MyApiRequest
-import com.example.finalassignment.API.ServiceBuilder
+import com.example.tour_guide_nepal.API.MyApiRequest
+import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.API.HotelBookAPI
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
 import com.example.tour_guide_nepal.Response.BookHotelResponse

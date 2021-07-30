@@ -1,7 +1,7 @@
-package com.example.finalassignment.API
+package com.example.tour_guide_nepal.API
 
-import com.example.finalassignment.ENTITY.User
-import com.example.finalassignment.Response.LoginResponse
+import com.example.tour_guide_nepal.ENTITY.User
+import com.example.tour_guide_nepal.Response.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field

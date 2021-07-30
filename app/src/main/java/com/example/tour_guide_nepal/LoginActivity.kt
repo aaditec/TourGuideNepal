@@ -10,8 +10,8 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.finalassignment.API.ServiceBuilder
-import com.example.finalassignment.Repository.UserRepository
+import com.example.tour_guide_nepal.API.ServiceBuilder
+import com.example.tour_guide_nepal.Repository.UserRepository
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
