@@ -7,8 +7,8 @@ import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.finalassignment.API.ServiceBuilder
-import com.example.finalassignment.Repository.UserRepository
+import com.example.tour_guide_nepal.API.ServiceBuilder
+import com.example.tour_guide_nepal.Repository.UserRepository
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -48,12 +48,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
         if (validateLogin()) {
-            val username = txtname.text.toString()
+            val email = txtname.text.toString()
             val password = txtpass.text.toString()
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val repository = UserRepository()
-                    val response = repository.loginUser(username, password)
+                    val response = repository.loginUser(email, password)
                     if (response.success == true) {
                         ServiceBuilder.token = "Bearer " + response.token
                         startActivity(

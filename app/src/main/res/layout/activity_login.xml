@@ -42,7 +42,7 @@
         android:id="@+id/inputname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username/Email"
+        android:hint="Email"
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/person"
         android:layout_marginStart="35dp"
