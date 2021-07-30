@@ -10,6 +10,7 @@ import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.kathmandu_map_activity
 import com.example.tour_guide_nepal.nearbyplaces.kathmandu_nearbyplaces
+import com.example.tour_guide_nepal.video.kathmandu_video_activity
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
 import com.example.tour_guide_nepal.weather.dolakha_weatherActivity
 import com.example.tour_guide_nepal.weather.kathmandu_weatherActivity
@@ -18,6 +19,7 @@ class kathmandu_detail_activity : AppCompatActivity() {
     private lateinit var kathmandumap : ConstraintLayout
     private lateinit var kathmanduweather : ConstraintLayout
     private lateinit var kathmandunear : ConstraintLayout
+    private lateinit var kathmanduvideo : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class kathmandu_detail_activity : AppCompatActivity() {
 
         kathmandumap = findViewById(R.id.kathmandumap)
         kathmanduweather = findViewById(R.id.kathmanduweather)
+        kathmanduvideo = findViewById(R.id.kathmanduvideo)
  
 
         val imagelist = ArrayList<SlideModel>()
@@ -50,6 +53,11 @@ class kathmandu_detail_activity : AppCompatActivity() {
         }
         kathmandunear.setOnClickListener {
             val intent = Intent(this, kathmandu_nearbyplaces::class.java)
+            startActivity(intent)
+        }
+
+        kathmanduvideo.setOnClickListener {
+            val intent = Intent(this, kathmandu_video_activity::class.java)
             startActivity(intent)
         }
 

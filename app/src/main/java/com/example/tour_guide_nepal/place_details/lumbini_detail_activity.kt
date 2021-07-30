@@ -10,14 +10,17 @@ import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.lumbini_map_activity
 import com.example.tour_guide_nepal.nearbyplaces.lumbini_nearbyplaces
+import com.example.tour_guide_nepal.video.lumbini_video_activity
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
 import com.example.tour_guide_nepal.weather.dolakha_weatherActivity
 import com.example.tour_guide_nepal.weather.lumbini_weatherActivity
+import org.jetbrains.anko.find
 
 class lumbini_detail_activity : AppCompatActivity() {
     private lateinit var lumbinimap : ConstraintLayout
     private lateinit var lumbiniweather : ConstraintLayout
     private lateinit var lumbininear : ConstraintLayout
+    private lateinit var lumbinivideo : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +28,7 @@ class lumbini_detail_activity : AppCompatActivity() {
 
         lumbinimap = findViewById(R.id.lumbinimap)
         lumbiniweather = findViewById(R.id.lumbiniweather)
+        lumbinivideo = findViewById(R.id.lumbinivideo)
  
 
         val imagelist = ArrayList<SlideModel>()
@@ -50,6 +54,11 @@ class lumbini_detail_activity : AppCompatActivity() {
         }
         lumbininear.setOnClickListener {
             val intent = Intent(this, lumbini_nearbyplaces::class.java)
+            startActivity(intent)
+        }
+
+        lumbinivideo.setOnClickListener {
+            val intent = Intent(this, lumbini_video_activity::class.java)
             startActivity(intent)
         }
 
