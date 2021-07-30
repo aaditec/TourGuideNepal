@@ -57,12 +57,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
         if (validateLogin()) {
-            val username = txtname.text.toString()
+            val email = txtname.text.toString()
             val password = txtpass.text.toString()
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val repository = UserRepository()
-                    val response = repository.loginUser(username, password)
+                    val response = repository.loginUser(email, password)
                     if (response.success == true) {
                         ServiceBuilder.token = "Bearer " + response.token
                         startActivity(
@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
         txtpass.error = null
 
         if (sanitize(txtname as EditText).isEmpty()) {
-            txtname.error = "Username can not be empty"
+            txtname.error = "email can not be empty"
             valid = false
         }
         if (sanitize(txtpass as EditText).isEmpty()) {
