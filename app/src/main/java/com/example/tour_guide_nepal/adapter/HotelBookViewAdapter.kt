@@ -58,6 +58,7 @@ class HotelBookViewAdapter(
         return HotelBookViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: HotelBookViewHolder, position: Int) {
         val hotelbooklist = lstHotelBookView[position]
         holder.fullname.text = hotelbooklist.fullname

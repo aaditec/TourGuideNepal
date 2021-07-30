@@ -17,17 +17,19 @@ import kotlinx.coroutines.withContext
 
 class Signup : AppCompatActivity() {
     private  lateinit var btnsignup: Button
-   private lateinit var etemail: TextView
+ 
+  
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
     private lateinit var etpass: TextView
     private lateinit var etconfigpass: TextView
+    private lateinit var etemail: TextView
     private lateinit var btnlog: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-
+ 
         etname = findViewById(R.id.etname)
         etemail = findViewById(R.id.etemail)
         etpass = findViewById(R.id.etpass)
@@ -39,7 +41,7 @@ class Signup : AppCompatActivity() {
 
         btnsignup.setOnClickListener {
             if (validatesignup()) {
-
+             
                 val FullName = etname.text.toString()
                val email = etemail.text.toString()
                 val phone = etphone.text.toString()
@@ -52,6 +54,7 @@ class Signup : AppCompatActivity() {
                 } else {
                     val user =
                         User(
+                        
                             fullname = FullName,
                             email = email,
                             phone = phone,
@@ -105,10 +108,13 @@ class Signup : AppCompatActivity() {
             etconfigpass.error = null
             etphone.error = null
 
-            if (sanitize(etemail as EditText).isEmpty()) {
-                etemail.error = "Username can not be empty"
-                valid = false
-            }
+ 
+        if (sanitize(etemail as EditText).isEmpty()) {
+            etemail.error = "Email can not be empty"
+            valid = false
+        }
+ 
+ 
             if (sanitize(etname as EditText).isEmpty()) {
                 etname.error = "Fullname can not be empty"
                 valid = false

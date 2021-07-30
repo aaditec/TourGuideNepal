@@ -65,7 +65,7 @@
         android:id="@+id/inputpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Enter Your Password"
         app:endIconMode="password_toggle"
         app:startIconDrawable="@drawable/lock"
         android:layout_marginStart="35dp"
@@ -96,15 +96,15 @@
                             android:layout_height="wrap_content"
                             tools:ignore="MissingConstraints" />
 
-                        <TextView
-                            android:layout_marginLeft="97dp"
-                            android:id="@+id/forgotpass"
-                            android:text="Forgot Password?"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:ignore="MissingConstraints" />
+                <TextView
+                    android:id="@+id/forgotpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"
+                    android:layout_marginLeft="97dp"
+                    android:text="Forgot Password?"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:ignore="MissingConstraints" />
 
             </LinearLayout>
 

@@ -43,9 +43,11 @@ class HotelBookingInfo : AppCompatActivity(){
                     val lstBookDetails = response.data
                     withContext(Dispatchers.Main) {
 
+ 
                         val adapter = HotelBookViewAdapter(this@HotelBookingInfo,lstBookDetails)
                         recyclerview.layoutManager=LinearLayoutManager(this@HotelBookingInfo)
                         recyclerview.adapter=adapter
+ 
                     }
                 }
             } catch (ex: Exception) {
