@@ -342,8 +342,8 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
         if (location != null) {
             Log.e("Latitude : ", "" + location!!.latitude.toString() + "\nLongitude : " + location!!.longitude)
-            currentLattitude = 27.700769
-            currentLongitude = 85.300140
+            currentLattitude = location!!.latitude
+            currentLongitude = location!!.longitude
             Log.d("DetailsActivity", "onConnected: " + location!!.latitude.toString() + "\nLongitude : " + location!!.longitude)
             //val CurrentlatLng = LatLng(currentLattitude!!, currentLongitude!!)
             CurrentlatLng = currentLattitude?.let { currentLongitude?.let { it1 -> LatLng(it, it1) } }!!
