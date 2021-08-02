@@ -83,7 +83,7 @@ class janakpur_nearbyplaces : AppCompatActivity() {
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
         current_lat = 26.7183
-        current_long = 85.9065
+        current_long = 85.9166667
 
         current_location = "$current_lat,$current_long"
     }

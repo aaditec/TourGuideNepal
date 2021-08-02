@@ -82,8 +82,8 @@ class dolakha_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.6667
-        current_long = 86.0333
+        current_lat = 27.666612
+        current_long = 86.050411
 
         current_location = "$current_lat,$current_long"
     }

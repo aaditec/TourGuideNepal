@@ -81,8 +81,8 @@ class solukhumbu_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.986065
-        current_long = 86.922623
+        current_lat = 27.5011
+        current_long = 86.5869
 
         current_location = "$current_lat,$current_long"
     }

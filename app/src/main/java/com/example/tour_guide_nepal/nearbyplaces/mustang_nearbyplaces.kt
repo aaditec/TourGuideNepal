@@ -81,8 +81,8 @@ class mustang_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 29.1838
-        current_long = 83.9569
+        current_lat = 28.9985065
+        current_long = 83.8473015
 
         current_location = "$current_lat,$current_long"
     }

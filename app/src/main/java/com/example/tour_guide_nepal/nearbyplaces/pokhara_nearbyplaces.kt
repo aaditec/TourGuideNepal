@@ -81,8 +81,8 @@ class pokhara_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 28.209499
-        current_long = 83.959518
+        current_lat = 28.237987
+        current_long = 83.995588
 
         current_location = "$current_lat,$current_long"
     }

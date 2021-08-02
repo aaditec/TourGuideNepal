@@ -79,8 +79,8 @@ class kathmandu_nearbyplaces : AppCompatActivity() {
         var locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.700769
-        current_long = 85.300140
+        current_lat = 27.700239
+        current_long = 85.337639
         current_location = "$current_lat,$current_long"
     }
 
