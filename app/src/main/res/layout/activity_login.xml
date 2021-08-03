@@ -26,11 +26,12 @@
         android:src="@drawable/secondlogo"
         tools:ignore="MissingConstraints" />
 
+
     <androidx.cardview.widget.CardView
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:layout_width="380dp"
-        android:layout_height="311dp"
+        android:layout_height="match_parent"
         android:backgroundTint="#f1f5eb"
         app:cardElevation="100dp"
         app:cardCornerRadius="50dp"
@@ -107,8 +108,8 @@
                 <TextView
                     android:id="@+id/forgotpass"
                     android:layout_width="wrap_content"
-                    android:layout_height="14dp"
-                    android:layout_marginLeft="97dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="76dp"
                     android:text="Forgot Password?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
