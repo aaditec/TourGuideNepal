@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vehiclebooking_activity">
+    tools:context=".vehicle.Vehiclebooking_activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CHOOSE A VECHICLE"
+                android:text="CHOOSE A VEHICLE"
                 android:textSize="30dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
