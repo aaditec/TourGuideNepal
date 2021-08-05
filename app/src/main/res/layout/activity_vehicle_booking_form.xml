@@ -16,6 +16,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:text="VEHICLE RENTAL FORM"
                 android:textStyle="bold"
@@ -230,7 +231,6 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/comments"
                         android:background="#B2BEB5"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"/>
