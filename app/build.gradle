@@ -8,6 +8,13 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+    }
+
     defaultConfig {
         applicationId "com.example.tour_guide_nepal"
         minSdkVersion 16
@@ -62,4 +69,6 @@ dependencies {
     //tab layout
     implementation 'com.google.android.material:material:1.4.0'
     annotationProcessor 'androidx.room:room-compiler:2.3.0'
+
+    testImplementation 'org.json:json:20160810'
 }

@@ -71,7 +71,7 @@
         android:id="@+id/newinputname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="Email"
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/person"
         android:layout_marginStart="35dp"
@@ -80,7 +80,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etuser"
+            android:id="@+id/etemail"
             android:background="@color/white"
             android:textStyle="bold"
             android:layout_width="match_parent"

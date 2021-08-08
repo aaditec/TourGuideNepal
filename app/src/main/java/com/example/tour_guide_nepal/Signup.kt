@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 
 class Signup : AppCompatActivity() {
     private  lateinit var btnsignup: Button
-    private lateinit var etuser: TextView
+    private lateinit var etemail: TextView
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
     private lateinit var etpass: TextView
@@ -27,7 +27,7 @@ class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        etuser = findViewById(R.id.etuser)
+        etemail = findViewById(R.id.etemail)
         etname = findViewById(R.id.etname)
         etpass = findViewById(R.id.etpass)
         etconfigpass = findViewById(R.id.etconpass)
@@ -40,7 +40,7 @@ class Signup : AppCompatActivity() {
             if (validatesignup()) {
 
                 val FullName = etname.text.toString()
-                val username = etuser.text.toString()
+                val etemail = etemail.text.toString()
                 val phone = etphone.text.toString()
                 val password = etpass.text.toString()
                 val confirmPassword = etconfigpass.text.toString()
@@ -52,7 +52,7 @@ class Signup : AppCompatActivity() {
                     val user =
                         User(
                             fullname = FullName,
-                            username = username,
+                            email = etemail,
                             phone = phone,
                             password = password
                         )
@@ -98,14 +98,14 @@ class Signup : AppCompatActivity() {
     private fun validatesignup(): Boolean {
 
             var valid = true
-            etuser.error = null
+            etemail.error = null
             etname.error = null
             etpass.error = null
             etconfigpass.error = null
             etphone.error = null
 
-            if (sanitize(etuser as EditText).isEmpty()) {
-                etuser.error = "Username can not be empty"
+            if (sanitize(etemail as EditText).isEmpty()) {
+                etemail.error = "Username can not be empty"
                 valid = false
             }
             if (sanitize(etname as EditText).isEmpty()) {
