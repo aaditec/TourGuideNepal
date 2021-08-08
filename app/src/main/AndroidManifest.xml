@@ -32,7 +32,7 @@
 
         <activity android:name=".view.ui.DetailsActivity"></activity>
         <activity android:name=".view.ui.RealTimeMap"></activity>
-        <activity android:name=".Hotelbooking_Activity"></activity>
+
         <activity android:name=".nearbyplaces.tanahun_nearbyplaces" />
         <activity android:name=".nearbyplaces.solukhumbu_nearbyplaces" />
 
