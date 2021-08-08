@@ -1,4 +1,4 @@
-package com.example.finalassignment.Response
+package com.example.tour_guide_nepal.Response
 
 class LoginResponse (
         val success:Boolean?=null,
