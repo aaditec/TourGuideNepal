@@ -77,7 +77,7 @@ class kathmandu_nearbyplaces : AppCompatActivity() {
     private fun getMyLatLong()
     {
         var locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+//        var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
         current_lat = 27.700239
         current_long = 85.337639

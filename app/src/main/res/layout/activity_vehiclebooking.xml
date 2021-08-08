@@ -41,6 +41,7 @@
                 android:layout_height="200dp">
 
                 <ImageView
+                    android:id="@+id/bike"
                     android:src="@drawable/twowheel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -63,6 +64,7 @@
                 android:layout_height="200dp">
 
                 <ImageView
+                    android:id="@+id/fourwheel"
                     android:src="@drawable/fourwheel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>

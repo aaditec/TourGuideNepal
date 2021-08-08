@@ -177,6 +177,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-bom:28.3.0'
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
 
+    //scrollablenumber
+    compile 'com.michaelmuenzer.android:ScrollableNumberPicker:0.2.2'
+
  
  
 }

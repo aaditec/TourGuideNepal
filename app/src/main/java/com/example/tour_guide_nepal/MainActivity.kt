@@ -18,6 +18,7 @@ import com.example.tour_guide_nepal.fragments.AboutUsFragment
 import com.example.tour_guide_nepal.fragments.ProfileFragment
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
+import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -77,11 +78,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, HotelBookingInfo::class.java))
                 }
                 R.id.nav_contact -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "Emergency Contact Clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    startActivity(Intent(this,Vehiclebooking_activity::class.java))
                 }
                 R.id.nav_terms -> Toast.makeText(
                     applicationContext,

@@ -19,9 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
-        <activity android:name=".vehicle.vehicle_booking_form_activity"></activity>
-        <activity android:name=".vehicle.fourwheel_activity" />
-        <activity android:name=".vehicle.twowheel_activity" />
+        <activity android:name=".vehicle.Fourwheel_Activity"></activity>
+        <activity android:name=".vehicle.TwowheelActivity" />
+        <activity android:name=".vehicle.Vehicle_booking_form_activity" />
         <activity android:name=".vehicle.Vehiclebooking_activity" />
         <activity android:name=".Vehiclelist" />
         <activity android:name=".video.pokhara_video_activity" />
