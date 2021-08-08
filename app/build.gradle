@@ -166,6 +166,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'com.android.support:multidex:1.0.3'
+
+    //for image slider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
  
  
 }
