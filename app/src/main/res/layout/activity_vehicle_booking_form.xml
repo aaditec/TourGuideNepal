@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vehicle.Vehicle_booking_form_activity">
+    tools:context=".vehicle.vehicle_booking_form_activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -58,7 +58,6 @@
                                 android:layout_height="match_parent"/>
 
                             <Spinner
-                                android:id="@+id/spinner1"
                                 android:text="Please select"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -66,24 +65,23 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <TextView
-                                android:text="Full Name"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"/>
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:text="Full Name"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/hirename"
-                                android:background="#B2BEB5"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"/>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:background="#B2BEB5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"/>
 
-                        </LinearLayout>
+                            </LinearLayout>
                     </LinearLayout>
 
 
@@ -97,7 +95,6 @@
                         android:layout_height="match_parent"/>
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/hireemail"
                         android:hint="eg: something@email.com"
                         android:background="#B2BEB5"
                         android:layout_width="match_parent"
@@ -113,7 +110,6 @@
                         android:layout_height="match_parent"/>
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/hirembnumber"
                         android:hint=""
                         android:maxLength="10"
                         app:prefixText="+977"
@@ -130,7 +126,6 @@
                         android:layout_height="match_parent"/>
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/hirenoofperson"
                         android:background="#B2BEB5"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"/>
@@ -154,7 +149,6 @@
                                 android:layout_height="match_parent"/>
 
                             <Spinner
-                                android:id="@+id/spinner2"
                                 android:text="Please select"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -175,20 +169,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"/>
 
-                            <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
-                                android:id="@+id/no_of_vehicle"
-                                android:layout_width="match_parent"
+                            <Spinner
+                                android:text="Please select"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                app:snp_buttonIconLeft="@drawable/ic_left_foreground"
-                                app:snp_buttonIconRight="@drawable/ic_right_foreground"
-                                android:background="@drawable/number_picker_bg"
-                                app:snp_maxValue="10"
-                                app:snp_minValue="1"
-                                app:snp_value="1"
-                                app:snp_stepSize="1"
-                                app:snp_updateInterval="10"
-                                />
+                                android:layout_weight="1" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -208,7 +193,6 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:id="@+id/hirestartdate"
                             android:layout_marginLeft="50dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -230,7 +214,6 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:id="@+id/hireenddate"
                             android:layout_marginLeft="50dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -247,13 +230,12 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/hirecomments"
+                        android:id="@+id/comments"
                         android:background="#B2BEB5"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"/>
 
                     <Button
-                        android:id="@+id/btnrent"
                         android:layout_marginTop="30dp"
                         android:text="rent"
                         android:textStyle="bold"
