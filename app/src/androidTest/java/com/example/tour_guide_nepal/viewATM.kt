@@ -39,7 +39,7 @@ class viewATM {
         Espresso.onView(ViewMatchers.withId(R.id.Atm))
             .perform(ViewActions.closeSoftKeyboard())
             .perform(ViewActions.click())
-        Thread.sleep(3000)
+        Thread.sleep(6000)
         Espresso.onView(ViewMatchers.withId(R.id.Atm))
     }
 }
