@@ -19,8 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
- 
-        <activity android:name=".video.pokhara_video_activity"/>
+        <activity android:name=".Profile_Activity"></activity>
+        <activity android:name=".video.pokhara_video_activity" />
         <activity android:name=".forgotpassword_activity" />
         <activity android:name=".video.lumbini_video_activity" />
         <activity android:name=".video.kathmandu_video_activity" />
@@ -32,9 +32,7 @@
         <activity android:name=".video.solukhumbu_video_activity" />
         <activity android:name=".video.tanahun_video_activity" />
         <activity android:name=".HotelBookingDetailedInfoActivity" />
- 
-        <activity android:name=".Hotelform_update_activity"/>
- 
+        <activity android:name=".Hotelform_update_activity" />
         <activity android:name=".HotelBookingInfo" />
         <activity android:name=".Hotelbooking_Activity" />
         <activity android:name=".view.ui.DetailsActivity" />
