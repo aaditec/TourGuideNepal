@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vehicle.twowheel_activity">
+    tools:context=".vehicle.TwowheelActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,6 +40,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/duke390"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -77,6 +78,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/ktmrc390"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -114,6 +116,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/r6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -151,6 +154,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/crf250"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -188,6 +192,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/crossx250"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
