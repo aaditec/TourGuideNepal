@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.*
 import com.example.tour_guide_nepal.ENTITY.VehicleRentEntity
 import com.example.tour_guide_nepal.R
-import com.example.tour_guide_nepal.Repository.HotelBookRepository
 import com.example.tour_guide_nepal.Repository.VehicleRentRepository
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
 import kotlinx.coroutines.CoroutineScope
