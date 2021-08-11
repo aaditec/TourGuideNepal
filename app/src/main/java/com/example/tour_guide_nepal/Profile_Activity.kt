@@ -14,6 +14,7 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,6 +24,8 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.tour_guide_nepal.databinding.ActivityMainBinding
+import com.example.tour_guide_nepal.fragments.Select_cityFragment
+import com.example.tour_guide_nepal.fragments.Selectplaces
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.DexterBuilder
@@ -39,9 +42,8 @@ import org.jetbrains.anko.startActivityForResult
 
 class Profile_Activity : AppCompatActivity() {
 
+    private lateinit var backhome: FrameLayout
     private lateinit var imageView: ImageView
-    private lateinit var btnCamera: Button
-    private lateinit var btnGallery: Button
     private val CAMERA_REQUEST_CODE = 1
     private val GALLERY_REQUEST_CODE = 2
 
@@ -49,16 +51,11 @@ class Profile_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        backhome=findViewById(R.id.backhome)
         imageView=findViewById(R.id.imageView)
-        btnCamera=findViewById(R.id.btnCamera)
-        btnGallery=findViewById(R.id.btnGallery)
-        
-        btnCamera.setOnClickListener {
-            cameraCheckPermission()
-        }
 
-        btnGallery.setOnClickListener {
-            galleryCheckPermission()
+        backhome.setOnClickListener{
+                startActivity(Intent(this,MainActivity::class.java))
         }
 
         imageView.setOnClickListener{
@@ -78,31 +75,31 @@ class Profile_Activity : AppCompatActivity() {
 
     }
 
-    private fun galleryCheckPermission() {
-        Dexter.withContext(this).withPermission(
-                 android.Manifest.permission.READ_EXTERNAL_STORAGE
-        ).withListener(object: PermissionListener{
-            override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
-                gallery()
-            }
-
-            override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-                Toast.makeText(
-                    this@Profile_Activity,
-                    "You have denied the storage permission to select image",
-                    Toast.LENGTH_SHORT
-                ).show()
-                showRotationalDialogForPermission()
-            }
-
-            override fun onPermissionRationaleShouldBeShown(
-                p0: PermissionRequest?,
-                p1: PermissionToken?
-            ) {
-                showRotationalDialogForPermission()
-            }
-        }).onSameThread().check()
-    }
+//    private fun galleryCheckPermission() {
+//        Dexter.withContext(this).withPermission(
+//                 android.Manifest.permission.READ_EXTERNAL_STORAGE
+//        ).withListener(object: PermissionListener{
+//            override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
+//                gallery()
+//            }
+//
+//            override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
+//                Toast.makeText(
+//                    this@Profile_Activity,
+//                    "You have denied the storage permission to select image",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                showRotationalDialogForPermission()
+//            }
+//
+//            override fun onPermissionRationaleShouldBeShown(
+//                p0: PermissionRequest?,
+//                p1: PermissionToken?
+//            ) {
+//                showRotationalDialogForPermission()
+//            }
+//        }).onSameThread().check()
+//    }
 
     private fun gallery(){
         val intent = Intent(Intent.ACTION_PICK)
@@ -110,29 +107,29 @@ class Profile_Activity : AppCompatActivity() {
         startActivityForResult(intent, GALLERY_REQUEST_CODE)
     }
 
-    private fun cameraCheckPermission() {
-        Dexter.withContext(this)
-            .withPermissions(android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA)
-            .withListener(
-                object: MultiplePermissionsListener{
-                    override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                       report?.let{
-                           if (report.areAllPermissionsGranted()){
-                               camera()
-                           }
-                       }
-                    }
-
-                    override fun onPermissionRationaleShouldBeShown(
-                        p0: MutableList<PermissionRequest>?,
-                        p1: PermissionToken?
-                    ) {
-                        showRotationalDialogForPermission()
-                    }
-
-                }
-            ).onSameThread().check()
-    }
+//    private fun cameraCheckPermission() {
+//        Dexter.withContext(this)
+//            .withPermissions(android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA)
+//            .withListener(
+//                object: MultiplePermissionsListener{
+//                    override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+//                       report?.let{
+//                           if (report.areAllPermissionsGranted()){
+//                               camera()
+//                           }
+//                       }
+//                    }
+//
+//                    override fun onPermissionRationaleShouldBeShown(
+//                        p0: MutableList<PermissionRequest>?,
+//                        p1: PermissionToken?
+//                    ) {
+//                        showRotationalDialogForPermission()
+//                    }
+//
+//                }
+//            ).onSameThread().check()
+//    }
 
 
     private fun camera() {
@@ -153,7 +150,7 @@ class Profile_Activity : AppCompatActivity() {
                         imageView.load(bitmap){
                             crossfade(true)
                             crossfade(1000)
-                            transformations(CircleCropTransformation())
+                            transformations(CircleCropTransformation() )
                         }
                 }
 

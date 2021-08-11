@@ -4,20 +4,58 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import org.jetbrains.anko.find
 
 class Splash_activity : AppCompatActivity() {
 
-    private val splashScreentimeout: Long = 1500
+    val SPLASH_SCREEN = 3000
+
+    private lateinit var topAnimation: Animation
+    private lateinit var bottomAnimation: Animation
+
+    private lateinit var centerlogo: ImageView
+    private lateinit var word1: LinearLayout
+    private lateinit var btnstarted: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+//hide status bar
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        Handler().postDelayed({
+        val actionBar = supportActionBar
+        actionBar!!.hide()
 
-            startActivity(Intent(this,LoginActivity::class.java))
-            finish()
+        //creating two animations
+        topAnimation= AnimationUtils.loadAnimation(this,R.anim.top_animation)
+        bottomAnimation= AnimationUtils.loadAnimation(this, R.anim.bot_animation)
 
-        },splashScreentimeout)
+        centerlogo=findViewById(R.id.centerlogo)
+        word1=findViewById(R.id.word1)
+        btnstarted=findViewById(R.id.btnstarted)
+
+
+        word1.animation=topAnimation
+        centerlogo.animation=bottomAnimation
+        btnstarted.animation=bottomAnimation
+
+//        Handler().postDelayed({
+//                val intent= Intent(this,LoginActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//        },SPLASH_SCREEN.toLong())
+
+        btnstarted.setOnClickListener{
+            val intent= Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
