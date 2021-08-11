@@ -55,7 +55,9 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="23dp"
-                tools:srcCompat="@drawable/pokhara" />
+                tools:srcCompat="@drawable/pokhara" >
+
+            </ImageView>
 
         </LinearLayout>
 
