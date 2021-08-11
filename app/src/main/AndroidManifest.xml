@@ -19,8 +19,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
- 
-        <activity android:name=".video.pokhara_video_activity"/>
+
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".vehicle.Fourwheel_Activity"></activity>
+        <activity android:name=".vehicle.TwowheelActivity" />
+        <activity android:name=".vehicle.Vehicle_booking_form_activity" />
+        <activity android:name=".vehicle.Vehiclebooking_activity" />
+        <activity android:name=".Vehiclelist" />
+        <activity android:name=".video.pokhara_video_activity" />
         <activity android:name=".forgotpassword_activity" />
         <activity android:name=".video.lumbini_video_activity" />
         <activity android:name=".video.kathmandu_video_activity" />
@@ -32,9 +45,7 @@
         <activity android:name=".video.solukhumbu_video_activity" />
         <activity android:name=".video.tanahun_video_activity" />
         <activity android:name=".HotelBookingDetailedInfoActivity" />
- 
-        <activity android:name=".Hotelform_update_activity"/>
- 
+        <activity android:name=".Hotelform_update_activity" />
         <activity android:name=".HotelBookingInfo" />
         <activity android:name=".Hotelbooking_Activity" />
         <activity android:name=".view.ui.DetailsActivity" />
@@ -101,7 +112,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+
         <activity android:name=".Signup" />
     </application>
 

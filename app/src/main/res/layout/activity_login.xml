@@ -11,34 +11,34 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+ 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="40dp">
-
-            <ImageView
-                android:id="@+id/tourlogo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:alpha=".6"
-                android:src="@drawable/secondlogo"
-                tools:ignore="MissingConstraints" />
+    <ImageView
+        android:id="@+id/tourlogo"
+        android:layout_width="390dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:alpha=".5"
+        android:src="@drawable/secondlogo"
+        tools:ignore="MissingConstraints" />
 
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:alpha=".9"
-                android:backgroundTint="#f1f5eb"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="100dp"
-                tools:ignore="MissingConstraints">
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#f1f5eb"
+        app:cardElevation="100dp"
+        app:cardCornerRadius="50dp"
+        android:alpha=".9"
+        tools:ignore="MissingConstraints">
+ 
+         
 
                 <LinearLayout
                     android:layout_width="match_parent"
