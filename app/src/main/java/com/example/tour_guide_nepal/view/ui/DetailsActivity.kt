@@ -86,6 +86,9 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
         activitydetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
 
+
+
+
         hours = intent.getStringExtra("hours")
         address = intent.getStringExtra("address")
         totalRating = intent.getStringExtra("totalRating")
@@ -374,7 +377,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
 //        map!!.addMarker(MarkerOptions().position(AddressLatLng)).title = address
         map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(AddressLatLng, 16f))
-        generatePolyLine(CurrentlatLng!!, AddressLatLng)
+        //generatePolyLine(CurrentlatLng!!, AddressLatLng)
         builder.include(AddressLocatiomarker!!.position)
 
     }

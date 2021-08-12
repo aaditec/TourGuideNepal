@@ -13,16 +13,14 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.checkSelfPermission
 import androidx.core.app.ActivityCompat.startActivityForResult
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.databinding.ActivityMainBinding
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
@@ -41,6 +39,7 @@ import org.jetbrains.anko._Gallery
 import org.jetbrains.anko.startActivityForResult
 
 class Profile_Activity : AppCompatActivity() {
+    private lateinit var profilename: TextView
 
     private lateinit var backhome: FrameLayout
     private lateinit var imageView: ImageView
@@ -51,12 +50,18 @@ class Profile_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        profilename=findViewById(R.id.profilename)
+
         backhome=findViewById(R.id.backhome)
         imageView=findViewById(R.id.imageView)
 
         backhome.setOnClickListener{
                 startActivity(Intent(this,MainActivity::class.java))
         }
+
+        val user = User()
+
+        profilename.setText(user.fullname)
 
         imageView.setOnClickListener{
         val pictureDialog = AlertDialog.Builder(this)
