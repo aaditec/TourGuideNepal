@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.tour_guide_nepal.ENTITY.User
+import com.example.tour_guide_nepal.Repository.UserRepository
 import com.example.tour_guide_nepal.databinding.ActivityMainBinding
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
@@ -72,9 +73,6 @@ class Profile_Activity : AppCompatActivity() {
                 startActivity(Intent(this,MainActivity::class.java))
         }
 
-        val user = User()
-
-        profilename.setText(user.fullname)
 
         imageView.setOnClickListener{
         val pictureDialog = AlertDialog.Builder(this)

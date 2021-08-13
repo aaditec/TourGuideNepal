@@ -13,8 +13,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +26,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var linearLayout: LinearLayout
     private lateinit var forgotpass: TextView
 
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
         txtpass = findViewById(R.id.txtpass)
         forgotpass = findViewById(R.id.forgotpass)
 
-        auth = FirebaseAuth.getInstance()
 
         forgotpass.setOnClickListener {
 
@@ -101,14 +97,12 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-        }
-
     }
 
-    private fun sanitize(input: EditText): String {
+}
+    private fun sanitize(input : EditText) : String{
         return input.text.toString().trim(' ')
     }
-
     private fun validateLogin(): Boolean {
         var valid = true
         txtname.error = null
@@ -126,16 +120,6 @@ class LoginActivity : AppCompatActivity() {
         return valid
     }
 
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-    }
-
-    fun updateUI(currentUser: FirebaseUser?) {
-
-    }
     }
 
 
