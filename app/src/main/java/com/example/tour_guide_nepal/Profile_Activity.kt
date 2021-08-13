@@ -39,6 +39,7 @@ import org.jetbrains.anko._Gallery
 import org.jetbrains.anko.startActivityForResult
 
 class Profile_Activity : AppCompatActivity() {
+    private lateinit var profilename: TextView
 
     private lateinit var backhome: FrameLayout
     private lateinit var imageView: ImageView
@@ -59,6 +60,8 @@ class Profile_Activity : AppCompatActivity() {
         txtfullname = findViewById(R.id.txtfullname)
         txtemail = findViewById(R.id.txtemail)
 
+        profilename=findViewById(R.id.profilename)
+
         backhome=findViewById(R.id.backhome)
         imageView=findViewById(R.id.imageView)
 
@@ -68,6 +71,10 @@ class Profile_Activity : AppCompatActivity() {
         backhome.setOnClickListener{
                 startActivity(Intent(this,MainActivity::class.java))
         }
+
+        val user = User()
+
+        profilename.setText(user.fullname)
 
         imageView.setOnClickListener{
         val pictureDialog = AlertDialog.Builder(this)
