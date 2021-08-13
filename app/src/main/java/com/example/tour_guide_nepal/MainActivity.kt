@@ -80,16 +80,22 @@ class MainActivity : AppCompatActivity() {
                     "Rate App Clicked",
                     Toast.LENGTH_SHORT
                 ).show()
-                R.id.nav_logout -> Toast.makeText(
-                    applicationContext,
-                    "Logout Clicked",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.nav_logout -> {
+                    logout()
+                }
             }
 
             true
 
         }
+    }
+
+    private fun logout() {
+        val sharedPref = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.clear()
+        editor.apply()
+        startActivity(Intent(this,LoginActivity::class.java))
     }
 
     private fun populateList() {

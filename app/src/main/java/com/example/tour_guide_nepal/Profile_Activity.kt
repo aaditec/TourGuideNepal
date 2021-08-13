@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.tour_guide_nepal.ENTITY.User
+import com.example.tour_guide_nepal.Repository.UserRepository
 import com.example.tour_guide_nepal.databinding.ActivityMainBinding
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
@@ -34,10 +35,13 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
+import kotlinx.android.synthetic.main.activity_gorkha_weather.*
 import org.jetbrains.anko._Gallery
 import org.jetbrains.anko.startActivityForResult
 
 class Profile_Activity : AppCompatActivity() {
+    private lateinit var profilename: TextView
+
     private lateinit var backhome: FrameLayout
     private lateinit var imageView: ImageView
     private val CAMERA_REQUEST_CODE = 1
@@ -57,6 +61,7 @@ class Profile_Activity : AppCompatActivity() {
         txtfullname = findViewById(R.id.txtfullname)
         txtemail = findViewById(R.id.txtemail)
 
+        
 
         backhome=findViewById(R.id.backhome)
         imageView=findViewById(R.id.imageView)
@@ -67,8 +72,6 @@ class Profile_Activity : AppCompatActivity() {
         backhome.setOnClickListener{
                 startActivity(Intent(this,MainActivity::class.java))
         }
-
-        val user = User()
 
 
         imageView.setOnClickListener{

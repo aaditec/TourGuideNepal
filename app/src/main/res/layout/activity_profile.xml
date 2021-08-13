@@ -55,8 +55,8 @@
 
 
                         <TextView
+
                             android:layout_marginTop="10dp"
-                            android:id="@+id/etfullname"
                             android:text="Full Name"
                            android:textSize="30dp"
                             android:textStyle="bold"

@@ -1,37 +1,46 @@
 package com.example.tour_guide_nepal
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_forgotpassword.*
 
+
 class forgotpassword_activity : AppCompatActivity() {
-    private var firebaseAuth: FirebaseAuth? = null
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgotpassword)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+
+        mAuth = FirebaseAuth.getInstance()
+
+
         btn_submit.setOnClickListener {
-            reset()
-        }
-    }
+            val email = et_forget_email.text.toString().trim()
 
-    fun reset() {
-        var emailR = et_forget_email.text.toString()
-        if (emailR.isEmpty()) {
-            Toast.makeText(this, "please Enter Your Email", Toast.LENGTH_SHORT).show()
-        }
-        firebaseAuth?.sendPasswordResetEmail(emailR)?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(this, "reset email sent", Toast.LENGTH_SHORT).show()
-
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(applicationContext, "Enter your email!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "reset email not sent", Toast.LENGTH_SHORT).show()
+                mAuth!!.sendPasswordResetEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // successful!
+                        } else {
+                            // failed!
+                        }
+                    }
             }
         }
     }
 }
+
+
+
+
 
 
