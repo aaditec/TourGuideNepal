@@ -22,7 +22,7 @@
         <LinearLayout
             android:id="@+id/addressContainer"
             android:layout_width="match_parent"
-            android:layout_height="182dp"
+            android:layout_height="169dp"
             android:background="#c6e8f7"
             android:gravity="center"
             android:orientation="vertical">
@@ -55,7 +55,9 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="23dp"
-                tools:srcCompat="@drawable/kathmanduweather" />
+                tools:srcCompat="@drawable/kathmanduweather" >
+
+            </ImageView>
 
 
         </LinearLayout>
@@ -78,14 +80,14 @@
 
             <TextView
                 android:id="@+id/temp"
-                android:layout_width="241dp"
+                android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#6ccdf0"
                 android:fontFamily="sans-serif-thin"
                 android:text="21°C"
                 android:textColor="@color/black"
-                android:textSize="70dp" />
+                android:textSize="60dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

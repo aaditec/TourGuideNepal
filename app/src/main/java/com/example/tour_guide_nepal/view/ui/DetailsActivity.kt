@@ -16,6 +16,7 @@ import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
@@ -29,6 +30,9 @@ import com.example.tour_guide_nepal.Signup
 import com.example.tour_guide_nepal.Vehiclelist
 import com.example.tour_guide_nepal.databinding.ActivityDetailsBinding
 import com.example.tour_guide_nepal.service.repository.LatLngInterPolator
+import com.example.tour_guide_nepal.vehicle.Fourwheel_Activity
+import com.example.tour_guide_nepal.vehicle.TwowheelActivity
+import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.example.tour_guide_nepal.view.animations.MarkerAnimation
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
@@ -87,13 +91,13 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_details)
+//        setContentView(R.layout.activity_details)
 
-        activitydetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
-        vehiclebooking.setOnClickListener {
-            val intent = Intent(this, Vehiclelist::class.java)
-            startActivity(intent)
-        }
+       activitydetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
+
+
+
+
         hours = intent.getStringExtra("hours")
         address = intent.getStringExtra("address")
         totalRating = intent.getStringExtra("totalRating")
@@ -428,7 +432,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
             map!!.addMarker(
                 MarkerOptions().position(CurrentlatLng!!).title(Address!![0].getAddressLine(0))
             )
-            // map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(CurrentlatLng, 16f))
+            map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(CurrentlatLng, 16f))
             Log.d("DetailsActivity", "Current LatLng: $CurrentlatLng")
         }
 
@@ -439,7 +443,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         AddressLocatiomarker =
             map!!.addMarker(MarkerOptions().position(AddressLatLng).title("$address"))
 
-//        map!!.addMarker(MarkerOptions().position(AddressLatLng)).title = address
+      map!!.addMarker(MarkerOptions().position(AddressLatLng)).title = address
         map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(AddressLatLng, 16f))
         //generatePolyLine(CurrentlatLng!!, AddressLatLng)
         builder.include(AddressLocatiomarker!!.position)
@@ -503,6 +507,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
             currentLocationMarker = null
             vehicle = "BIKE"
             Log.d("DetailsActivity", "$vehicle")
+            startActivity(Intent(this, TwowheelActivity::class.java))
             Toast.makeText(applicationContext, "Bike Selected", Toast.LENGTH_SHORT).show()
             showMarker(currentLocation!!)
             dialog.dismiss()
@@ -514,6 +519,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
             vehicle = "CAR"
 
             Log.d("DetailsActivity", "$vehicle")
+            startActivity(Intent(this, Fourwheel_Activity::class.java))
             Toast.makeText(applicationContext, "Car Selected", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
 

@@ -142,7 +142,8 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
@@ -163,8 +164,8 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_marginLeft="120dp"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
