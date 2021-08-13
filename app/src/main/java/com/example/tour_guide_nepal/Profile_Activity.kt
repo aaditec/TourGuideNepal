@@ -13,16 +13,14 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.checkSelfPermission
 import androidx.core.app.ActivityCompat.startActivityForResult
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.databinding.ActivityMainBinding
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
@@ -46,13 +44,26 @@ class Profile_Activity : AppCompatActivity() {
     private lateinit var imageView: ImageView
     private val CAMERA_REQUEST_CODE = 1
     private val GALLERY_REQUEST_CODE = 2
+    private lateinit var etfullname: TextView
+    private lateinit var etemail: TextView
+    private lateinit var etphone: TextView
+    private lateinit var txtfullname: TextView
+    private lateinit var txtemail: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        etfullname = findViewById(R.id.etfullname)
+        etemail = findViewById(R.id.etemail)
+        etphone = findViewById(R.id.etphone)
+        txtfullname = findViewById(R.id.txtfullname)
+        txtemail = findViewById(R.id.txtemail)
 
         backhome=findViewById(R.id.backhome)
         imageView=findViewById(R.id.imageView)
+
+
+
 
         backhome.setOnClickListener{
                 startActivity(Intent(this,MainActivity::class.java))

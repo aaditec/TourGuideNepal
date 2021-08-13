@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.Repository.UserRepository
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,8 +18,9 @@ import kotlinx.coroutines.withContext
 
 class Signup : AppCompatActivity() {
     private  lateinit var btnsignup: Button
- 
-  
+    private lateinit var auth: FirebaseAuth
+
+
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
     private lateinit var etpass: TextView
@@ -29,7 +31,7 @@ class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
- 
+        auth = FirebaseAuth.getInstance()
         etname = findViewById(R.id.etname)
         etemail = findViewById(R.id.etemail)
         etpass = findViewById(R.id.etpass)
@@ -40,8 +42,9 @@ class Signup : AppCompatActivity() {
 
 
         btnsignup.setOnClickListener {
+
             if (validatesignup()) {
-             
+
                 val FullName = etname.text.toString()
                val email = etemail.text.toString()
                 val phone = etphone.text.toString()
@@ -54,7 +57,7 @@ class Signup : AppCompatActivity() {
                 } else {
                     val user =
                         User(
-                        
+
                             fullname = FullName,
                             email = email,
                             phone = phone,
@@ -82,7 +85,10 @@ class Signup : AppCompatActivity() {
                         }
                     }
 
+
+
                 }
+
             }
 
 
@@ -93,11 +99,25 @@ class Signup : AppCompatActivity() {
             }
 
         }
+        auth.createUserWithEmailAndPassword(etemail.text.toString(), etpass.text.toString() )
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(this,LoginActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(baseContext, "Sign Up failed. Try again after some time.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
     }
+
+
+
 
     private fun sanitize(input : EditText) : String{
         return input.text.toString().trim(' ')
     }
+
 
     private fun validatesignup(): Boolean {
 
@@ -108,13 +128,13 @@ class Signup : AppCompatActivity() {
             etconfigpass.error = null
             etphone.error = null
 
- 
+
         if (sanitize(etemail as EditText).isEmpty()) {
             etemail.error = "Email can not be empty"
             valid = false
         }
- 
- 
+
+
             if (sanitize(etname as EditText).isEmpty()) {
                 etname.error = "Fullname can not be empty"
                 valid = false
