@@ -3,6 +3,7 @@ package com.example.tour_guide_nepal.fragments
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.place_details.*
@@ -35,6 +36,7 @@ class Selectplaces : AppCompatActivity() {
 
         kathmandu.setOnClickListener {
             startActivity(Intent(this, kathmandu_detail_activity::class.java))
+
         }
         dolakha.setOnClickListener {
             startActivity(Intent(this, dolakha_detail_activity::class.java))
@@ -63,5 +65,6 @@ class Selectplaces : AppCompatActivity() {
         tanahun.setOnClickListener {
             startActivity(Intent(this, tanahun_detail_activity::class.java))
         }
+
     }
 }

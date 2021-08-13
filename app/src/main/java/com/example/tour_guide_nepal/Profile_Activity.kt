@@ -34,13 +34,10 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
-import kotlinx.android.synthetic.main.activity_gorkha_weather.*
 import org.jetbrains.anko._Gallery
 import org.jetbrains.anko.startActivityForResult
 
 class Profile_Activity : AppCompatActivity() {
-    private lateinit var profilename: TextView
-
     private lateinit var backhome: FrameLayout
     private lateinit var imageView: ImageView
     private val CAMERA_REQUEST_CODE = 1
@@ -60,7 +57,6 @@ class Profile_Activity : AppCompatActivity() {
         txtfullname = findViewById(R.id.txtfullname)
         txtemail = findViewById(R.id.txtemail)
 
-        profilename=findViewById(R.id.profilename)
 
         backhome=findViewById(R.id.backhome)
         imageView=findViewById(R.id.imageView)
@@ -74,7 +70,6 @@ class Profile_Activity : AppCompatActivity() {
 
         val user = User()
 
-        profilename.setText(user.fullname)
 
         imageView.setOnClickListener{
         val pictureDialog = AlertDialog.Builder(this)
