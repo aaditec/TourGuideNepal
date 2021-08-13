@@ -55,7 +55,7 @@
 
 
                         <TextView
-                            android:id="@+id/profilename"
+
                             android:layout_marginTop="10dp"
                             android:text="Full Name"
                            android:textSize="30dp"
