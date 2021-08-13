@@ -2,9 +2,7 @@ package com.example.tour_guide_nepal
 
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
-import androidx.test.espresso.contrib.PickerActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.LargeTest
@@ -38,11 +36,11 @@ class Vechiclerenttest {
         Espresso.closeSoftKeyboard()
 
         onView(ViewMatchers.withId(R.id.hirestartdate))
-            .perform(typeText("2021/8/13"))
+            .perform(typeText("13/8/2021"))
         Espresso.closeSoftKeyboard()
 
         onView(ViewMatchers.withId(R.id.hireenddate))
-            .perform(typeText("2021/8/20"))
+            .perform(typeText("20/8/2021"))
         Espresso.closeSoftKeyboard()
 
         onView(ViewMatchers.withId(R.id.hirecomments)).perform(scrollTo(), click())
