@@ -60,7 +60,7 @@ class Profile_Activity : AppCompatActivity() {
         txtfullname = findViewById(R.id.txtfullname)
         txtemail = findViewById(R.id.txtemail)
 
-        profilename=findViewById(R.id.profilename)
+        
 
         backhome=findViewById(R.id.backhome)
         imageView=findViewById(R.id.imageView)
