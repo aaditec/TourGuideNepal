@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/solukhumbu"
-    android:padding="40dp"
+    android:padding="10dp"
     tools:context=".LoginActivity">
 
     <ScrollView
@@ -19,15 +19,17 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tourlogo"
-                android:layout_width="match_parent"
+                android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:alpha=".6"
-                android:src="@drawable/secondlogo"/>
+                android:scaleType="fitXY"
+                android:src="@drawable/secondlogo" />
 
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
+                android:layout_width="360dp"
+                android:layout_gravity="center"
                 android:layout_height="match_parent"
                 android:layout_marginTop="40dp"
                 android:alpha=".8"
@@ -80,7 +82,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
