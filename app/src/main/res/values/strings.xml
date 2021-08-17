@@ -1,25 +1,25 @@
 <resources>
     <string name="app_name">Tour_Guide_Nepal</string>
-
     <string name="title_activity_chitwan_map">Map</string>
     <string name="title_activity_lumbini_map">Map</string>
     <string name="title_activity_dolakha_map">Map</string>
     <string name="title_activity_mustang_map">Map</string>
+    <string name="shared_preferances_name">shared_preference</string>
     <string name="title_activity_pokhara_map">Map</string>
     <string name="title_activity_solukhumbu_map">Map</string>
     <string name="title_activity_gorkha_map">Map</string>
     <string name="title_activity_kathmandu_map">Map</string>
     <string name="title_activity_tanahun_map">Map</string>
     <string name="title_activity_janakpur1_map">Map</string>
-
     <string name="open">Open</string>
-    <string name="close">Close</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="close">Close</string>  <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+ 
+    <string name="no_data_available">no_data_available</string>
 
+ 
     <string-array name="roomtype">
         <item>Standard Room(1 to 3 people)</item>
         <item>Family Room(1 to 4 people)</item>
     </string-array>
-
 </resources>

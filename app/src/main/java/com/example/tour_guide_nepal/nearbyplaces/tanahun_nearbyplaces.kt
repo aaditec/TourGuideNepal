@@ -80,8 +80,8 @@ class tanahun_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.9447
-        current_long = 84.2279
+        current_lat = 28.030001
+        current_long = 84.440002
 
         current_location = "$current_lat,$current_long"
     }

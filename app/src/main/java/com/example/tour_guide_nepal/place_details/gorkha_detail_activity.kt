@@ -10,6 +10,7 @@ import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.gorkha_map_activity
 import com.example.tour_guide_nepal.nearbyplaces.gorkha_nearbyplaces
+import com.example.tour_guide_nepal.video.gorkha_video_activity
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
 import com.example.tour_guide_nepal.weather.dolakha_weatherActivity
 import com.example.tour_guide_nepal.weather.gorkha_weatherActivity
@@ -19,6 +20,7 @@ class gorkha_detail_activity : AppCompatActivity() {
     private lateinit var gorkhamap : ConstraintLayout
     private lateinit var gorkhaweather : ConstraintLayout
     private lateinit var gorkhanear : ConstraintLayout
+    private lateinit var gorkhavideo : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,7 @@ class gorkha_detail_activity : AppCompatActivity() {
 
         gorkhamap = findViewById(R.id.gorkhamap)
         gorkhaweather = findViewById(R.id.gorkhaweather)
+        gorkhavideo = findViewById(R.id.gorkhavideo)
  
 
         val imagelist = ArrayList<SlideModel>()
@@ -51,6 +54,11 @@ class gorkha_detail_activity : AppCompatActivity() {
         }
         gorkhanear.setOnClickListener {
             val intent = Intent(this, gorkha_nearbyplaces::class.java)
+            startActivity(intent)
+        }
+
+        gorkhavideo.setOnClickListener {
+            val intent = Intent(this, gorkha_video_activity::class.java)
             startActivity(intent)
         }
     }

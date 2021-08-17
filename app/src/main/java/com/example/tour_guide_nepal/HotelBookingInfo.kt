@@ -3,6 +3,8 @@ package com.example.tour_guide_nepal
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
@@ -16,11 +18,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickListener {
+class HotelBookingInfo : AppCompatActivity(){
     private lateinit var recyclerview: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
-    private lateinit var lstHotelBookView:MutableList<HotelBookDetails>
-    private lateinit var myAdapter : HotelBookViewAdapter
+    private lateinit var emptyView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,7 @@ class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickLi
 
         recyclerview = findViewById(R.id.recyclerview)
         swipeRefresh = findViewById(R.id.swiperefresh)
+        emptyView = findViewById(R.id.empty_view)
 
         refreshapp()
 
@@ -39,20 +41,18 @@ class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickLi
             try {
                 val hotelBookDetails = HotelBookDetails()
                 val hotelBookRepository = HotelBookRepository()
-                val response = hotelBookRepository.getallBookHotel(hotelBookDetails._id!!)
+                val response = hotelBookRepository.getallBookHotel()
                 if (response.data != null) {
 
                     val lstBookDetails = response.data
                     withContext(Dispatchers.Main) {
 
-                        myAdapter = HotelBookViewAdapter(this@HotelBookingInfo,lstHotelBookView)
+ 
+                        val adapter = HotelBookViewAdapter(this@HotelBookingInfo,lstBookDetails)
+                        recyclerview.layoutManager=LinearLayoutManager(this@HotelBookingInfo)
+                        recyclerview.adapter=adapter
 
-                        recyclerview.adapter =
-                            HotelBookViewAdapter(this@HotelBookingInfo, lstBookDetails!!)
-
-                        recyclerview.layoutManager =
-                            LinearLayoutManager(this@HotelBookingInfo)
-                        recyclerview.adapter = myAdapter
+ 
                     }
                 }
             } catch (ex: Exception) {
@@ -74,12 +74,5 @@ class HotelBookingInfo : AppCompatActivity(), HotelBookViewAdapter.onItemClickLi
             Toast.makeText(this, "refreshed", Toast.LENGTH_SHORT).show()
         }
 
-    }
-
-    override fun onItemClick(position: Int) {
-        //Toast.makeText(this, "onclick $position", Toast.LENGTH_LONG).show()
-        val intent = Intent(this,HotelBookingDetailedInfoActivity::class.java)
-        intent.putExtra("hotelbookinfo",lstHotelBookView[position])
-        startActivity(intent)
     }
 }

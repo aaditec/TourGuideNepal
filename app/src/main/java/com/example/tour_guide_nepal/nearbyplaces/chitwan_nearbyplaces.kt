@@ -83,8 +83,8 @@ class chitwan_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.5833
-        current_long = 84.5167
+        current_lat = 27.673136
+        current_long = 85.422302
 
         current_location = "$current_lat,$current_long"
     }

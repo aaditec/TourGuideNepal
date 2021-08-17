@@ -15,7 +15,7 @@ import java.util.*
 
 @Suppress("DEPRECATION")
 class dolakha_weatherActivity : AppCompatActivity() {
-    val CITY: String = "Dolakha,np"
+    val CITY: String = "Charikot,np"
     val API: String = "e4c1f4bd657b624c4af61ab416c87a07" // Use API key
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

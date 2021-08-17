@@ -10,6 +10,7 @@ import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.maps.chitwan_map_activity
 import com.example.tour_guide_nepal.maps.tanahun_map_activity
 import com.example.tour_guide_nepal.nearbyplaces.tanahun_nearbyplaces
+import com.example.tour_guide_nepal.video.tanahun_video_activity
 import com.example.tour_guide_nepal.weather.Tanahun_weatherActivity
 import com.example.tour_guide_nepal.weather.chitwan_weatherActivity
 import com.example.tour_guide_nepal.weather.dolakha_weatherActivity
@@ -18,6 +19,7 @@ class tanahun_detail_activity : AppCompatActivity() {
     private lateinit var tanahunmap : ConstraintLayout
     private lateinit var tanahunweather : ConstraintLayout
     private lateinit var tanahunnear : ConstraintLayout
+    private lateinit var tanahunvideo : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,7 @@ class tanahun_detail_activity : AppCompatActivity() {
         tanahunmap = findViewById(R.id.tanahunmap)
         tanahunweather = findViewById(R.id.tanahunweather)
         tanahunnear = findViewById(R.id.tanahunnear)
+        tanahunvideo = findViewById(R.id.tanahunvideo)
 
         val imagelist = ArrayList<SlideModel>()
 
@@ -47,6 +50,10 @@ class tanahun_detail_activity : AppCompatActivity() {
         }
         tanahunnear.setOnClickListener {
             val intent = Intent(this, tanahun_nearbyplaces::class.java)
+            startActivity(intent)
+        }
+        tanahunvideo.setOnClickListener {
+            val intent = Intent(this, tanahun_video_activity::class.java)
             startActivity(intent)
         }
     }

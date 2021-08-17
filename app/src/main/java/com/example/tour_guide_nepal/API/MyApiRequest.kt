@@ -1,4 +1,4 @@
-package com.example.finalassignment.API
+package com.example.tour_guide_nepal.API
 
 import org.json.JSONException
 import org.json.JSONObject
