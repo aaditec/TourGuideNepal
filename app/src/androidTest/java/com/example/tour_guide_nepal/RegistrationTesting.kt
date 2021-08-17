@@ -23,7 +23,9 @@ class RegistrationTesting {
     fun TestRegisterUI(){
 
         Espresso.onView(withId(R.id.etemail)).perform(ViewActions.closeSoftKeyboard())
+ 
             .perform(ViewActions.typeText("test@gmail.com"))
+ 
         Espresso.onView(withId(R.id.etname)).perform(ViewActions.closeSoftKeyboard())
             .perform(ViewActions.typeText("test"))
 
