@@ -2,6 +2,7 @@ package com.example.tour_guide_nepal
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -27,6 +28,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var txtpass: TextView
     private lateinit var linearLayout: LinearLayout
     private lateinit var forgotpass: TextView
+    private lateinit var checkbox: CheckBox
+    lateinit var sharedPreferences: SharedPreferences
+    var isRemembered = false
 
     private lateinit var auth: FirebaseAuth
 
@@ -42,8 +46,20 @@ class LoginActivity : AppCompatActivity() {
         txtname = findViewById(R.id.txtname)
         txtpass = findViewById(R.id.txtpass)
         forgotpass = findViewById(R.id.forgotpass)
+        checkbox = findViewById(R.id.saveuser)
 
+ 
         auth = FirebaseAuth.getInstance()
+ 
+        sharedPreferences = getSharedPreferences("MyPref", MODE_PRIVATE)
+        isRemembered = sharedPreferences.getBoolean("CHECKBOX", false)
+
+        if (isRemembered) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+ 
 
         forgotpass.setOnClickListener {
 
@@ -73,12 +89,18 @@ class LoginActivity : AppCompatActivity() {
                     val response = repository.loginUser(email, password)
                     if (response.success == true) {
                         ServiceBuilder.token = "Bearer " + response.token
+
+                        savepref()
+
                         startActivity(
                             Intent(
                                 this@LoginActivity,
                                 MainActivity::class.java
                             )
                         )
+                        withContext(Dispatchers.Main){
+                            Toast.makeText(this@LoginActivity, "Login Successfully", Toast.LENGTH_SHORT).show()
+                        }
                         finish()
                     } else {
                         withContext(Dispatchers.Main) {
@@ -108,7 +130,23 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+ 
+    private fun savepref() {
+        val checked: Boolean = checkbox.isChecked
+        val edemail = txtname.text.toString()
+        val edpassword = txtpass.text.toString()
 
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("username", edemail)
+        editor.putString("password", edpassword)
+        editor.putBoolean("CHECKBOX", checked)
+        editor.apply()
+
+
+    }
+
+ 
     private fun sanitize(input: EditText): String {
         return input.text.toString().trim(' ')
     }
@@ -130,6 +168,7 @@ class LoginActivity : AppCompatActivity() {
         return valid
     }
 
+ 
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -141,5 +180,8 @@ class LoginActivity : AppCompatActivity() {
 
     }
     }
+ 
+}
+ 
 
 

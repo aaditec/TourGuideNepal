@@ -192,6 +192,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 
-
+ 
+    //for scrollable number picker
+    implementation 'com.michaelmuenzer.android:ScrollableNumberPicker:0.2.2'
+ 
+ 
  
 }

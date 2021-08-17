@@ -2,6 +2,7 @@ package com.example.tour_guide_nepal.view.ui
 
 import android.Manifest.permission
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -15,6 +16,7 @@ import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
@@ -24,8 +26,13 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.beust.klaxon.*
 import com.example.tour_guide_nepal.R
+import com.example.tour_guide_nepal.Signup
+import com.example.tour_guide_nepal.Vehiclelist
 import com.example.tour_guide_nepal.databinding.ActivityDetailsBinding
 import com.example.tour_guide_nepal.service.repository.LatLngInterPolator
+import com.example.tour_guide_nepal.vehicle.Fourwheel_Activity
+import com.example.tour_guide_nepal.vehicle.TwowheelActivity
+import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.example.tour_guide_nepal.view.animations.MarkerAnimation
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
@@ -38,6 +45,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.bottom_sheet.view.*
 import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.uiThread
@@ -47,7 +55,8 @@ import java.util.*
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
+    GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private var name: String? = null
     private var hours: String? = null
@@ -65,26 +74,29 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
     internal var AddressLocatiomarker: Marker? = null
     internal var googleApiClient: GoogleApiClient? = null
     internal var MY_PERMISSIONS_REQUEST_ACCESS_LOCATION = 1
-    var locationRequest: LocationRequest ?= null
-    var fusedLocationProviderClient: FusedLocationProviderClient ?= null
+    var locationRequest: LocationRequest? = null
+    var fusedLocationProviderClient: FusedLocationProviderClient? = null
     private var CurrentlatLng: LatLng? = null
     var geocoder: Geocoder? = null
     private var MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
-    var bitmapdraw: BitmapDrawable ?= null
-    var currentLocationMarker: Marker ?= null
-    var latLngCar:LatLng ?= null
+    var bitmapdraw: BitmapDrawable? = null
+    var currentLocationMarker: Marker? = null
+    var latLngCar: LatLng? = null
     var builder = LatLngBounds.Builder()
-    var smallMarker:Bitmap ?= null
+    var smallMarker: Bitmap? = null
     var vehicle = ""
-    var currentLocation:Location ?= null
-    var latLng:LatLng ?= null
+    var currentLocation: Location? = null
+    var latLng: LatLng? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_details)
+//        setContentView(R.layout.activity_details)
 
-        activitydetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
+       activitydetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
+
+
+
 
 
 
@@ -136,8 +148,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         startLocationUpdate()
     }
 
-    private fun startLocationUpdate()
-    {
+    private fun startLocationUpdate() {
         locationRequest = LocationRequest.create()
         locationRequest!!.run {
 
@@ -161,15 +172,23 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
         if (VERSION.SDK_INT >= VERSION_CODES.M) {
             try {
-                if (ContextCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-                {
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        permission.ACCESS_FINE_LOCATION
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
                     buildGoogleApiClient()
                     map!!.isMyLocationEnabled = true
                     map!!.uiSettings.isMapToolbarEnabled = false
                     map!!.isTrafficEnabled = true
-                    fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+                    fusedLocationProviderClient =
+                        LocationServices.getFusedLocationProviderClient(this)
                 } else {
-                    ActivityCompat.requestPermissions(this, arrayOf<String?>(permission.ACCESS_FINE_LOCATION), MY_PERMISSIONS_REQUEST_ACCESS_LOCATION)
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf<String?>(permission.ACCESS_FINE_LOCATION),
+                        MY_PERMISSIONS_REQUEST_ACCESS_LOCATION
+                    )
                 }
             } catch (e: java.lang.Exception) {
                 Log.d("DetailsActivity", "onMapReadyException: ")
@@ -186,9 +205,9 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
     @Synchronized
     protected open fun buildGoogleApiClient() {
         googleApiClient = Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API).build()
+            .addConnectionCallbacks(this)
+            .addOnConnectionFailedListener(this)
+            .addApi(LocationServices.API).build()
         googleApiClient!!.connect()
     }
 
@@ -208,35 +227,35 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         var bearing = location!!.bearingTo(p0)
 
         //CurrentCarLocationarker = map!!.addMarker(MarkerOptions().position(latLngCar!!).title("${latLngCar!!}").flat(true).anchor(0.5f,0.5f).rotation(bearing))
-        currentLocationMarker= map!!.addMarker(MarkerOptions().position(latLngCar!!).title("${latLngCar!!}").flat(true).anchor(0.5f,0.5f).rotation(bearing))
+        currentLocationMarker = map!!.addMarker(
+            MarkerOptions().position(latLngCar!!).title("${latLngCar!!}").flat(true)
+                .anchor(0.5f, 0.5f).rotation(bearing)
+        )
 
         //map!!.animateCamera(CameraUpdateFactory.zoomBy(16f))
-        map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLngCar,16f))
+        map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLngCar, 16f))
 
     }
 
     override fun onResume() {
         super.onResume()
 
-        if (isGooglePlayServicesAvailable())
-        {
+        if (isGooglePlayServicesAvailable()) {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
             startCurrentLocationUpdate()
         }
     }
 
 
-    private val mLocationCallback = object:LocationCallback()
-    {
+    private val mLocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
             super.onLocationResult(locationResult)
 
-            currentLocation=  locationResult.lastLocation
+            currentLocation = locationResult.lastLocation
 
             if (locationResult.lastLocation == null)
                 return
-            if ( map != null)
-            {
+            if (map != null) {
                 animateCamera(currentLocation!!)
 //                firstTimeFlag = false
             }
@@ -244,81 +263,111 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         }
     }
 
-    private fun startCurrentLocationUpdate()
-    {
+    private fun startCurrentLocationUpdate() {
         val locationRequest = LocationRequest.create()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 2000
 
-        if (VERSION.SDK_INT >= VERSION_CODES.M)
-        {
-            if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) !== PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) !== PackageManager.PERMISSION_GRANTED)
-            {
-                ActivityCompat.requestPermissions(this, arrayOf(permission.ACCESS_FINE_LOCATION), MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION)
+        if (VERSION.SDK_INT >= VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    permission.ACCESS_FINE_LOCATION
+                ) !== PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+                ) !== PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(permission.ACCESS_FINE_LOCATION),
+                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
+                )
                 return
             }
         }
-        fusedLocationProviderClient!!.requestLocationUpdates(locationRequest, mLocationCallback, Looper.myLooper())
+        fusedLocationProviderClient!!.requestLocationUpdates(
+            locationRequest,
+            mLocationCallback,
+            Looper.myLooper()
+        )
     }
 
-    private fun isGooglePlayServicesAvailable():Boolean {
+    private fun isGooglePlayServicesAvailable(): Boolean {
         val googleApiAvailability = GoogleApiAvailability.getInstance()
         val status = googleApiAvailability.isGooglePlayServicesAvailable(this)
         if (ConnectionResult.SUCCESS === status)
             return true
-        else
-        {
+        else {
             if (googleApiAvailability.isUserResolvableError(status))
-                Toast.makeText(applicationContext, "Please Install google play services to use this application", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Please Install google play services to use this application",
+                    Toast.LENGTH_LONG
+                ).show()
         }
         return false
     }
 
-    private fun animateCamera(@NonNull location:Location) {
+    private fun animateCamera(@NonNull location: Location) {
         val latLng = LatLng(location.latitude, location.longitude)
-        map!!.animateCamera(CameraUpdateFactory.newCameraPosition(getCameraPositionWithBearing(latLng)))
+        map!!.animateCamera(
+            CameraUpdateFactory.newCameraPosition(
+                getCameraPositionWithBearing(
+                    latLng
+                )
+            )
+        )
     }
 
     @NonNull
-    private fun getCameraPositionWithBearing(latLng:LatLng):CameraPosition {
+    private fun getCameraPositionWithBearing(latLng: LatLng): CameraPosition {
         return CameraPosition.Builder().target(latLng).zoom(16f).build()
     }
 
-    private fun showMarker(@NonNull currentLocation:Location)
-    {
+    private fun showMarker(@NonNull currentLocation: Location) {
         smallMarker = getResizeCarMarker()
-        Log.d("DetailsActivity","smallMarker= $smallMarker")
+        Log.d("DetailsActivity", "smallMarker= $smallMarker")
 
         latLng = LatLng(currentLocation.latitude, currentLocation.longitude)
-        Log.d("DetailsActivity","Vehicle LatLng: $latLng")
+        Log.d("DetailsActivity", "Vehicle LatLng: $latLng")
 
-        Log.d("DetailsActivity","Remove Icon3: $currentLocationMarker")
-        if (currentLocationMarker == null)
-        {
-            currentLocationMarker = map!!.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(smallMarker)).position(latLng!!))
+        Log.d("DetailsActivity", "Remove Icon3: $currentLocationMarker")
+        if (currentLocationMarker == null) {
+            currentLocationMarker = map!!.addMarker(
+                MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
+                    .position(latLng!!)
+            )
             builder.include(currentLocationMarker!!.position)
-        }
-        else
-        {
+        } else {
             var markerAnimation = MarkerAnimation()
-            markerAnimation.animateMarker(currentLocationMarker!!,latLng!!, LatLngInterPolator.Spherical())
+            markerAnimation.animateMarker(
+                currentLocationMarker!!,
+                latLng!!,
+                LatLngInterPolator.Spherical()
+            )
         }
     }
 
-    private fun getResizeCarMarker():Bitmap {
-        val width:Int = resources.getDimension(R.dimen._30sdp).toInt()
-        val height:Int = resources.getDimension(R.dimen._40sdp).toInt()
+    private fun getResizeCarMarker(): Bitmap {
+        val width: Int = resources.getDimension(R.dimen._30sdp).toInt()
+        val height: Int = resources.getDimension(R.dimen._40sdp).toInt()
 
-        Log.d("DetailsActivity","$vehicle has been selected")
+        Log.d("DetailsActivity", "$vehicle has been selected")
 
-        bitmapdraw = when(vehicle) {
-            "CAR" -> { resources.getDrawable(R.drawable.bluecar) as BitmapDrawable }
-            "BIKE" -> { resources.getDrawable(R.drawable.bike_icon_png) as BitmapDrawable }
+        bitmapdraw = when (vehicle) {
+            "CAR" -> {
+                resources.getDrawable(R.drawable.bluecar) as BitmapDrawable
+            }
+            "BIKE" -> {
+                resources.getDrawable(R.drawable.bike_icon_png) as BitmapDrawable
+            }
 
-            else -> { resources.getDrawable(R.drawable.bluecar) as BitmapDrawable }
+            else -> {
+                resources.getDrawable(R.drawable.bluecar) as BitmapDrawable
+            }
         }
         val b = bitmapdraw!!.bitmap
-        Log.d("DetailsActivity","bitmap: $b")
+        Log.d("DetailsActivity", "bitmap: $b")
         return Bitmap.createScaledBitmap(b, width, height, false)
     }
 
@@ -336,36 +385,57 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
     override fun onConnected(p0: Bundle?) {
         Log.d("DetailsActivity", "onConnected ${p0.toString()}")
-        if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             return
         }
         ///////////// current Location Marker And address
         location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
 
         if (location != null) {
-            Log.e("Latitude : ", "" + location!!.latitude.toString() + "\nLongitude : " + location!!.longitude)
+            Log.e(
+                "Latitude : ",
+                "" + location!!.latitude.toString() + "\nLongitude : " + location!!.longitude
+            )
             currentLattitude = location!!.latitude
             currentLongitude = location!!.longitude
-            Log.d("DetailsActivity", "onConnected: " + location!!.latitude.toString() + "\nLongitude : " + location!!.longitude)
+            Log.d(
+                "DetailsActivity",
+                "onConnected: " + location!!.latitude.toString() + "\nLongitude : " + location!!.longitude
+            )
             //val CurrentlatLng = LatLng(currentLattitude!!, currentLongitude!!)
-            CurrentlatLng = currentLattitude?.let { currentLongitude?.let { it1 -> LatLng(it, it1) } }!!
+            CurrentlatLng =
+                currentLattitude?.let { currentLongitude?.let { it1 -> LatLng(it, it1) } }!!
 
             ////////////// getting current location address
             var Address: ArrayList<Address>? = null
             geocoder = Geocoder(this, Locale.getDefault())
             try {
-                Address = geocoder!!.getFromLocation(currentLattitude!!, currentLongitude!!, 1) as ArrayList<Address>
-            }
-            catch (e: IOException) {
+                Address = geocoder!!.getFromLocation(
+                    currentLattitude!!,
+                    currentLongitude!!,
+                    1
+                ) as ArrayList<Address>
+            } catch (e: IOException) {
                 Log.d("DetailsActivity", "" + e)
             }
-            Log.d("DetailsACtivity", "Current Address:  Address: $Address!!.get(0).getAddressLine(2)")
+            Log.d(
+                "DetailsACtivity",
+                "Current Address:  Address: $Address!!.get(0).getAddressLine(2)"
+            )
 
             //////////////////////////// Current Location Marker
             //CurrentCarLocationarker = map!!.addMarker(MarkerOptions().position(latLngCar!!).title("${latLngCar!!}"))
-            map!!.addMarker(MarkerOptions().position(CurrentlatLng!!).title(Address!![0].getAddressLine(0)))
-            // map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(CurrentlatLng, 16f))
+            map!!.addMarker(
+                MarkerOptions().position(CurrentlatLng!!).title(Address!![0].getAddressLine(0))
+            )
+            map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(CurrentlatLng, 16f))
             Log.d("DetailsActivity", "Current LatLng: $CurrentlatLng")
         }
 
@@ -373,11 +443,12 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         var AddressLatLng: LatLng = lat?.let { long?.let { it1 -> LatLng(it, it1) } }!!
         Log.d("DetailsActivity", "Address Bundle: $address")
 
-        AddressLocatiomarker = map!!.addMarker(MarkerOptions().position(AddressLatLng).title("$address"))
+        AddressLocatiomarker =
+            map!!.addMarker(MarkerOptions().position(AddressLatLng).title("$address"))
 
-//        map!!.addMarker(MarkerOptions().position(AddressLatLng)).title = address
+      map!!.addMarker(MarkerOptions().position(AddressLatLng)).title = address
         map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(AddressLatLng, 16f))
-        generatePolyLine(CurrentlatLng!!, AddressLatLng)
+        //generatePolyLine(CurrentlatLng!!, AddressLatLng)
         builder.include(AddressLocatiomarker!!.position)
 
     }
@@ -420,7 +491,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
                 // build bounds
                 // val bounds = LatLongB.build()
                 map!!.addPolyline(options)
-                map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(currentlatLng,16f))
+                map!!.animateCamera(CameraUpdateFactory.newLatLngZoom(currentlatLng, 16f))
                 //padding
                 // show map with route centered
             }
@@ -428,8 +499,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
     }
 
 
-    private fun bottomSheetShow()
-    {
+    private fun bottomSheetShow() {
 
         val view = layoutInflater.inflate(R.layout.bottom_sheet, null)
         val dialog = BottomSheetDialog(this)
@@ -437,21 +507,23 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
         view.SelectBike.setOnClickListener {
             currentLocationMarker!!.remove()
-            currentLocationMarker=null
+            currentLocationMarker = null
             vehicle = "BIKE"
-            Log.d("DetailsActivity","$vehicle")
-            Toast.makeText(applicationContext,"Bike Selected",Toast.LENGTH_SHORT).show()
+            Log.d("DetailsActivity", "$vehicle")
+            startActivity(Intent(this, TwowheelActivity::class.java))
+            Toast.makeText(applicationContext, "Bike Selected", Toast.LENGTH_SHORT).show()
             showMarker(currentLocation!!)
             dialog.dismiss()
         }
 
         view.SelectCar.setOnClickListener {
             currentLocationMarker!!.remove()
-            currentLocationMarker=null
+            currentLocationMarker = null
             vehicle = "CAR"
 
-            Log.d("DetailsActivity","$vehicle")
-            Toast.makeText(applicationContext,"Car Selected",Toast.LENGTH_SHORT).show()
+            Log.d("DetailsActivity", "$vehicle")
+            startActivity(Intent(this, Fourwheel_Activity::class.java))
+            Toast.makeText(applicationContext, "Car Selected", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
 
             showMarker(currentLocation!!)
@@ -460,8 +532,8 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         dialog.setContentView(view)
         var height = 250
 
-        Log.d("DetailsActivity","Height"+view.height)
-        var latLngBounds: LatLngBounds=  builder.build()
+        Log.d("DetailsActivity", "Height" + view.height)
+        var latLngBounds: LatLngBounds = builder.build()
 
 //        var width = resources.displayMetrics.widthPixels - dpToPx(100, applicationContext)
 //        //var paddingTop = getHeight()
@@ -488,7 +560,7 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 //    }
 
 
-    private fun getDirectionUrl(from : LatLng, to : LatLng): String {
+    private fun getDirectionUrl(from: LatLng, to: LatLng): String {
         val origin = "origin=" + from.latitude + "," + from.longitude
         val dest = "destination=" + to.latitude + "," + to.longitude
         val sensor = "sensor=false"
@@ -496,13 +568,12 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
         val params = "$origin&$dest&$sensor"
 
         var url = "https://maps.googleapis.com/maps/api/directions/json?$params+&key=$api_key"
-        Log.d("DetailsActivity","Url: $url")
+        Log.d("DetailsActivity", "Url: $url")
 
         return url
     }
 
-    private fun decodePoly(encoded: String): List<LatLng>
-    {
+    private fun decodePoly(encoded: String): List<LatLng> {
         val poly = ArrayList<LatLng>()
         var index = 0
         val len = encoded.length
@@ -531,8 +602,10 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
             val dlng = if (result and 1 != 0) (result shr 1).inv() else result shr 1
             lng += dlng
 
-            val p = LatLng(lat.toDouble() / 1E5,
-                    lng.toDouble() / 1E5)
+            val p = LatLng(
+                lat.toDouble() / 1E5,
+                lng.toDouble() / 1E5
+            )
             poly.add(p)
         }
 
@@ -541,15 +614,12 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 // Creating an http connection to communicate with url
 
 
-
     //////////////////////////////////////////// generate Poly
-    override fun onConnectionSuspended(p0: Int)
-    {
+    override fun onConnectionSuspended(p0: Int) {
         Log.d("DetailsActivity", "onConnectionSuspended $p0")
     }
 
-    override fun onConnectionFailed(p0: ConnectionResult)
-    {
+    override fun onConnectionFailed(p0: ConnectionResult) {
         Log.d("DetailsActivity", "onConnectionFailed $p0")
     }
 

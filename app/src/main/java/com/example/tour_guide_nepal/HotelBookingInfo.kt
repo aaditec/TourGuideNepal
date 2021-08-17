@@ -3,6 +3,8 @@ package com.example.tour_guide_nepal
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
@@ -19,6 +21,7 @@ import kotlinx.coroutines.withContext
 class HotelBookingInfo : AppCompatActivity(){
     private lateinit var recyclerview: RecyclerView
     private lateinit var swipeRefresh: SwipeRefreshLayout
+    private lateinit var emptyView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class HotelBookingInfo : AppCompatActivity(){
 
         recyclerview = findViewById(R.id.recyclerview)
         swipeRefresh = findViewById(R.id.swiperefresh)
+        emptyView = findViewById(R.id.empty_view)
 
         refreshapp()
 
@@ -47,6 +51,7 @@ class HotelBookingInfo : AppCompatActivity(){
                         val adapter = HotelBookViewAdapter(this@HotelBookingInfo,lstBookDetails)
                         recyclerview.layoutManager=LinearLayoutManager(this@HotelBookingInfo)
                         recyclerview.adapter=adapter
+
  
                     }
                 }
