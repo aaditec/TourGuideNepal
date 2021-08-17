@@ -2,39 +2,32 @@ package com.example.tour_guide_nepal
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_forgotpassword.*
 
 
 class forgotpassword_activity : AppCompatActivity() {
-    private lateinit var mAuth: FirebaseAuth
+    private var mAuth: FirebaseAuth? = null
+    private lateinit var et_forget_email: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgotpassword)
 
-
+        et_forget_email = findViewById(R.id.et_forget_email)
         mAuth = FirebaseAuth.getInstance()
 
 
-        btn_submit.setOnClickListener {
-            val email = et_forget_email.text.toString().trim()
 
-            if (TextUtils.isEmpty(email)) {
-                Toast.makeText(applicationContext, "Enter your email!", Toast.LENGTH_SHORT).show()
-            } else {
-                mAuth!!.sendPasswordResetEmail(email)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            // successful!
-                        } else {
-                            // failed!
-                        }
+        btn_submit.setOnClickListener {
+            FirebaseAuth.getInstance().sendPasswordResetEmail("user@example.com")
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "Email sent.")
                     }
-            }
+                }
         }
     }
 }

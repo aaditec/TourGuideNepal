@@ -1,6 +1,8 @@
 package com.example.tour_guide_nepal
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -18,7 +20,7 @@ import kotlinx.coroutines.withContext
 
 
 class Signup : AppCompatActivity() {
-    private  lateinit var btnsignup: Button
+    private lateinit var btnsignup: Button
     private lateinit var auth: FirebaseAuth
 
 
@@ -47,7 +49,7 @@ class Signup : AppCompatActivity() {
             if (validatesignup()) {
 
                 val FullName = etname.text.toString()
-               val email = etemail.text.toString()
+                val email = etemail.text.toString()
                 val phone = etphone.text.toString()
                 val password = etpass.text.toString()
                 val confirmPassword = etconfigpass.text.toString()
@@ -92,14 +94,19 @@ class Signup : AppCompatActivity() {
                             password = password
                         )
 
-                    auth.createUserWithEmailAndPassword(etemail.text.toString(), etpass.text.toString() )
+                    auth.createUserWithEmailAndPassword(
+                        etemail.text.toString(),
+                        etpass.text.toString()
+                    )
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                startActivity(Intent(this,LoginActivity::class.java))
+                                startActivity(Intent(this, LoginActivity::class.java))
                                 finish()
                             } else {
-                                Toast.makeText(baseContext, "Sign Up failed. Try again after some time.",
-                                    Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    baseContext, "Sign Up failed. Try again after some time.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     CoroutineScope(Dispatchers.IO).launch {
@@ -111,7 +118,12 @@ class Signup : AppCompatActivity() {
                                     Toast.makeText(
                                         this@Signup,
                                         "signup successfully", Toast.LENGTH_SHORT
+
                                     ).show()
+                                    getSharedPreferences(
+                                        "shared_preference",
+                                        Context.MODE_PRIVATE
+                                    ).edit().putBoolean("isLoggedIn", true).apply()
                                 }
                             }
                         } catch (ex: Exception) {
@@ -123,7 +135,6 @@ class Signup : AppCompatActivity() {
                             }
                         }
                     }
-
 
 
                 }
@@ -142,21 +153,19 @@ class Signup : AppCompatActivity() {
     }
 
 
-
-
-    private fun sanitize(input : EditText) : String{
+    private fun sanitize(input: EditText): String {
         return input.text.toString().trim(' ')
     }
 
 
     private fun validatesignup(): Boolean {
 
-            var valid = true
-            etemail.error = null
-            etname.error = null
-            etpass.error = null
-            etconfigpass.error = null
-            etphone.error = null
+        var valid = true
+        etemail.error = null
+        etname.error = null
+        etpass.error = null
+        etconfigpass.error = null
+        etphone.error = null
 
 
         if (sanitize(etemail as EditText).isEmpty()) {
@@ -165,25 +174,25 @@ class Signup : AppCompatActivity() {
         }
 
 
-            if (sanitize(etname as EditText).isEmpty()) {
-                etname.error = "Fullname can not be empty"
-                valid = false
-            }
-            if (sanitize(etpass as EditText).isEmpty()) {
-                etpass.error = "Password can not be empty"
-                valid = false
-            }
-            if (sanitize(etconfigpass as EditText).isEmpty()) {
-                etconfigpass.error = "confirm Password can not be empty"
-                valid = false
-            }
-            if (sanitize(etphone as EditText).isEmpty()) {
-                etphone.error = "phone number can not be empty"
-                valid = false
-            }
+        if (sanitize(etname as EditText).isEmpty()) {
+            etname.error = "Fullname can not be empty"
+            valid = false
+        }
+        if (sanitize(etpass as EditText).isEmpty()) {
+            etpass.error = "Password can not be empty"
+            valid = false
+        }
+        if (sanitize(etconfigpass as EditText).isEmpty()) {
+            etconfigpass.error = "confirm Password can not be empty"
+            valid = false
+        }
+        if (sanitize(etphone as EditText).isEmpty()) {
+            etphone.error = "phone number can not be empty"
+            valid = false
+        }
 
 
-            return valid
+        return valid
     }
 
 

@@ -72,18 +72,23 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                R.id.nav_terms -> {
-                    startActivity(Intent(this,Profile_Activity::class.java))
-                }
+                R.id.nav_terms -> Toast.makeText(
+                    applicationContext,
+                    "terms and services Clicked",
+                    Toast.LENGTH_SHORT
+                ).show()
                 R.id.nav_rateapp -> Toast.makeText(
                     applicationContext,
                     "Rate App Clicked",
                     Toast.LENGTH_SHORT
                 ).show()
                 R.id.nav_logout -> Toast.makeText(
+
                     applicationContext,
+
                     "Logout Clicked",
                     Toast.LENGTH_SHORT
+
                 ).show()
             }
 

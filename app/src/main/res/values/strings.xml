@@ -4,6 +4,7 @@
     <string name="title_activity_lumbini_map">Map</string>
     <string name="title_activity_dolakha_map">Map</string>
     <string name="title_activity_mustang_map">Map</string>
+    <string name="shared_preferances_name">shared_preference</string>
     <string name="title_activity_pokhara_map">Map</string>
     <string name="title_activity_solukhumbu_map">Map</string>
     <string name="title_activity_gorkha_map">Map</string>

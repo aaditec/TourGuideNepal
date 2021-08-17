@@ -1,7 +1,9 @@
 package com.example.tour_guide_nepal
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -28,8 +31,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var forgotpass: TextView
     private lateinit var google: ImageView
 
+
     private lateinit var auth: FirebaseAuth
-    private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +45,8 @@ class LoginActivity : AppCompatActivity() {
         google= findViewById(R.id.google)
 
         auth = FirebaseAuth.getInstance()
-        mAuth = FirebaseAuth.getInstance();
+
+
 
         google.setOnClickListener {
 
@@ -75,21 +79,16 @@ class LoginActivity : AppCompatActivity() {
         if (validateLogin()) {
             val email = txtname.text.toString()
             val password = txtpass.text.toString()
-            mAuth!!.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in: success
-                        // update UI for current User
-                        val user = mAuth!!.getCurrentUser()
-                        updateUI(user)
-                    } else {
-                        // Sign in: fail
-                        Log.e(TAG, "signIn: Fail!", task.exception)
-                        updateUI(null)
-                    }
-
-                    // ...
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
+                if(task.isSuccessful) {
+                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else {
+                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
                 }
+            })
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val repository = UserRepository()
@@ -101,6 +100,7 @@ class LoginActivity : AppCompatActivity() {
                                 this@LoginActivity,
                                 MainActivity::class.java
                             )
+
                         )
                         finish()
                     } else {
