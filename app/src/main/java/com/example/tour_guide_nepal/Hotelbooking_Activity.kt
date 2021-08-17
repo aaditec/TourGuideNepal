@@ -3,28 +3,32 @@ package com.example.tour_guide_nepal
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
 import com.example.tour_guide_nepal.Repository.HotelBookRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.jetbrains.anko.spinner
 import org.jetbrains.anko.toast
 import java.util.*
 
 class Hotelbooking_Activity : AppCompatActivity() {
+
+    private var type_of_room = arrayOf("Single","Double","Triple","Quad")
+
     private lateinit var etfullname: EditText
     private lateinit var etemail: EditText
     private lateinit var etphonenumber: EditText
+    private lateinit var hotelname : EditText
+    private lateinit var roomtype : Spinner
     private lateinit var datefrom: TextView
     private lateinit var dateto: TextView
     private lateinit var etguestnumber: EditText
     private lateinit var comments: EditText
     private lateinit var btnbook: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +37,16 @@ class Hotelbooking_Activity : AppCompatActivity() {
         etfullname = findViewById(R.id.etfullname)
         etemail = findViewById(R.id.etemail)
         etphonenumber = findViewById(R.id.etphonenumber)
+        hotelname = findViewById(R.id.ethotelname)
+        roomtype = findViewById(R.id.etroomtype)
         datefrom = findViewById(R.id.datefrom)
         dateto = findViewById(R.id.dateto)
         etguestnumber = findViewById(R.id.etguestnumber)
         comments = findViewById(R.id.comments)
         btnbook = findViewById(R.id.btnbook)
+
+        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,type_of_room)
+        roomtype.adapter = adapter
 
         //calendar
         val c = Calendar.getInstance()
@@ -92,6 +101,8 @@ class Hotelbooking_Activity : AppCompatActivity() {
         val fullname = etfullname.text.toString()
         val email = etemail.text.toString()
         val phnumber = etphonenumber.text.toString()
+        val hotelname = hotelname.text.toString()
+        val roomtype = roomtype.selectedItem.toString()
         val datefrom = datefrom.text.toString()
         val dateto = dateto.text.toString()
         val guestno = etguestnumber.text.toString()
@@ -101,6 +112,8 @@ class Hotelbooking_Activity : AppCompatActivity() {
             fullname = fullname,
             email = email,
             phone = phnumber,
+            hotelname = hotelname,
+            roomtype = roomtype,
             datefrom = datefrom,
             dateto = dateto,
             numberofpeople = guestno,

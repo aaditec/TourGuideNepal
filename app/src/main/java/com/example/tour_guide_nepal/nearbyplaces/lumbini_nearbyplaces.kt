@@ -2,6 +2,7 @@ package com.example.tour_guide_nepal.nearbyplaces
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tour_guide_nepal.Hotelbooking_Activity
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.service.model.NearByPlaceModel
 import com.example.tour_guide_nepal.view.adapter.NearByPlacesAdapter
@@ -48,7 +50,9 @@ class lumbini_nearbyplaces : AppCompatActivity() {
 
         Atm.setOnClickListener { getPlaces("atm") }
 
-        Hotel.setOnClickListener { getPlaces("Hotel") }
+        Hotel.setOnClickListener { getPlaces("Hotel")
+            val intent = Intent(this, Hotelbooking_Activity::class.java)
+            startActivity(intent)}
         Policestation.setOnClickListener { getPlaces("Police Station")
 
 
@@ -76,8 +80,8 @@ class lumbini_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.679199
-        current_long = 83.50702
+        current_lat = 27.683
+        current_long = 83.417
 
         current_location = "$current_lat,$current_long"
     }

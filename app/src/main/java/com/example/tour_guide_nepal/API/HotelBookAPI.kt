@@ -10,27 +10,27 @@ import retrofit2.http.*
 
 interface HotelBookAPI {
     //Book hotel
-    @POST("bookhotel/insert")
+    @POST("userhotel/insert")
     suspend fun bookHotel(
         @Header("Authorization") token:String,
         @Body hotelBookDetails: HotelBookDetails
     ): Response<BookHotelResponse>
 
     //Delete Book
-    @DELETE("bookhotel/delete/{id}")
+    @DELETE("userhotel/delete/{id}")
     suspend fun deletebookHotel(
         @Header("Authorization") token: String,
         @Path("id")id:String
     ):Response<DeleteBookHotelResponse>
 
     //Get all Book hotel
-    @PUT("bookhotel/{userid}")
+    @GET("userhotel/all")
     suspend fun getallBookHotel(
         @Header("Authorization") token:String
     ):Response<GetAllBookHotelResponse>
 
     //Update Hotel Book
-    @PUT("bookhotel/update/{id}")
+    @PUT("userhotel/update/{id}")
     suspend fun updateBookHotel(
         @Header("Authorization") token:String,
         @Path("id") id:String,
