@@ -98,6 +98,9 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
 
 
+
+
+
         hours = intent.getStringExtra("hours")
         address = intent.getStringExtra("address")
         totalRating = intent.getStringExtra("totalRating")

@@ -14,6 +14,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,10 +32,15 @@ class LoginActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     var isRemembered = false
 
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val actionBar = supportActionBar
+        actionBar!!.hide()
+
         btnlogin = findViewById(R.id.btnlogin)
         linkregister = findViewById(R.id.linkregister)
         txtname = findViewById(R.id.txtname)
@@ -41,6 +48,9 @@ class LoginActivity : AppCompatActivity() {
         forgotpass = findViewById(R.id.forgotpass)
         checkbox = findViewById(R.id.saveuser)
 
+ 
+        auth = FirebaseAuth.getInstance()
+ 
         sharedPreferences = getSharedPreferences("MyPref", MODE_PRIVATE)
         isRemembered = sharedPreferences.getBoolean("CHECKBOX", false)
 
@@ -49,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+ 
 
         forgotpass.setOnClickListener {
 
@@ -119,7 +130,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
+ 
     private fun savepref() {
         val checked: Boolean = checkbox.isChecked
         val edemail = txtname.text.toString()
@@ -135,6 +146,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+ 
     private fun sanitize(input: EditText): String {
         return input.text.toString().trim(' ')
     }
@@ -156,6 +168,20 @@ class LoginActivity : AppCompatActivity() {
         return valid
     }
 
+ 
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+    }
+
+    fun updateUI(currentUser: FirebaseUser?) {
+
+    }
+    }
+ 
 }
+ 
 
 
