@@ -80,8 +80,8 @@ class lumbini_nearbyplaces : AppCompatActivity() {
 
         var location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
 
-        current_lat = 27.679199
-        current_long = 83.50702
+        current_lat = 27.683
+        current_long = 83.417
 
         current_location = "$current_lat,$current_long"
     }

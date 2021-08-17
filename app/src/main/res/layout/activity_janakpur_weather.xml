@@ -21,7 +21,7 @@
         <LinearLayout
             android:id="@+id/addressContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="190dp"
             android:background="#c6e8f7"
             android:gravity="center"
             android:orientation="vertical">
@@ -41,6 +41,22 @@
                 android:text="13 July 2021, 20:08 PM"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="319dp"
+                android:layout_height="109dp"
+                android:layout_above="@+id/overviewContainer"
+                android:layout_below="@+id/addressContainer"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="23dp"
+                tools:srcCompat="@drawable/janakpur" >
+
+            </ImageView>
 
         </LinearLayout>
 
@@ -62,14 +78,14 @@
 
             <TextView
                 android:id="@+id/temp"
-                android:layout_width="wrap_content"
-                android:layout_height="139dp"
+                android:layout_width="250dp"
+                android:layout_height="103dp"
                 android:layout_gravity="center"
                 android:background="#6ccdf0"
                 android:fontFamily="sans-serif-thin"
                 android:text="28°C"
                 android:textColor="@color/black"
-                android:textSize="90dp" />
+                android:textSize="70dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,7 +97,7 @@
                 <TextView
                     android:id="@+id/temp_min"
                     android:layout_width="wrap_content"
-                    android:layout_height="38dp"
+                    android:layout_height="wrap_content"
                     android:text="Min Temp: 05:05 AM"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
@@ -93,7 +109,7 @@
                 <TextView
                     android:id="@+id/temp_max"
                     android:layout_width="wrap_content"
-                    android:layout_height="38dp"
+                    android:layout_height="wrap_content"
                     android:text="Max Temp: 05:05 PM"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
@@ -359,19 +375,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="324dp"
-            android:layout_height="140dp"
-            android:layout_above="@+id/overviewContainer"
-            android:layout_below="@+id/addressContainer"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="23dp"
-            tools:srcCompat="@drawable/janakpur" />
+
 
     </RelativeLayout>
 

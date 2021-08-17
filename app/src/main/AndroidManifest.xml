@@ -6,6 +6,8 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,8 +21,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
+
  
-        <activity android:name=".video.pokhara_video_activity"/>
+        <activity android:name=".Splash_activity">
+
+        </activity>
+        <activity android:name=".Profile_Activity"></activity>
+ 
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".vehicle.Fourwheel_Activity"></activity>
+        <activity android:name=".vehicle.TwowheelActivity" />
+        <activity android:name=".vehicle.Vehicle_booking_form_activity" />
+        <activity android:name=".vehicle.Vehiclebooking_activity" />
+        <activity android:name=".Vehiclelist" />
+  
+        <activity android:name=".video.pokhara_video_activity" />
         <activity android:name=".forgotpassword_activity" />
         <activity android:name=".video.lumbini_video_activity" />
         <activity android:name=".video.kathmandu_video_activity" />
@@ -32,9 +54,7 @@
         <activity android:name=".video.solukhumbu_video_activity" />
         <activity android:name=".video.tanahun_video_activity" />
         <activity android:name=".HotelBookingDetailedInfoActivity" />
- 
-        <activity android:name=".Hotelform_update_activity"/>
- 
+        <activity android:name=".Hotelform_update_activity" />
         <activity android:name=".HotelBookingInfo" />
         <activity android:name=".Hotelbooking_Activity" />
         <activity android:name=".view.ui.DetailsActivity" />
@@ -95,13 +115,13 @@
         <activity android:name=".place_details.dolakha_detail_activity" />
         <activity android:name=".place_details.chitwan_detail_activity" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+
         <activity android:name=".Signup" />
     </application>
 
