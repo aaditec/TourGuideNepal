@@ -80,11 +80,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_contact -> {
                     startActivity(Intent(this,Vehiclebooking_activity::class.java))
                 }
-                R.id.nav_terms -> Toast.makeText(
-                    applicationContext,
-                    "Terms and Services Clicked",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.nav_terms -> {
+                    startActivity(Intent(this,Profile_Activity::class.java))
+                }
                 R.id.nav_rateapp -> Toast.makeText(
                     applicationContext,
                     "Rate App Clicked",

@@ -13,7 +13,7 @@ android {
     defaultConfig {
         multiDexEnabled true
         applicationId "com.example.tour_guide_nepal"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -74,6 +74,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -175,11 +176,26 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     //firebase
-    implementation 'com.google.firebase:firebase-bom:28.3.0'
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-bom:28.3.1'
+    implementation 'com.google.firebase:firebase-analytics:19.0.0'
 
+    //user permission
+    implementation 'com.karumi:dexter:6.2.3'
+
+    //coil
+    implementation('io.coil-kt:coil:1.3.2')
+
+    //lottie animation dependency
+    implementation 'com.airbnb.android:lottie:3.4.4'
+
+
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+
+
+ 
     //for scrollable number picker
     implementation 'com.michaelmuenzer.android:ScrollableNumberPicker:0.2.2'
+ 
  
  
 }
