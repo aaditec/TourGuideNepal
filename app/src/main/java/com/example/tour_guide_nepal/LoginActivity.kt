@@ -1,26 +1,24 @@
 package com.example.tour_guide_nepal
 
-import android.content.ContentValues.TAG
-import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
-import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var btnlogin: Button
@@ -29,28 +27,24 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var txtpass: TextView
     private lateinit var linearLayout: LinearLayout
     private lateinit var forgotpass: TextView
-    private lateinit var google: ImageView
-
 
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val actionBar = supportActionBar
+        actionBar!!.hide()
+
         btnlogin = findViewById(R.id.btnlogin)
         linkregister = findViewById(R.id.linkregister)
         txtname = findViewById(R.id.txtname)
         txtpass = findViewById(R.id.txtpass)
         forgotpass = findViewById(R.id.forgotpass)
-        google= findViewById(R.id.google)
 
         auth = FirebaseAuth.getInstance()
 
-
-
-        google.setOnClickListener {
-
-        }
         forgotpass.setOnClickListener {
 
             val intent = Intent(this, forgotpassword_activity::class.java)
@@ -66,29 +60,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
     }
-
-
-
-
-
 
 
     private fun login() {
         if (validateLogin()) {
             val email = txtname.text.toString()
             val password = txtpass.text.toString()
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
-                if(task.isSuccessful) {
-                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }else {
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
-                }
-            })
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val repository = UserRepository()
@@ -100,7 +78,6 @@ class LoginActivity : AppCompatActivity() {
                                 this@LoginActivity,
                                 MainActivity::class.java
                             )
-
                         )
                         finish()
                     } else {
@@ -163,7 +140,6 @@ class LoginActivity : AppCompatActivity() {
     fun updateUI(currentUser: FirebaseUser?) {
 
     }
-
     }
 
 

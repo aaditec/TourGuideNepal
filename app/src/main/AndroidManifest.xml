@@ -25,11 +25,9 @@
         <activity android:name=".Splash_activity">
 
         </activity>
-        <activity android:name=".Profile_Activity" />
+        <activity android:name=".Profile_Activity"></activity>
         <activity android:name=".video.pokhara_video_activity" />
-        <activity android:name=".forgotpassword_activity"
-            android:label="Password Reset Screen">
-        </activity>
+        <activity android:name=".forgotpassword_activity" />
         <activity android:name=".video.lumbini_video_activity" />
         <activity android:name=".video.kathmandu_video_activity" />
         <activity android:name=".video.janakpur_video_activity" />
@@ -86,7 +84,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
 
         <activity
             android:name=".maps.janakpur1_map"
