@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -83,6 +84,16 @@ class LoginActivity : AppCompatActivity() {
         if (validateLogin()) {
             val email = txtname.text.toString()
             val password = txtpass.text.toString()
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
+                if(task.isSuccessful) {
+                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else {
+                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+                }
+            })
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val repository = UserRepository()
@@ -181,7 +192,7 @@ class LoginActivity : AppCompatActivity() {
     }
     }
  
-}
+
  
 
 

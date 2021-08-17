@@ -22,13 +22,13 @@
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
 
- 
+        <activity android:name=".MainActivity" />
         <activity android:name=".Splash_activity">
 
         </activity>
         <activity android:name=".Profile_Activity"></activity>
  
-        <activity android:name=".MainActivity" >
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

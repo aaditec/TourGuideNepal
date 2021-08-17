@@ -109,6 +109,7 @@ class Signup : AppCompatActivity() {
                                 ).show()
                             }
                         }
+
                     CoroutineScope(Dispatchers.IO).launch {
                         try {
                             val userRepository = UserRepository()
