@@ -48,9 +48,9 @@ class LoginActivity : AppCompatActivity() {
         forgotpass = findViewById(R.id.forgotpass)
         checkbox = findViewById(R.id.saveuser)
 
- 
+
         auth = FirebaseAuth.getInstance()
- 
+
         sharedPreferences = getSharedPreferences("MyPref", MODE_PRIVATE)
         isRemembered = sharedPreferences.getBoolean("CHECKBOX", false)
 
@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
- 
+
 
         forgotpass.setOnClickListener {
 
@@ -98,8 +98,12 @@ class LoginActivity : AppCompatActivity() {
                                 MainActivity::class.java
                             )
                         )
-                        withContext(Dispatchers.Main){
-                            Toast.makeText(this@LoginActivity, "Login Successfully", Toast.LENGTH_SHORT).show()
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "Login Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                         finish()
                     } else {
@@ -130,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
- 
+
     private fun savepref() {
         val checked: Boolean = checkbox.isChecked
         val edemail = txtname.text.toString()
@@ -146,7 +150,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
- 
+
     private fun sanitize(input: EditText): String {
         return input.text.toString().trim(' ')
     }
@@ -168,7 +172,7 @@ class LoginActivity : AppCompatActivity() {
         return valid
     }
 
- 
+
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -179,8 +183,6 @@ class LoginActivity : AppCompatActivity() {
     fun updateUI(currentUser: FirebaseUser?) {
 
     }
-    }
- 
 }
  
 

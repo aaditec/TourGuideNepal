@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.navmenu)
 
         // check for permission
-        if (!hasPermission()){
+        if (!hasPermission()) {
             requestPermission()
         }
 
@@ -78,10 +78,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, HotelBookingInfo::class.java))
                 }
                 R.id.nav_contact -> {
-                    startActivity(Intent(this,Vehiclebooking_activity::class.java))
+                    Toast.makeText(this, "Emergency Contact Selected", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_terms -> {
-                    startActivity(Intent(this,Profile_Activity::class.java))
+                    Toast.makeText(this, "Terms and Services Selected", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_rateapp -> Toast.makeText(
                     applicationContext,
@@ -103,24 +103,24 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor.clear()
         editor.apply()
-        startActivity(Intent(this,LoginActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(
             this@MainActivity,
-            permissions,1
+            permissions, 1
         )
     }
 
     private fun hasPermission(): Boolean {
         var hasPermission = true
-        for (permission in permissions){
+        for (permission in permissions) {
             if (ActivityCompat.checkSelfPermission(
                     this,
                     permission
-                ) != PackageManager.PERMISSION_GRANTED)
-            {
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 hasPermission = false
             }
         }

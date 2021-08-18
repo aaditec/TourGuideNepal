@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.lottie.LottieAnimationView
 import org.jetbrains.anko.find
+import kotlin.concurrent.thread
 
 class Splash_activity : AppCompatActivity() {
 
@@ -30,45 +31,46 @@ class Splash_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        btnstarted=findViewById(R.id.btnstarted)
-        btnstarted.visibility= View.INVISIBLE
+        btnstarted = findViewById(R.id.btnstarted)
+        btnstarted.visibility = View.INVISIBLE
 
 //hide status bar
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN
+//        )
 
         val actionBar = supportActionBar
         actionBar!!.hide()
 
         val sharedPref = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
-        if(sharedPref.contains("email") && sharedPref.contains("password"))
-        {
-            btnstarted.visibility= View.INVISIBLE
-                    Handler().postDelayed({
-                val intent= Intent(this,LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-        },SPLASH_SCREEN.toLong())
-        }
-        else{
+        //(sharedPref.contains("email") && sharedPref.contains("password"))
+        if (sharedPref.getBoolean("CHECKBOX", true) ) {
+            btnstarted.visibility = View.INVISIBLE
+            Handler().postDelayed({
+                startActivity(Intent(this, LoginActivity::class.java))
+            }, SPLASH_SCREEN.toLong())
+        } else {
+
             btnstarted.visibility = View.VISIBLE
         }
 
         //creating two animations
-        topAnimation= AnimationUtils.loadAnimation(this,R.anim.top_animation)
-        bottomAnimation= AnimationUtils.loadAnimation(this, R.anim.bot_animation)
+        topAnimation = AnimationUtils.loadAnimation(this, R.anim.top_animation)
+        bottomAnimation = AnimationUtils.loadAnimation(this, R.anim.bot_animation)
 
-        centerlogo=findViewById(R.id.centerlogo)
-        word1=findViewById(R.id.word1)
-
-
-        word1.animation=topAnimation
-        centerlogo.animation=topAnimation
-        btnstarted.animation=bottomAnimation
+        centerlogo = findViewById(R.id.centerlogo)
+        word1 = findViewById(R.id.word1)
 
 
+        word1.animation = topAnimation
+        centerlogo.animation = topAnimation
+        btnstarted.animation = bottomAnimation
 
-        btnstarted.setOnClickListener{
-            val intent= Intent(this, LoginActivity::class.java)
+
+
+        btnstarted.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
