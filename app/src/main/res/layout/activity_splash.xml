@@ -44,7 +44,8 @@
         app:layout_constraintTop_toBottomOf="@+id/centerlogo"
         app:layout_constraintVertical_bias="0.391"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/vehicletravel" />
+        app:lottie_rawRes="@raw/vehicletravel"
+        tools:ignore="MissingClass" />
 
     <Button
         android:id="@+id/btnstarted"
