@@ -3,15 +3,11 @@ package com.example.tour_guide_nepal.fragments
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,25 +17,31 @@ import android.widget.ImageView
 import android.widget.TextView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.tour_guide_nepal.ENTITY.User
+import com.example.tour_guide_nepal.LoginActivity
 import com.example.tour_guide_nepal.MainActivity
 import com.example.tour_guide_nepal.R
-import kotlinx.android.synthetic.main.activity_gorkha_weather.*
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 @Suppress("UNREACHABLE_CODE")
 class ProfileFragment : Fragment() {
-    private lateinit var profilename: TextView
+    private lateinit var db: FirebaseFirestore
+
 
     private lateinit var backhome: FrameLayout
     private lateinit var imageView: ImageView
+    private lateinit var camera: ImageView
     private val CAMERA_REQUEST_CODE = 1
     private val GALLERY_REQUEST_CODE = 2
     private lateinit var etfullname: TextView
+    private lateinit var eefullname: TextView
+    private lateinit var eeemail: TextView
     private lateinit var etemail: TextView
     private lateinit var etphone: TextView
-    private lateinit var txtfullname: TextView
-    private lateinit var txtemail: TextView
+
+//    private lateinit var txtemail: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,18 +56,59 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
 
 
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        etfullname = view.findViewById(R.id.ffullname)
+        eefullname = view.findViewById(R.id.ettvfullname)
+        eeemail = view.findViewById(R.id.ettvemail)
+        etemail = view.findViewById(R.id.eemail)
+        etphone = view.findViewById(R.id.pphone)
+        backhome= view.findViewById(R.id.backhome)
+        camera = view.findViewById(R.id.camera)
 
-        val view=inflater.inflate(R.layout.fragment_profile, container, false)
-        etfullname=view.findViewById(R.id.etfullname)
-        etemail=view.findViewById(R.id.etemail)
-        etphone=view.findViewById(R.id.etphone)
-        txtfullname=view.findViewById(R.id.txtfullname)
-        txtemail=view.findViewById(R.id.txtemail)
+
+//        txtemail = findViewById(R.id.txtemail)
+
+
+        val sharedPref=requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val isLogin=sharedPref.getString("Email","1")
+
+        if(isLogin=="1")
+        {
+            var email=requireActivity().intent.getStringExtra("email")
+            if(email!=null)
+            {
+                setText(email)
+                with(sharedPref.edit())
+                {
+                    putString("Email",email)
+                    apply()
+                }
+            }
+            else{
+                var intent = Intent(activity,LoginActivity::class.java)
+                startActivity(intent)
+
+            }
+        }
+        else
+        {
+            setText(isLogin)
+        }
+
+        backhome.setOnClickListener{
+            startActivity(Intent(activity,MainActivity::class.java))
+        }
+
+        camera.setOnClickListener{
+            popupmenu()
+
+        }
 
         return view
+    }
 
-    imageView.setOnClickListener{
-        val pictureDialog = AlertDialog.Builder(activity)
+    private fun popupmenu() {
+        val pictureDialog = AlertDialog.Builder(requireContext())
         pictureDialog.setTitle("Select Action")
         val pictureDialogItem= arrayOf("Select photo from Gallery","Capture photo from Camera")
         pictureDialog.setItems(pictureDialogItem){ dialog, which ->
@@ -76,14 +119,24 @@ class ProfileFragment : Fragment() {
             }
         }
         pictureDialog.show()
-
     }
-        backhome.setOnClickListener{
-            startActivity(Intent(activity,MainActivity::class.java))
+
+    private fun setText(email:String?)
+    {
+        db= FirebaseFirestore.getInstance()
+        if (email != null) {
+            db.collection("USERS").document(email).get()
+                .addOnSuccessListener {
+                        tasks->
+                    ffullname.text=tasks.get("Name").toString()
+                    ettvfullname.text=tasks.get("Name").toString()
+                    ettvemail.text=tasks.get("email").toString()
+                    pphone.text=tasks.get("Phone").toString()
+                    eemail.text=tasks.get("email").toString()
+
+                }
         }
-
-}
-
+    }
 
 //    private fun galleryCheckPermission() {
 //        Dexter.withContext(this).withPermission(
@@ -111,11 +164,11 @@ class ProfileFragment : Fragment() {
 //        }).onSameThread().check()
 //    }
 
-private fun gallery(){
-    val intent = Intent(Intent.ACTION_PICK)
-    intent.type= "image/*"
-    startActivityForResult(intent, GALLERY_REQUEST_CODE)
-}
+    private fun gallery(){
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type= "image/*"
+        startActivityForResult(intent, GALLERY_REQUEST_CODE)
+    }
 
 //    private fun cameraCheckPermission() {
 //        Dexter.withContext(this)
@@ -142,62 +195,59 @@ private fun gallery(){
 //    }
 
 
-private fun camera() {
-    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-    startActivityForResult(intent,CAMERA_REQUEST_CODE)
-}
+    private fun camera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent,CAMERA_REQUEST_CODE)
+    }
 
-override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-    if (resultCode == Activity.RESULT_OK){
-        when (requestCode){
+        if (resultCode == Activity.RESULT_OK){
+            when (requestCode){
 
-            CAMERA_REQUEST_CODE ->{
-                val bitmap= data?.extras?.get("data") as Bitmap
+                CAMERA_REQUEST_CODE ->{
+                    val bitmap= data?.extras?.get("data") as Bitmap
 
-                //using coroutine image loader (coil)
-                imageView.load(bitmap){
-                    crossfade(true)
-                    crossfade(1000)
-                    transformations(CircleCropTransformation() )
+                    //using coroutine image loader (coil)
+                    imageView.load(bitmap){
+                        crossfade(true)
+                        crossfade(1000)
+                        transformations(CircleCropTransformation() )
+                    }
                 }
-            }
 
-            GALLERY_REQUEST_CODE ->{
+                GALLERY_REQUEST_CODE ->{
 
-                imageView.load(data?.data){
-                    crossfade(true)
-                    crossfade(1000)
-                    transformations(CircleCropTransformation())
+                    imageView.load(data?.data){
+                        crossfade(true)
+                        crossfade(1000)
+                        transformations(CircleCropTransformation())
+                    }
                 }
-            }
 
+            }
         }
     }
-}
 
 
-private fun showRotationalDialogForPermission() {
-    AlertDialog.Builder(activity)
-        .setMessage(
-            "It looks like you have turned off your permissions"
-                    + "required for this feature. It can be enabled under App settings"
-        )
-        .setPositiveButton("Go to settings") { _, _ ->
-            try {
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                val uri = Uri.fromParts("package", "packageName", null)
-                intent.data = uri
-                startActivity(intent)
-            } catch (e: ActivityNotFoundException) {
-                e.printStackTrace()
-            }
-        }
-        .setNegativeButton("CANCEL") { dialog, _ ->
-            dialog.dismiss()
-        }.show()
-
-
-}
+//    private fun showRotationalDialogForPermission() {
+//        AlertDialog.Builder(requireContext())
+//            .setMessage("It looks like you have turned off your permissions"
+//                    +"required for this feature. It can be enabled under App settings")
+//            .setPositiveButton("Go to settings"){_,_ ->
+//                try {
+//                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+//                    val uri= Uri.fromParts("package", packageName, null)
+//                    intent.data = uri
+//                    startActivity(intent)
+//                }
+//                catch (e: ActivityNotFoundException){
+//                    e.printStackTrace()
+//                }
+//            }
+//            .setNegativeButton("CANCEL"){dialog,_ ->
+//                dialog.dismiss()
+//            }.show()
+//    }
 }

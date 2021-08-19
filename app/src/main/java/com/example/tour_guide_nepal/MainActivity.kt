@@ -1,6 +1,7 @@
 package com.example.tour_guide_nepal
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -78,18 +79,20 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, Hotelbooking_Activity::class.java))
                 }
                 R.id.nav_viewbookhotel -> {
+
                     startActivity(Intent(this, HotelBookingInfo::class.java))
                 }
                 R.id.nav_contact -> {
-                    startActivity(Intent(this,Vehiclebooking_activity::class.java))
+
                 }
                 R.id.nav_terms -> {
-                    startActivity(Intent(this,Profile_Activity::class.java))
+
                 }
                 R.id.nav_rateapp -> {
                     startActivity(Intent(this,RateApp::class.java))
                 }
                 R.id.nav_logout -> {
+
                     logout()
                 }
             }
@@ -100,11 +103,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        val sharedPref = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.clear()
-        editor.apply()
-        startActivity(Intent(this,LoginActivity::class.java))
+        val sharedPref=this?.getPreferences(Context.MODE_PRIVATE)?:return
+
+        sharedPref.edit().remove("Email").apply()
+        var intent = Intent(this,LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun requestPermission() {

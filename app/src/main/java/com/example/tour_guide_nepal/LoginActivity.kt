@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -84,16 +85,22 @@ class LoginActivity : AppCompatActivity() {
         if (validateLogin()) {
             val email = txtname.text.toString()
             val password = txtpass.text.toString()
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
-                if(task.isSuccessful) {
-                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }else {
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        var intent =Intent(this,MainActivity::class.java)
+                        intent.putExtra("email",email)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Wrong Details", Toast.LENGTH_LONG).show()
+                    }
                 }
-            })
+
+
+
+
+
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val repository = UserRepository()
