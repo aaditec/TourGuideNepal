@@ -1,7 +1,9 @@
 package com.example.tour_guide_nepal
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var lstFragments: ArrayList<Fragment>
     private lateinit var viewpager2: ViewPager2
     private lateinit var tablayout: TabLayout
+    private lateinit var nav_rateapp: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,11 +86,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_terms -> {
                     startActivity(Intent(this,Profile_Activity::class.java))
                 }
-                R.id.nav_rateapp -> Toast.makeText(
-                    applicationContext,
-                    "Rate App Clicked",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.nav_rateapp -> {
+                    startActivity(Intent(this,RateApp::class.java))
+                }
                 R.id.nav_logout -> {
                     logout()
                 }
