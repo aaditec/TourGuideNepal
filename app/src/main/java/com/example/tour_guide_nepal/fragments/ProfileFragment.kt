@@ -2,10 +2,12 @@ package com.example.tour_guide_nepal.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
@@ -20,234 +22,152 @@ import coil.transform.CircleCropTransformation
 import com.example.tour_guide_nepal.LoginActivity
 import com.example.tour_guide_nepal.MainActivity
 import com.example.tour_guide_nepal.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.io.ByteArrayOutputStream
 
 
-@Suppress("UNREACHABLE_CODE")
+@Suppress("UNREACHABLE_CODE", "DEPRECATION")
 class ProfileFragment : Fragment() {
-    private lateinit var db: FirebaseFirestore
 
-
-    private lateinit var backhome: FrameLayout
-    private lateinit var imageView: ImageView
-    private lateinit var camera: ImageView
-    private val CAMERA_REQUEST_CODE = 1
-    private val GALLERY_REQUEST_CODE = 2
-    private lateinit var etfullname: TextView
-    private lateinit var eefullname: TextView
-    private lateinit var eeemail: TextView
-    private lateinit var etemail: TextView
-    private lateinit var etphone: TextView
-
-//    private lateinit var txtemail: TextView
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-
-
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        etfullname = view.findViewById(R.id.ffullname)
-        eefullname = view.findViewById(R.id.ettvfullname)
-        eeemail = view.findViewById(R.id.ettvemail)
-        etemail = view.findViewById(R.id.eemail)
-        etphone = view.findViewById(R.id.pphone)
-        backhome= view.findViewById(R.id.backhome)
-        camera = view.findViewById(R.id.camera)
-
-
-//        txtemail = findViewById(R.id.txtemail)
-
-
-        val sharedPref=requireActivity().getPreferences(Context.MODE_PRIVATE)
-        val isLogin=sharedPref.getString("Email","1")
-
-        if(isLogin=="1")
-        {
-            var email=requireActivity().intent.getStringExtra("email")
-            if(email!=null)
-            {
-                setText(email)
-                with(sharedPref.edit())
-                {
-                    putString("Email",email)
-                    apply()
-                }
-            }
-            else{
-                var intent = Intent(activity,LoginActivity::class.java)
-                startActivity(intent)
-
-            }
-        }
-        else
-        {
-            setText(isLogin)
+        companion object {
+            const val REQUEST_CAMERA = 100
         }
 
-        backhome.setOnClickListener{
-            startActivity(Intent(activity,MainActivity::class.java))
-        }
+        private lateinit var db: FirebaseFirestore
+        private lateinit var imageUri: Uri
 
-        camera.setOnClickListener{
-            popupmenu()
+
+        private lateinit var backhome: FrameLayout
+        private lateinit var imageView: ImageView
+        private lateinit var camera: ImageView
+
+        private lateinit var etfullname: TextView
+        private lateinit var eefullname: TextView
+        private lateinit var eeemail: TextView
+        private lateinit var etemail: TextView
+        private lateinit var etphone: TextView
+
+
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
 
         }
 
-        return view
-    }
+        @SuppressLint("SetTextI18n")
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            // Inflate the layout for this fragment
 
-    private fun popupmenu() {
-        val pictureDialog = AlertDialog.Builder(requireContext())
-        pictureDialog.setTitle("Select Action")
-        val pictureDialogItem= arrayOf("Select photo from Gallery","Capture photo from Camera")
-        pictureDialog.setItems(pictureDialogItem){ dialog, which ->
 
-            when(which){
-                0-> gallery()
-                1-> camera()
-            }
-        }
-        pictureDialog.show()
-    }
+            val view = inflater.inflate(R.layout.fragment_profile, container, false)
+            etfullname = view.findViewById(R.id.ffullname)
+            eefullname = view.findViewById(R.id.ettvfullname)
+            eeemail = view.findViewById(R.id.ettvemail)
+            etemail = view.findViewById(R.id.eemail)
+            etphone = view.findViewById(R.id.pphone)
+            backhome = view.findViewById(R.id.backhome)
+            camera = view.findViewById(R.id.camera)
 
-    private fun setText(email:String?)
-    {
-        db= FirebaseFirestore.getInstance()
-        if (email != null) {
-            db.collection("USERS").document(email).get()
-                .addOnSuccessListener {
-                        tasks->
-                    ffullname.text=tasks.get("Name").toString()
-                    ettvfullname.text=tasks.get("Name").toString()
-                    ettvemail.text=tasks.get("email").toString()
-                    pphone.text=tasks.get("Phone").toString()
-                    eemail.text=tasks.get("email").toString()
+
+            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            val isLogin = sharedPref.getString("Email", "1")
+
+            if (isLogin == "1") {
+                var email = requireActivity().intent.getStringExtra("email")
+                if (email != null) {
+                    setText(email)
+                    with(sharedPref.edit())
+                    {
+                        putString("Email", email)
+                        apply()
+                    }
+                } else {
+                    var intent = Intent(activity, LoginActivity::class.java)
+                    startActivity(intent)
 
                 }
+            } else {
+                setText(isLogin)
+            }
+
+            backhome.setOnClickListener {
+                startActivity(Intent(activity, MainActivity::class.java))
+            }
+
+            camera.setOnClickListener {
+
+                intentcamera()
+            }
+
+            return view
         }
-    }
 
-//    private fun galleryCheckPermission() {
-//        Dexter.withContext(this).withPermission(
-//                 android.Manifest.permission.READ_EXTERNAL_STORAGE
-//        ).withListener(object: PermissionListener{
-//            override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
-//                gallery()
-//            }
-//
-//            override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-//                Toast.makeText(
-//                    this@Profile_Activity,
-//                    "You have denied the storage permission to select image",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                showRotationalDialogForPermission()
-//            }
-//
-//            override fun onPermissionRationaleShouldBeShown(
-//                p0: PermissionRequest?,
-//                p1: PermissionToken?
-//            ) {
-//                showRotationalDialogForPermission()
-//            }
-//        }).onSameThread().check()
-//    }
+        private fun intentcamera() {
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
+                activity?.packageManager?.let {
+                    intent.resolveActivity(it).also {
+                        startActivityForResult(intent, REQUEST_CAMERA)
+                    }
+                }
+            }
+        }
 
-    private fun gallery(){
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type= "image/*"
-        startActivityForResult(intent, GALLERY_REQUEST_CODE)
-    }
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+            if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
+                val imageBitmap = data?.extras?.get("data") as Bitmap
+                uploadimage(imageBitmap)
+            }
+        }
 
-//    private fun cameraCheckPermission() {
-//        Dexter.withContext(this)
-//            .withPermissions(android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA)
-//            .withListener(
-//                object: MultiplePermissionsListener{
-//                    override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-//                       report?.let{
-//                           if (report.areAllPermissionsGranted()){
-//                               camera()
-//                           }
-//                       }
-//                    }
-//
-//                    override fun onPermissionRationaleShouldBeShown(
-//                        p0: MutableList<PermissionRequest>?,
-//                        p1: PermissionToken?
-//                    ) {
-//                        showRotationalDialogForPermission()
-//                    }
-//
-//                }
-//            ).onSameThread().check()
-//    }
+        private fun uploadimage(imageBitmap: Bitmap) {
+            val baos = ByteArrayOutputStream()
 
-
-    private fun camera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent,CAMERA_REQUEST_CODE)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK){
-            when (requestCode){
-
-                CAMERA_REQUEST_CODE ->{
-                    val bitmap= data?.extras?.get("data") as Bitmap
-
-                    //using coroutine image loader (coil)
-                    imageView.load(bitmap){
-                        crossfade(true)
-                        crossfade(1000)
-                        transformations(CircleCropTransformation() )
+            val ref =
+                FirebaseStorage.getInstance().reference.child("img/${FirebaseAuth.getInstance().currentUser?.uid}")
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val image = baos.toByteArray()
+            ref.putBytes(image)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        ref.downloadUrl.addOnCompleteListener {
+                            it.result?.let {
+                                imageUri = it
+                                camera.setImageBitmap(imageBitmap)
+                            }
+                        }
                     }
                 }
 
-                GALLERY_REQUEST_CODE ->{
+        }
 
-                    imageView.load(data?.data){
-                        crossfade(true)
-                        crossfade(1000)
-                        transformations(CircleCropTransformation())
+
+        private fun setText(email: String?) {
+            db = FirebaseFirestore.getInstance()
+            if (email != null) {
+                db.collection("USERS").document(email).get()
+                    .addOnSuccessListener { tasks ->
+                        ffullname.text = tasks.get("Name").toString()
+                        ettvfullname.text = tasks.get("Name").toString()
+                        ettvemail.text = tasks.get("email").toString()
+                        pphone.text = tasks.get("Phone").toString()
+                        eemail.text = tasks.get("email").toString()
+
                     }
-                }
-
             }
+
         }
     }
 
 
-//    private fun showRotationalDialogForPermission() {
-//        AlertDialog.Builder(requireContext())
-//            .setMessage("It looks like you have turned off your permissions"
-//                    +"required for this feature. It can be enabled under App settings")
-//            .setPositiveButton("Go to settings"){_,_ ->
-//                try {
-//                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-//                    val uri= Uri.fromParts("package", packageName, null)
-//                    intent.data = uri
-//                    startActivity(intent)
-//                }
-//                catch (e: ActivityNotFoundException){
-//                    e.printStackTrace()
-//                }
-//            }
-//            .setNegativeButton("CANCEL"){dialog,_ ->
-//                dialog.dismiss()
-//            }.show()
-//    }
-}
+
+
+
+
+
