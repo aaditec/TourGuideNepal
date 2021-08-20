@@ -1,9 +1,11 @@
 package com.example.tour_guide_nepal
 
+import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +15,9 @@ import android.widget.Toolbar
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
@@ -21,6 +26,7 @@ import com.example.tour_guide_nepal.fragments.AboutUsFragment
 import com.example.tour_guide_nepal.fragments.ProfileFragment
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
+import com.example.tour_guide_nepal.notification.NotificationChannels
 import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
@@ -31,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
         android.Manifest.permission.ACCESS_FINE_LOCATION
     )
+
+    private var counter = 0L
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var lstTitle: ArrayList<String>
@@ -52,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         if (!hasPermission()){
             requestPermission()
         }
+        welcomenotification()
 
         populateList()
         val adapter = ViewPagerAdapter(lstFragments, supportFragmentManager, lifecycle)
@@ -100,15 +109,77 @@ class MainActivity : AppCompatActivity() {
             true
 
         }
+
+    }
+
+    override fun onBackPressed() {
+
+        if (counter + 2000 > System.currentTimeMillis()){
+            super.onBackPressed()
+            finish()
+        }
+        else {
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+        }
+        counter = System.currentTimeMillis()
+    }
+
+    private fun welcomenotification() {
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this, notificationChannels.channel_1)
+            .setSmallIcon(R.drawable.notification)
+            .setContentTitle("Tour Guide Nepal")
+            .setContentText("Welcome to Tour Guide Nepal")
+            .setColor(Color.BLUE)
+            .build()
+
+        notificationManager.notify(1, notification)
     }
 
     private fun logout() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Log Out!!")
+        builder.setMessage("Are you sure do you want to Logout ?")
+        builder.setIcon(android.R.drawable.ic_dialog_alert)
+        builder.setPositiveButton("Yes") {_,_ ->
+            userlogout()
+        }
+        builder.setNegativeButton("No") {_,_ ->
+            Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+    }
+
+    private fun userlogout() {
         val sharedPref=this?.getPreferences(Context.MODE_PRIVATE)?:return
 
         sharedPref.edit().remove("Email").apply()
         var intent = Intent(this,LoginActivity::class.java)
         startActivity(intent)
         finish()
+        logoutnotification()
+    }
+
+    private fun logoutnotification() {
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this, notificationChannels.channel_2)
+            .setSmallIcon(R.drawable.notification)
+            .setContentTitle("Tour Guide Nepal")
+            .setContentText("See you again...")
+            .setColor(Color.BLUE)
+            .build()
+
+        notificationManager.notify(2, notification)
     }
 
     private fun requestPermission() {

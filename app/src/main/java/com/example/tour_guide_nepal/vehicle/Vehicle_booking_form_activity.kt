@@ -2,12 +2,16 @@ package com.example.tour_guide_nepal.vehicle
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.example.tour_guide_nepal.ENTITY.VehicleRentEntity
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.Repository.VehicleRentRepository
+import com.example.tour_guide_nepal.notification.NotificationChannels
 import com.example.tour_guide_nepal.view.ui.DetailsActivity
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
 import kotlinx.coroutines.CoroutineScope
@@ -140,6 +144,7 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
                         ).show()
 
                         startActivity(Intent(this@Vehicle_booking_form_activity,DetailsActivity::class.java))
+                    rentnotification()
                     }
                 }
             } catch (ex: Exception) {
@@ -153,5 +158,21 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun rentnotification() {
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this, notificationChannels.channel_2)
+            .setSmallIcon(R.drawable.notification)
+            .setContentTitle("Tour Guide Nepal")
+            .setContentText("Vehicle Rent Successfully")
+            .setColor(Color.GREEN)
+            .build()
+
+        notificationManager.notify(2, notification)
     }
 }
