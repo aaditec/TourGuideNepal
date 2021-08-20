@@ -90,6 +90,8 @@ class Signup : AppCompatActivity() {
                         }
                     }
 
+        val actionBar = supportActionBar
+        actionBar!!.hide()
 
                 val confirmPassword = etconfigpass.text.toString()
                 if (etemail.text.toString().isEmpty()) {
