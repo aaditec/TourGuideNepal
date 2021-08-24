@@ -24,7 +24,6 @@
         <activity android:name=".RateApp"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash_activity"></activity>
-        <activity android:name=".Profile_Activity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -109,13 +108,7 @@
         <activity android:name=".place_details.gorkha_detail_activity" />
         <activity android:name=".place_details.dolakha_detail_activity" />
         <activity android:name=".place_details.chitwan_detail_activity" />
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        
         <activity android:name=".Signup" />
     </application>
 

@@ -1,14 +1,11 @@
-package com.example.tour_guide_nepal.vehicle
+package com.example.tour_guide_nepal
 
 import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
 import com.example.tour_guide_nepal.ENTITY.VehicleRentEntity
-import com.example.tour_guide_nepal.R
-import com.example.tour_guide_nepal.Repository.HotelBookRepository
 import com.example.tour_guide_nepal.Repository.VehicleRentRepository
 import com.example.tour_guide_nepal.view.ui.DetailsActivity
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
@@ -18,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 
-class Vehicle_booking_form_activity : AppCompatActivity() {
+class updatevehiclebooking_activity : AppCompatActivity() {
     private var title = arrayOf("Mr.","Miss")
     private var type_of_vehicle = arrayOf("Two Wheel","Four Wheel")
 
@@ -33,8 +30,8 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
     private lateinit var hirestartdate : TextView
     private lateinit var hireenddate : TextView
     private lateinit var hirecomments : EditText
-    private lateinit var btnrent : Button
-    private lateinit var btnvupdate: Button
+    private lateinit var btnupdate : Button
+    private lateinit var btnvrent : Button
     private lateinit var  no_of_vehicle : ScrollableNumberPicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,8 +47,8 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
         hirestartdate = findViewById(R.id.hirestartdate)
         hireenddate = findViewById(R.id.hireenddate)
         hirecomments = findViewById(R.id.hirecomments)
-        btnrent = findViewById(R.id.btnrent)
-        btnvupdate= findViewById(R.id.btnvupdate)
+        btnvrent = findViewById(R.id.btnvrent)
+        btnupdate= findViewById(R.id.btnupdate)
         no_of_vehicle = findViewById(R.id.no_of_vehicle)
 
         val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,title)
@@ -101,7 +98,7 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
             dpd.show()
 
         }
-        btnrent.setOnClickListener {
+        btnvrent.setOnClickListener {
             rentvehicle()
         }
 
@@ -119,7 +116,7 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
         }
 
 
-        btnvupdate.setOnClickListener {
+        btnupdate.setOnClickListener {
             updatevehicle()
         }
     }
@@ -155,7 +152,7 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
                 val response = vehicleRentRepository.updateVehicleRent(intent?._id!!,vehicleRentEntity)
                 if (response.message != null){
                     withContext(Dispatchers.Main){
-                        Toast.makeText(this@Vehicle_booking_form_activity, "updated successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@updatevehiclebooking_activity, "updated successfully", Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (ex:Exception){
@@ -197,18 +194,18 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
                 if (response.success == true) {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
-                            this@Vehicle_booking_form_activity,
+                            this@updatevehiclebooking_activity,
                             "Vehicle Rent Successfully",
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        startActivity(Intent(this@Vehicle_booking_form_activity,DetailsActivity::class.java))
+                        startActivity(Intent(this@updatevehiclebooking_activity, DetailsActivity::class.java))
                     }
                 }
             } catch (ex: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
-                        this@Vehicle_booking_form_activity,
+                        this@updatevehiclebooking_activity,
                         "Error ${ex.localizedMessage}",
                         Toast.LENGTH_SHORT
                     ).show()

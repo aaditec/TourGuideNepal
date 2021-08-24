@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,10 +7,7 @@
     android:layout_height="match_parent"
     android:background="#f8e8fc"
     tools:context=".place_details.chitwan_detail_activity">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,10 +15,7 @@
         android:layout_marginLeft="8dp"
         android:background="@color/design_default_color_error"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        >
 
 
         <androidx.cardview.widget.CardView
@@ -211,9 +205,5 @@
 
     </LinearLayout>
 
-
-
-</ScrollView>
-
  
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
