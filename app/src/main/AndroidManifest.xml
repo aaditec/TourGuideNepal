@@ -21,16 +21,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RateApp"></activity>
+        <activity android:name=".RateApp" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Splash_activity"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Splash_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".vehicle.Fourwheel_Activity" />
         <activity android:name=".vehicle.TwowheelActivity" />
         <activity android:name=".vehicle.Vehicle_booking_form_activity" />
