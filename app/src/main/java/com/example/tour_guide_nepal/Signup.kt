@@ -12,7 +12,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.Repository.UserRepository
-import com.example.tour_guide_nepal.termsandservices.front_terms_and_services
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +45,7 @@ class Signup : AppCompatActivity() {
 
 
         btnsignup.setOnClickListener {
+
 
             if (validatesignup()) {
 
@@ -101,7 +101,7 @@ class Signup : AppCompatActivity() {
                     )
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                startActivity(Intent(this, front_terms_and_services::class.java))
+                                startActivity(Intent(this, LoginActivity::class.java))
                                 finish()
                             } else {
                                 Toast.makeText(
