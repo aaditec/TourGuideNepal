@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -33,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
     var isRemembered = false
 
     private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,6 +85,22 @@ class LoginActivity : AppCompatActivity() {
         if (validateLogin()) {
             val email = txtname.text.toString()
             val password = txtpass.text.toString()
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        var intent =Intent(this,MainActivity::class.java)
+                        intent.putExtra("email",email)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Wrong Details", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+
+
+
+
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val repository = UserRepository()
@@ -183,7 +201,9 @@ class LoginActivity : AppCompatActivity() {
     fun updateUI(currentUser: FirebaseUser?) {
 
     }
+ 
 }
+ 
 
  
 

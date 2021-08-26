@@ -16,7 +16,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="no_data_available">no_data_available</string>
+    <string name="about_us">
+        Team scrum master is Roshan Gautam. He is motivated and excited to be the scrum master. He organizes and helps team members in each sprint activities. He is the voice of the team and he tries to make team collaboration. Till now, there is no problem with the scrum master.
+    </string>
+    <string name="roshan_info">Team scrum master is Roshan Gautam. He is motivated and excited to be the scrum master. He organizes and helps team members in each sprint activities. He is the voice of the team and he tries to make team collaboration. Till now, there is no problem with the scrum master.</string>
 
+ 
     //front terms and services
 
     <string name="front1">Welcome to Tour Guide Nepal. This application is a trustworthy guide for tourists and our customers and need to be bound by Terms and Conditions as this application is used. Because the Terms and Conditions contain legal obligations, please read them carefully.</string>
@@ -44,6 +49,7 @@
     <string name="back11">Our company does not provide insurance for any of our tours or treks. It is highly recommended for our clients to have travel insurance high altitude medical expenses, personal accidents, emergency evacuations, trip cancellations, loss of gears and natural calamity, theft of or damage to baggage and personal effects as our company is not responsible for any of these incidents.</string>
     <string name="back12">Note: The above terms and conditions are applicable when clients book directly from us. For any bookings received from third party, clients shall be liable to their terms and Condition.</string>
 
+ 
     <string-array name="roomtype">
         <item>Standard Room(1 to 3 people)</item>
         <item>Family Room(1 to 4 people)</item>
