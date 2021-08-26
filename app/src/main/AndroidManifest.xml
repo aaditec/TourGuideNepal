@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
-        <activity android:name=".termsandservices.back_terms_and_services"></activity>
+        <activity android:name=".termsandservices.termsandconditions"></activity>
+        <activity android:name=".termsandservices.back_terms_and_services" />
         <activity android:name=".termsandservices.front_terms_and_services" />
         <activity android:name=".updateprofile_activity" />
         <activity android:name=".Emergency_contact_activity" />
