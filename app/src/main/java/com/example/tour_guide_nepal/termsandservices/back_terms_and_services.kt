@@ -11,9 +11,12 @@ class back_terms_and_services : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_back_terms_and_services)
+        val actionBar = supportActionBar
+        actionBar!!.hide()
+        backterms = findViewById(R.id.backterms)
 
-       backterms=findViewById(R.id.backterms)
-
-        startActivity(Intent(this@back_terms_and_services,termsandconditions::class.java))
+        backterms.setOnClickListener {
+            startActivity(Intent(this@back_terms_and_services, termsandconditions::class.java))
+        }
     }
 }

@@ -16,10 +16,13 @@ class front_terms_and_services : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_front_terms_and_services)
 
-        backlogin=findViewById(R.id.backlogin)
-        termspage=findViewById(R.id.termspage)
+        backlogin = findViewById(R.id.backlogin)
+        termspage = findViewById(R.id.termspage)
 
-        startActivity(Intent(this,termsandconditions::class.java))
-        startActivity(Intent(this,LoginActivity::class.java))
+        backlogin.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
+
+        termspage.setOnClickListener {
+        startActivity(Intent(this, termsandconditions::class.java))}
+
     }
 }

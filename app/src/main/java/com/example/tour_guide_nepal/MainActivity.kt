@@ -18,6 +18,7 @@ import com.example.tour_guide_nepal.fragments.AboutUsFragment
 import com.example.tour_guide_nepal.fragments.ProfileFragment
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
+import com.example.tour_guide_nepal.termsandservices.back_terms_and_services
 import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Emergency Contact Selected", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_terms -> {
-                    Toast.makeText(this, "Terms and Services Selected", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,back_terms_and_services::class.java))
                 }
                 R.id.nav_rateapp -> Toast.makeText(
                     applicationContext,
