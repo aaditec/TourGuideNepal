@@ -24,8 +24,13 @@ class forgotpassword_activity : AppCompatActivity() {
         et_forget_email = findViewById(R.id.et_forget_email)
         mAuth = FirebaseAuth.getInstance()
 
+        val email = et_forget_email.text.toString()
 
 
+ 
+        btn_submit.setOnClickListener {
+            FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+ 
         btn_submit.setOnClickListener { sendPasswordResetEmail() }
     }
 
@@ -34,6 +39,7 @@ class forgotpassword_activity : AppCompatActivity() {
         if (!TextUtils.isEmpty(email)) {
             mAuth!!
                 .sendPasswordResetEmail(email)
+ 
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val message = "Email sent."

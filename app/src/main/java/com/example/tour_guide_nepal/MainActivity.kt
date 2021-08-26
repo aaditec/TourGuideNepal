@@ -26,7 +26,10 @@ import com.example.tour_guide_nepal.fragments.AboutUsFragment
 import com.example.tour_guide_nepal.fragments.ProfileFragment
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
+ 
+import com.example.tour_guide_nepal.termsandservices.back_terms_and_services
 import com.example.tour_guide_nepal.notification.NotificationChannels
+ 
 import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
@@ -57,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.navmenu)
 
         // check for permission
-        if (!hasPermission()){
+        if (!hasPermission()) {
             requestPermission()
         }
         welcomenotification()
@@ -92,6 +95,12 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, HotelBookingInfo::class.java))
                 }
                 R.id.nav_contact -> {
+ 
+                    Toast.makeText(this, "Emergency Contact Selected", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_terms -> {
+                    startActivity(Intent(this,back_terms_and_services::class.java))
+ 
 
                 }
                 R.id.nav_terms -> {
@@ -99,6 +108,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_rateapp -> {
                     startActivity(Intent(this,RateApp::class.java))
+ 
                 }
                 R.id.nav_logout -> {
 
@@ -141,6 +151,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun logout() {
+ 
+        val sharedPref = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.clear()
+        editor.apply()
+        startActivity(Intent(this, LoginActivity::class.java))
+ 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Log Out!!")
         builder.setMessage("Are you sure do you want to Logout ?")
@@ -180,23 +197,24 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         notificationManager.notify(2, notification)
+ 
     }
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(
             this@MainActivity,
-            permissions,1
+            permissions, 1
         )
     }
 
     private fun hasPermission(): Boolean {
         var hasPermission = true
-        for (permission in permissions){
+        for (permission in permissions) {
             if (ActivityCompat.checkSelfPermission(
                     this,
                     permission
-                ) != PackageManager.PERMISSION_GRANTED)
-            {
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 hasPermission = false
             }
         }

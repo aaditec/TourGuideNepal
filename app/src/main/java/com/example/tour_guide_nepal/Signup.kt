@@ -47,6 +47,7 @@ class Signup : AppCompatActivity() {
 
         btnsignup.setOnClickListener {
 
+
             if (validatesignup()) {
 
                 val FullName = etname.text.toString()
