@@ -4,50 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/solukhumbu"
+    android:background="@drawable/e"
     android:padding="10dp"
     tools:context=".LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
- 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/tourlogo"
-                android:layout_width="350dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:alpha=".6"
-                android:scaleType="fitXY"
-                android:src="@drawable/secondlogo" />
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/tourlogo"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/splashlogo" />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:text="Tour Guide Nepal"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="360dp"
-                android:layout_gravity="center"
-                android:layout_height="match_parent"
-                android:layout_marginTop="40dp"
-                android:alpha=".8"
-                android:backgroundTint="#f1f5eb"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="100dp">
- 
+
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="380dp"
+                    android:layout_gravity="center"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="70dp"
                     android:orientation="vertical"
                     android:padding="30dp">
 
+                    <TextView
+                        android:text="LOGIN"
+                        android:textSize="40dp"
+                        android:textStyle="bold"
+                        android:textColor="#f06616"
+                        android:layout_gravity="left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
                     <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/inputname"
+                            android:layout_marginTop="20dp"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -95,7 +111,8 @@
                             android:id="@+id/saveuser"
                             android:text="Remember me"
                             android:textStyle="bold"
-                            android:textSize="15dp"
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"/>
@@ -105,7 +122,7 @@
                             android:id="@+id/forgotpass"
                             android:text="Forgot Password?"
                             android:textStyle="bold"
-                            android:textSize="15dp"
+                            android:textSize="16dp"
                             android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_weight="1"
@@ -125,7 +142,8 @@
                             android:layout_gravity="center_horizontal"
                             android:text="login"
                             android:textSize="16dp"
-                            app:backgroundTint="#08a896" />
+                            android:padding="10dp"
+                            app:backgroundTint="#f06616" />
 
                         <TextView
                             android:layout_marginTop="10dp"
@@ -168,12 +186,10 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="100dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
@@ -182,6 +198,8 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Don't have an account?"
+                    android:textStyle="bold"
+                    android:textSize="17dp"
                     android:textColor="@color/white" />
 
                 <TextView
