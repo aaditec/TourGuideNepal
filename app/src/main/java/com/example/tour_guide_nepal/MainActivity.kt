@@ -145,13 +145,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun logout() {
- 
-        val sharedPref = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.clear()
-        editor.apply()
-        startActivity(Intent(this, LoginActivity::class.java))
- 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Log Out!!")
         builder.setMessage("Are you sure do you want to Logout ?")
