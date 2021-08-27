@@ -1,11 +1,15 @@
 package com.example.tour_guide_nepal
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
 import com.example.tour_guide_nepal.Repository.HotelBookRepository
+import com.example.tour_guide_nepal.notification.NotificationChannels
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -131,6 +135,7 @@ class Hotelbooking_Activity : AppCompatActivity() {
                             "Hotel Booked Successfully",
                             Toast.LENGTH_SHORT
                         ).show()
+                        hotelbooknotification()
                     }
                 }
             } catch (ex: Exception) {
@@ -144,5 +149,21 @@ class Hotelbooking_Activity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun hotelbooknotification() {
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this, notificationChannels.channel_1)
+            .setSmallIcon(R.drawable.notification)
+            .setContentTitle("Tour Guide Nepal")
+            .setContentText("Hotel Book Successfully")
+            .setColor(Color.GREEN)
+            .build()
+
+        notificationManager.notify(1, notification)
     }
 }

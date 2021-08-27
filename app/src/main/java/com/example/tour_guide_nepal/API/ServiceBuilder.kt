@@ -13,8 +13,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
  
+ 
 //    private const val BASE_URL = "http://10.0.2.2:90/"
-    private const val BASE_URL = "http://192.168.10.103:90/"
+    private const val BASE_URL = "http://192.168.10.115:90/"
+ 
  
  
  
@@ -26,11 +28,7 @@ object ServiceBuilder {
     private val okhttp =
         OkHttpClient.Builder()
 
-    // Configure Google Sign In
-    var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken("528198962031-7825tjipd7d4hsjls9akv32e03k3l3dg.apps.googleusercontent.com")
-        .requestEmail()
-        .build()
+
     //create retrofit builder
     private val retrofitBuilder = Retrofit.Builder()
         .baseUrl(BASE_URL)

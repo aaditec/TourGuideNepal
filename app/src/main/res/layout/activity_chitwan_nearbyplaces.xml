@@ -55,6 +55,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/bus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Bus stop"
@@ -85,6 +86,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/restaurent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Resturants"
@@ -116,6 +118,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/hospital"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hospitals"
@@ -155,6 +158,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/atm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ATM"
@@ -185,6 +189,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/hotel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hotels"
@@ -216,6 +221,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/police"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Police station"
@@ -255,6 +261,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/market"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Shopping mall"
@@ -285,6 +292,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/coffee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cafe"
@@ -316,6 +324,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/visitzoo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Zoo"

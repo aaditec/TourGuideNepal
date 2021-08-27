@@ -37,6 +37,7 @@ class HotelBookingInfo : AppCompatActivity(){
     }
 
     private fun loadbookingdetails() {
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val hotelBookDetails = HotelBookDetails()
