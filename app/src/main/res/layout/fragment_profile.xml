@@ -46,31 +46,37 @@
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="MissingClass" />
 
+                        <ProgressBar
+                            android:visibility="invisible"
+                            android:id="@+id/progressbar_pic"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
 
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/ettvfullname"
+                            android:text="Full Name"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/ettvemail"
+                            android:text="something@gmail.com"
+                            android:textSize="18dp"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
 
 
-                    <TextView
 
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/ettvfullname"
-                        android:text="Full Name"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:id="@+id/ettvemail"
-                        android:text="something@gmail.com"
-                        android:textSize="18dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -176,7 +182,7 @@
                     android:orientation="vertical">
 
 
- 
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -184,7 +190,7 @@
                             android:textColor="@color/black"
                             android:textSize="17dp"
                             android:textStyle="bold"/>
- 
+
                     <TextView
                         android:id="@+id/eemail"
                         android:layout_width="match_parent"
@@ -193,7 +199,7 @@
                         android:textSize="17dp"
                         android:textStyle="bold"/>
 
- 
+
 
                 </LinearLayout>
 
@@ -231,11 +237,23 @@
                         android:hint="Mobile number here"
                         android:textSize="17dp"
                         android:textStyle="bold"/>
-
                 </LinearLayout>
-
             </LinearLayout>
-
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:visibility="invisible"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+<Button
+    android:id="@+id/btnsave"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:textColor="@color/white"
+    android:text="Save"
+    />
         </LinearLayout>
 
     </ScrollView>
