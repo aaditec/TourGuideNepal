@@ -17,22 +17,30 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+ 
 import coil.load
 import coil.transform.CircleCropTransformation
+ 
+ 
+import androidx.core.content.ContextCompat.startActivity
+ 
 
 import com.example.tour_guide_nepal.ENTITY.User
+ 
+import coil.transform.CircleCropTransformation
+ 
 import com.example.tour_guide_nepal.LoginActivity
 import com.example.tour_guide_nepal.MainActivity
 import com.example.tour_guide_nepal.R
-import com.example.tour_guide_nepal.Repository.HotelBookRepository
-import com.example.tour_guide_nepal.Repository.UserRepository
+
 import kotlinx.android.synthetic.main.activity_gorkha_weather.*
+ 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+ 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -70,6 +78,7 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
 
 
+ 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         etfullname = view.findViewById(R.id.ffullname)
         eefullname = view.findViewById(R.id.ettvfullname)
@@ -109,66 +118,68 @@ class ProfileFragment : Fragment() {
 
             intentcamera()
         }
-
-        return view
-    }
-
-    private fun intentcamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
-            activity?.packageManager?.let {
-                intent.resolveActivity(it).also {
-                    startActivityForResult(intent, REQUEST_CAMERA)
-                }
-            }
+ 
+            return view
         }
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            uploadimage(imageBitmap)
-        }
-    }
-
-    private fun uploadimage(imageBitmap: Bitmap) {
-        val baos = ByteArrayOutputStream()
-
-        val ref =
-            FirebaseStorage.getInstance().reference.child("img/${FirebaseAuth.getInstance().currentUser?.uid}")
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val image = baos.toByteArray()
-        ref.putBytes(image)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    ref.downloadUrl.addOnCompleteListener {
-                        it.result?.let {
-                            imageUri = it
-                            camera.setImageBitmap(imageBitmap)
-                        }
+        private fun intentcamera() {
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
+                activity?.packageManager?.let {
+                    intent.resolveActivity(it).also {
+                        startActivityForResult(intent, REQUEST_CAMERA)
                     }
-
+ 
                 }
             }
-    }
-
-
-    private fun setText(email: String?) {
-        db = FirebaseFirestore.getInstance()
-        if (email != null) {
-            db.collection("USERS").document(email).get()
-                .addOnSuccessListener { tasks ->
-                    ffullname.text = tasks.get("Name").toString()
-                    ettvfullname.text = tasks.get("Name").toString()
-                    ettvemail.text = tasks.get("email").toString()
-                    pphone.text = tasks.get("Phone").toString()
-                    eemail.text = tasks.get("email").toString()
-
-                }
         }
 
-    }
-}
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+            if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
+                val imageBitmap = data?.extras?.get("data") as Bitmap
+                uploadimage(imageBitmap)
+            }
+        }
+
+        private fun uploadimage(imageBitmap: Bitmap) {
+            val baos = ByteArrayOutputStream()
+
+            val ref =
+                FirebaseStorage.getInstance().reference.child("img/${FirebaseAuth.getInstance().currentUser?.uid}")
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val image = baos.toByteArray()
+            ref.putBytes(image)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        ref.downloadUrl.addOnCompleteListener {
+                            it.result?.let {
+                                imageUri = it
+                                camera.setImageBitmap(imageBitmap)
+                            }
+                        }
+ 
+                    }
+                }
+
+            }
+
+        private fun setText(email: String?) {
+            db = FirebaseFirestore.getInstance()
+            if (email != null) {
+                db.collection("USERS").document(email).get()
+                    .addOnSuccessListener { tasks ->
+                        ffullname.text = tasks.get("Name").toString()
+                        ettvfullname.text = tasks.get("Name").toString()
+                        ettvemail.text = tasks.get("email").toString()
+                        pphone.text = tasks.get("Phone").toString()
+                        eemail.text = tasks.get("email").toString()
+
+                    }
+            }
+
+        }}
+
+ 
 
 
 
