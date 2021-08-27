@@ -17,162 +17,173 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import coil.load
 import coil.transform.CircleCropTransformation
-
-import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.LoginActivity
 import com.example.tour_guide_nepal.MainActivity
 import com.example.tour_guide_nepal.R
 
-import com.example.tour_guide_nepal.Repository.HotelBookRepository
-import com.example.tour_guide_nepal.Repository.UserRepository
 import kotlinx.android.synthetic.main.activity_gorkha_weather.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.io.ByteArrayOutputStream
+ 
 
 
 @Suppress("UNREACHABLE_CODE", "DEPRECATION")
 class ProfileFragment : Fragment() {
 
-    companion object {
-        const val REQUEST_CAMERA = 100
-    }
+        companion object {
+            const val REQUEST_CAMERA = 100
+        }
 
-    private lateinit var db: FirebaseFirestore
-    private lateinit var imageUri: Uri
-
-
-    private lateinit var backhome: FrameLayout
-    private lateinit var imageView: ImageView
-    private lateinit var camera: ImageView
-
-    private lateinit var etfullname: TextView
-    private lateinit var eefullname: TextView
-    private lateinit var eeemail: TextView
-    private lateinit var etemail: TextView
-    private lateinit var etphone: TextView
+        private lateinit var db: FirebaseFirestore
+        private lateinit var imageUri: Uri
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        private lateinit var backhome: FrameLayout
+        private lateinit var imageView: ImageView
+        private lateinit var camera: ImageView
 
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+        private lateinit var etfullname: TextView
+        private lateinit var eefullname: TextView
+        private lateinit var eeemail: TextView
+        private lateinit var etemail: TextView
+        private lateinit var etphone: TextView
 
 
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        etfullname = view.findViewById(R.id.ffullname)
-        eefullname = view.findViewById(R.id.ettvfullname)
-        eeemail = view.findViewById(R.id.ettvemail)
-        etemail = view.findViewById(R.id.eemail)
-        etphone = view.findViewById(R.id.pphone)
-        backhome = view.findViewById(R.id.backhome)
-        camera = view.findViewById(R.id.camera)
+
+ 
 
 
-        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        val isLogin = sharedPref.getString("Email", "1")
 
-        if (isLogin == "1") {
-            var email = requireActivity().intent.getStringExtra("email")
-            if (email != null) {
-                setText(email)
-                with(sharedPref.edit())
-                {
-                    putString("Email", email)
-                    apply()
+
+
+
+
+
+
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+
+        }
+
+        @SuppressLint("SetTextI18n")
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            // Inflate the layout for this fragment
+
+
+            val view = inflater.inflate(R.layout.fragment_profile, container, false)
+            etfullname = view.findViewById(R.id.ffullname)
+            eefullname = view.findViewById(R.id.ettvfullname)
+            eeemail = view.findViewById(R.id.ettvemail)
+            etemail = view.findViewById(R.id.eemail)
+            etphone = view.findViewById(R.id.pphone)
+            backhome = view.findViewById(R.id.backhome)
+            camera = view.findViewById(R.id.camera)
+
+
+            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            val isLogin = sharedPref.getString("Email", "1")
+
+            if (isLogin == "1") {
+                var email = requireActivity().intent.getStringExtra("email")
+                if (email != null) {
+                    setText(email)
+                    with(sharedPref.edit())
+                    {
+                        putString("Email", email)
+                        apply()
+                    }
+                } else {
+                    var intent = Intent(activity, LoginActivity::class.java)
+                    startActivity(intent)
+
                 }
             } else {
-                var intent = Intent(activity, LoginActivity::class.java)
-                startActivity(intent)
-
+                setText(isLogin)
             }
-        } else {
-            setText(isLogin)
-        }
 
-        backhome.setOnClickListener {
-            startActivity(Intent(activity, MainActivity::class.java))
-        }
-
-        camera.setOnClickListener {
-
-            intentcamera()
-        }
-
-        return view
-    }
-
-    private fun intentcamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
-            activity?.packageManager?.let {
-                intent.resolveActivity(it).also {
-                    startActivityForResult(intent, REQUEST_CAMERA)
-                }
+            backhome.setOnClickListener {
+                startActivity(Intent(activity, MainActivity::class.java))
             }
+
+            camera.setOnClickListener {
+
+                intentcamera()
+            }
+
+            return view
         }
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            uploadimage(imageBitmap)
-        }
-    }
-
-    private fun uploadimage(imageBitmap: Bitmap) {
-        val baos = ByteArrayOutputStream()
-
-        val ref =
-            FirebaseStorage.getInstance().reference.child("img/${FirebaseAuth.getInstance().currentUser?.uid}")
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val image = baos.toByteArray()
-        ref.putBytes(image)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    ref.downloadUrl.addOnCompleteListener {
-                        it.result?.let {
-                            imageUri = it
-                            camera.setImageBitmap(imageBitmap)
-                        }
+        private fun intentcamera() {
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
+                activity?.packageManager?.let {
+                    intent.resolveActivity(it).also {
+                        startActivityForResult(intent, REQUEST_CAMERA)
                     }
-
                 }
             }
-    }
-    private fun setText(email: String?) {
-        db = FirebaseFirestore.getInstance()
-        if (email != null) {
-            db.collection("USERS").document(email).get()
-                .addOnSuccessListener { tasks ->
-                    ffullname.text = tasks.get("Name").toString()
-                    ettvfullname.text = tasks.get("Name").toString()
-                    ettvemail.text = tasks.get("email").toString()
-                    pphone.text = tasks.get("Phone").toString()
-                    eemail.text = tasks.get("email").toString()
-
-                }
         }
 
-    }
-}
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+            if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
+                val imageBitmap = data?.extras?.get("data") as Bitmap
+                uploadimage(imageBitmap)
+            }
+        }
+
+        private fun uploadimage(imageBitmap: Bitmap) {
+            val baos = ByteArrayOutputStream()
+
+            val ref =
+                FirebaseStorage.getInstance().reference.child("img/${FirebaseAuth.getInstance().currentUser?.uid}")
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val image = baos.toByteArray()
+            ref.putBytes(image)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        ref.downloadUrl.addOnCompleteListener {
+                            it.result?.let {
+                                imageUri = it
+                                camera.setImageBitmap(imageBitmap)
+                            }
+                        }
+ 
+                    }
+                }
+
+            }
+
+ 
+
+
+ 
+
+
+        private fun setText(email: String?) {
+            db = FirebaseFirestore.getInstance()
+            if (email != null) {
+                db.collection("USERS").document(email).get()
+                    .addOnSuccessListener { tasks ->
+                        ffullname.text = tasks.get("Name").toString()
+                        ettvfullname.text = tasks.get("Name").toString()
+                        ettvemail.text = tasks.get("email").toString()
+                        pphone.text = tasks.get("Phone").toString()
+                        eemail.text = tasks.get("email").toString()
+
+                    }
+            }
+
+        }}
+
 
 
 
