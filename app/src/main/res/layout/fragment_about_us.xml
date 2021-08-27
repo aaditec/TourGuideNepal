@@ -3,45 +3,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#0b87b0"
+    android:padding="10dp"
     tools:context=".fragments.AboutUsFragment">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:ignore="MissingConstraints">
+                android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:padding="10dp"
-            android:id="@+id/aboutusimage"
-            android:layout_width="match_parent"
-            android:layout_height="340dp"
-            android:scaleType="fitXY"
-            android:alpha=".9"
-            android:src="@drawable/abouttopimage" />
-    
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/about1"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/splashlogo" />
 
                     <TextView
+                        android:id="@+id/about2"
+                        android:layout_marginTop="20dp"
+                        android:text="Tour Guide Nepal"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:layout_toRightOf="@id/about1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/about3"
+                    android:text="Travelling, Booking and Camping"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_below="@+id/about1"
+                    android:layout_toEndOf="@id/about2"
+                    android:layout_marginTop="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_below="@id/about3"
+                    android:layout_toEndOf="@id/about2"
+                    android:text="@string/about31"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:padding="10dp"
+                        android:id="@+id/about4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:scaleType="fitXY"
+                        android:layout_below="@+id/about1"
+                        android:layout_toLeftOf="@+id/about3"
+                        android:alpha=".9"
+                        android:src="@drawable/abouttopimage" />
+
+                    <TextView
+                        android:id="@+id/about5"
+                        android:padding="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_gravity="center"
                         android:text="About us"
                         android:textStyle="bold"
                         android:textSize="30dp"
+                        android:layout_below="@+id/about4"
+                        android:layout_centerHorizontal="true"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <TextView
+                        android:id="@+id/about6"
+                        android:layout_below="@+id/about5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/about_us"
@@ -50,6 +91,9 @@
 
 
                     <TextView
+                        android:id="@+id/about7"
+                        android:layout_below="@+id/about6"
+                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
                         android:text="Encoders"
@@ -59,36 +103,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-                </LinearLayout>
-
                <androidx.viewpager2.widget.ViewPager2
                    android:id="@+id/viewPager_ImageSlider"
+                   android:layout_below="@+id/about7"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:paddingStart="70dp"
                    android:paddingEnd="70dp"/>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="6dp"
-                    android:layout_margin="10dp">
 
-                    <com.denzcoskun.imageslider.ImageSlider
-                        android:id="@+id/teamimage"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        app:iss_auto_cycle="true"
-                        app:iss_period="2500"
-                        app:iss_delay="0"/>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-        </ScrollView>
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>

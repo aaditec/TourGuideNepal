@@ -33,39 +33,38 @@ class forgotpassword_activity : AppCompatActivity() {
 
             btn_submit.setOnClickListener { sendPasswordResetEmail() }
         }
-    }
 
-    private fun sendPasswordResetEmail() {
-        val email = et_forget_email?.text.toString()
-        if (!TextUtils.isEmpty(email)) {
-            mAuth!!
-                .sendPasswordResetEmail(email)
+        private fun sendPasswordResetEmail() {
+            val email = et_forget_email?.text.toString()
+            if (!TextUtils.isEmpty(email)) {
+                mAuth!!
+                    .sendPasswordResetEmail(email)
 
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val message = "Email sent."
-                        Log.d(TAG, message)
-                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                        updateUI()
-                    } else {
-                        Log.w(TAG, task.exception!!.message.toString())
-                        Toast.makeText(
-                            this,
-                            "No user found with this email.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val message = "Email sent."
+                            Log.d(TAG, message)
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                            updateUI()
+                        } else {
+                            Log.w(TAG, task.exception!!.message.toString())
+                            Toast.makeText(
+                                this,
+                                "No user found with this email.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
-        } else {
-            Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
 
-
-    private fun updateUI() {
-        val intent = Intent(this@forgotpassword_activity, LoginActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+        private fun updateUI() {
+            val intent = Intent(this@forgotpassword_activity, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
     }
 }
 
