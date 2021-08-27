@@ -12,12 +12,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.Repository.UserRepository
+ 
+import com.example.tour_guide_nepal.termsandservices.front_terms_and_services
+ 
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
+ 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -82,8 +86,10 @@ class Signup : AppCompatActivity() {
                                     if(task.isSuccessful)
                                     {
                                         Users.document(email).set(users)
-                                        val intent=Intent(this, LoginActivity::class.java)
-                                        intent.putExtra("email", email)
+ 
+                                        val intent=Intent(this,front_terms_and_services::class.java)
+                                        intent.putExtra("email",email)
+ 
                                         startActivity(intent)
                                         finish()
                                     }
