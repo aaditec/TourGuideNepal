@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,14 +13,7 @@ import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.Repository.UserRepository
  
 import com.example.tour_guide_nepal.termsandservices.front_terms_and_services
- 
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.Task
-import com.google.firebase.FirebaseApp
- 
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -43,7 +35,7 @@ class Signup : AppCompatActivity() {
     private lateinit var etphone: TextView
     private lateinit var etpass: TextView
     private lateinit var etconfigpass: TextView
-    private lateinit var etemail: TextView
+    private lateinit var eetemail: TextView
     private lateinit var btnlog: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +45,7 @@ class Signup : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
  
         etname = findViewById(R.id.etname)
-        etemail = findViewById(R.id.etemail)
+        eetemail = findViewById(R.id.etemail)
         etpass = findViewById(R.id.etpass)
         etconfigpass = findViewById(R.id.etconpass)
         etphone = findViewById(R.id.etphone)
@@ -72,7 +64,7 @@ class Signup : AppCompatActivity() {
 
                 val FullName = etname.text.toString()
  
-                val email = etemail.text.toString()
+                val email = eetemail.text.toString()
  
                 val phone = etphone.text.toString()
                 val password = etpass.text.toString()
@@ -121,15 +113,15 @@ class Signup : AppCompatActivity() {
         actionBar!!.hide()
 
                 val confirmPassword = etconfigpass.text.toString()
-                if (etemail.text.toString().isEmpty()) {
-                    etemail.error = "Please enter email"
-                    etemail.requestFocus()
+                if (eetemail.text.toString().isEmpty()) {
+                    eetemail.error = "Please enter email"
+                    eetemail.requestFocus()
 
                 }
 
-                if (!Patterns.EMAIL_ADDRESS.matcher(etemail.text.toString()).matches()) {
-                    etemail.error = "Please enter valid email"
-                    etemail.requestFocus()
+                if (!Patterns.EMAIL_ADDRESS.matcher(eetemail.text.toString()).matches()) {
+                    eetemail.error = "Please enter valid email"
+                    eetemail.requestFocus()
 
                 }
                 if (etphone.text.toString().isEmpty()) {
@@ -158,7 +150,7 @@ class Signup : AppCompatActivity() {
 
                             fullname = FullName,
  
-                            email = etemail,
+                            email = eetemail.toString(),
  
                             phone = phone,
                             password = password
@@ -220,15 +212,15 @@ class Signup : AppCompatActivity() {
 
  
         var valid = true
-        etemail.error = null
+        eetemail.error = null
         etname.error = null
         etpass.error = null
         etconfigpass.error = null
         etphone.error = null
 
 
-        if (sanitize(etemail as EditText).isEmpty()) {
-            etemail.error = "Email can not be empty"
+        if (sanitize(eetemail as EditText).isEmpty()) {
+            eetemail.error = "Email can not be empty"
             valid = false
         }
 
