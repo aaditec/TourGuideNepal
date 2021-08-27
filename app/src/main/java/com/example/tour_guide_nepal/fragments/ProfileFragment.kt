@@ -21,8 +21,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import coil.load
-import coil.transform.CircleCropTransformation
+import androidx.core.content.ContextCompat.startActivity
+
 import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.LoginActivity
 import com.example.tour_guide_nepal.MainActivity
@@ -179,20 +179,20 @@ class ProfileFragment : Fragment() {
                     val bitmap = data?.extras?.get("data") as Bitmap
 
                     //using coroutine image loader (coil)
-                    imageView.load(bitmap) {
-                        crossfade(true)
-                        crossfade(1000)
-                        transformations(CircleCropTransformation())
-                    }
-                }
-
-                GALLERY_REQUEST_CODE -> {
-
-                    imageView.load(data?.data) {
-                        crossfade(true)
-                        crossfade(1000)
-                        transformations(CircleCropTransformation())
-                    }
+//                    imageView.load(bitmap) {
+//                        crossfade(true)
+//                        crossfade(1000)
+//                        transformations(CircleCropTransformation())
+//                    }
+//                }
+//
+//                GALLERY_REQUEST_CODE -> {
+//
+//                    imageView.load(data?.data) {
+//                        crossfade(true)
+//                        crossfade(1000)
+//                        transformations(CircleCropTransformation())
+//                    }
                 }
 
             }
