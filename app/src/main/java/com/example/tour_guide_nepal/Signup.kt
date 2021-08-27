@@ -2,16 +2,22 @@ package com.example.tour_guide_nepal
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.Repository.UserRepository
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -24,6 +30,8 @@ class Signup : AppCompatActivity() {
     private lateinit var btnsignup: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+
+
 
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
@@ -45,6 +53,10 @@ class Signup : AppCompatActivity() {
         btnlog = findViewById(R.id.btnlog)
         db= FirebaseFirestore.getInstance()
 
+
+
+
+
         btnsignup.setOnClickListener {
 
 
@@ -61,32 +73,34 @@ class Signup : AppCompatActivity() {
                     "email" to email
                 )
                 val Users=db.collection("USERS")
-                val query = Users.whereEqualTo("email",email).get()
-                    .addOnSuccessListener {
-                            tasks->
+                val query = Users.whereEqualTo("email", email).get()
+                    .addOnSuccessListener { tasks->
                         if(tasks.isEmpty)
                         {
-                            auth.createUserWithEmailAndPassword(email,password)
-                                .addOnCompleteListener(this){
-                                        task->
+                            auth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(this){ task->
                                     if(task.isSuccessful)
                                     {
                                         Users.document(email).set(users)
-                                        val intent=Intent(this,LoginActivity::class.java)
-                                        intent.putExtra("email",email)
+                                        val intent=Intent(this, LoginActivity::class.java)
+                                        intent.putExtra("email", email)
                                         startActivity(intent)
                                         finish()
                                     }
                                     else
                                     {
-                                        Toast.makeText(this,"Authentication Failed", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(
+                                            this,
+                                            "Authentication Failed",
+                                            Toast.LENGTH_LONG
+                                        ).show()
                                     }
                                 }
                         }
                         else
                         {
-                            Toast.makeText(this,"User Already Registered", Toast.LENGTH_LONG).show()
-                            val intent= Intent(this,LoginActivity::class.java)
+                            Toast.makeText(this, "User Already Registered", Toast.LENGTH_LONG).show()
+                            val intent= Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                         }
                     }
