@@ -31,12 +31,14 @@ import kotlinx.coroutines.withContext
 
 
 class Signup : AppCompatActivity() {
+ 
     private lateinit var btnsignup: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
 
 
+ 
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
     private lateinit var etpass: TextView
@@ -47,7 +49,9 @@ class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+ 
         auth = FirebaseAuth.getInstance()
+ 
         etname = findViewById(R.id.etname)
         etemail = findViewById(R.id.etemail)
         etpass = findViewById(R.id.etpass)
@@ -67,7 +71,9 @@ class Signup : AppCompatActivity() {
             if (validatesignup()) {
 
                 val FullName = etname.text.toString()
+ 
                 val email = etemail.text.toString()
+ 
                 val phone = etphone.text.toString()
                 val password = etpass.text.toString()
 
@@ -151,7 +157,9 @@ class Signup : AppCompatActivity() {
                         User(
 
                             fullname = FullName,
-                            email = email,
+ 
+                            email = etemail,
+ 
                             phone = phone,
                             password = password
                         )
@@ -210,6 +218,7 @@ class Signup : AppCompatActivity() {
 
     private fun validatesignup(): Boolean {
 
+ 
         var valid = true
         etemail.error = null
         etname.error = null
@@ -240,6 +249,7 @@ class Signup : AppCompatActivity() {
             etphone.error = "phone number can not be empty"
             valid = false
         }
+ 
 
 
         return valid
