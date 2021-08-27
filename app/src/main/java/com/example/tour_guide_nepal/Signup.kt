@@ -12,12 +12,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.Repository.UserRepository
+ 
+import com.example.tour_guide_nepal.termsandservices.front_terms_and_services
+ 
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
+ 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -27,12 +31,14 @@ import kotlinx.coroutines.withContext
 
 
 class Signup : AppCompatActivity() {
+ 
     private lateinit var btnsignup: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
 
 
+ 
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
     private lateinit var etpass: TextView
@@ -43,7 +49,9 @@ class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+ 
         auth = FirebaseAuth.getInstance()
+ 
         etname = findViewById(R.id.etname)
         etemail = findViewById(R.id.etemail)
         etpass = findViewById(R.id.etpass)
@@ -63,7 +71,9 @@ class Signup : AppCompatActivity() {
             if (validatesignup()) {
 
                 val FullName = etname.text.toString()
+ 
                 val email = etemail.text.toString()
+ 
                 val phone = etphone.text.toString()
                 val password = etpass.text.toString()
 
@@ -82,8 +92,10 @@ class Signup : AppCompatActivity() {
                                     if(task.isSuccessful)
                                     {
                                         Users.document(email).set(users)
-                                        val intent=Intent(this, LoginActivity::class.java)
-                                        intent.putExtra("email", email)
+ 
+                                        val intent=Intent(this,front_terms_and_services::class.java)
+                                        intent.putExtra("email",email)
+ 
                                         startActivity(intent)
                                         finish()
                                     }
@@ -145,7 +157,9 @@ class Signup : AppCompatActivity() {
                         User(
 
                             fullname = FullName,
-                            email = email,
+ 
+                            email = etemail,
+ 
                             phone = phone,
                             password = password
                         )
@@ -204,6 +218,7 @@ class Signup : AppCompatActivity() {
 
     private fun validatesignup(): Boolean {
 
+ 
         var valid = true
         etemail.error = null
         etname.error = null
@@ -234,6 +249,7 @@ class Signup : AppCompatActivity() {
             etphone.error = "phone number can not be empty"
             valid = false
         }
+ 
 
 
         return valid
