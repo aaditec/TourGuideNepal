@@ -22,8 +22,10 @@ class RegistrationTesting {
     @Test
     fun TestRegisterUI(){
 
-        Espresso.onView(withId(R.id.etuser)).perform(ViewActions.closeSoftKeyboard())
-            .perform(ViewActions.typeText("test"))
+        Espresso.onView(withId(R.id.etemail)).perform(ViewActions.closeSoftKeyboard())
+ 
+            .perform(ViewActions.typeText("test@gmail.com"))
+ 
         Espresso.onView(withId(R.id.etname)).perform(ViewActions.closeSoftKeyboard())
             .perform(ViewActions.typeText("test"))
 
@@ -35,6 +37,7 @@ class RegistrationTesting {
             .perform(ViewActions.typeText("test"))
         Espresso.onView(withId(R.id.etconpass)).perform(ViewActions.closeSoftKeyboard())
             .perform(ViewActions.typeText("test"))
+
         Espresso.onView(withId(R.id.btnsignup)).perform(ViewActions.closeSoftKeyboard())
             .perform(ViewActions.click())
         Thread.sleep(3000)

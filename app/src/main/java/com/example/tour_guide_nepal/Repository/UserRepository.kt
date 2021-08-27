@@ -1,10 +1,15 @@
-package com.example.finalassignment.Repository
+package com.example.tour_guide_nepal.Repository
 
-import com.example.finalassignment.API.MyApiRequest
-import com.example.finalassignment.API.ServiceBuilder
-import com.example.finalassignment.API.UserAPI
-import com.example.finalassignment.ENTITY.User
-import com.example.finalassignment.Response.LoginResponse
+
+import com.example.tour_guide_nepal.API.MyApiRequest
+
+import com.example.tour_guide_nepal.API.ServiceBuilder
+
+import com.example.tour_guide_nepal.ENTITY.User
+import com.example.tour_guide_nepal.API.UserAPI
+
+
+import com.example.tour_guide_nepal.Response.LoginResponse
 
 class UserRepository:  MyApiRequest() {
     private val userAPI = ServiceBuilder.buildService(UserAPI::class.java)
@@ -22,7 +27,7 @@ class UserRepository:  MyApiRequest() {
             userAPI.checkUser(email, password)
         }
     }
-    //dao goes here
+
 }
 
 
