@@ -133,7 +133,7 @@ dependencies {
     //for intent
     implementation "org.jetbrains.anko:anko:0.10.4"
 
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0-alpha04'
 
@@ -209,11 +209,19 @@ dependencies {
     //for scrollable number picker
     implementation 'com.michaelmuenzer.android:ScrollableNumberPicker:0.2.2'
 
-    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.0') {
+ 
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2') {
+        // Necessary to avoid version conflicts
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
         exclude module: 'recyclerview-v7'
     }
+ 
+ 
+ 
+   
+ 
 
     //rounded image view
     implementation 'com.makeramen:roundedimageview:2.3.0'
@@ -225,5 +233,5 @@ dependencies {
 
     implementation 'com.android.support:design:28.0.0'
 
-
+ 
 }

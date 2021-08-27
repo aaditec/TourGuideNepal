@@ -18,7 +18,13 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+ 
+import androidx.core.content.ContextCompat.startActivity
+
+import com.example.tour_guide_nepal.ENTITY.User
+ 
 import coil.transform.CircleCropTransformation
+ 
 import com.example.tour_guide_nepal.LoginActivity
 import com.example.tour_guide_nepal.MainActivity
 import com.example.tour_guide_nepal.R
@@ -75,6 +81,7 @@ class ProfileFragment : Fragment() {
             backhome = view.findViewById(R.id.backhome)
             camera = view.findViewById(R.id.camera)
 
+ 
 
             val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
             val isLogin = sharedPref.getString("Email", "1")
@@ -115,6 +122,7 @@ class ProfileFragment : Fragment() {
                     intent.resolveActivity(it).also {
                         startActivityForResult(intent, REQUEST_CAMERA)
                     }
+ 
                 }
             }
         }
