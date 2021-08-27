@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
+import com.example.tour_guide_nepal.termsandservices.front_terms_and_services
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
