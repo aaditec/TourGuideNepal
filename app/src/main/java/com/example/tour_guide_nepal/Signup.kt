@@ -2,16 +2,18 @@ package com.example.tour_guide_nepal
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tour_guide_nepal.ENTITY.User
 import com.example.tour_guide_nepal.Repository.UserRepository
+ 
+import com.example.tour_guide_nepal.termsandservices.front_terms_and_services
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -21,23 +23,29 @@ import kotlinx.coroutines.withContext
 
 
 class Signup : AppCompatActivity() {
+ 
     private lateinit var btnsignup: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
+
+
+ 
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
     private lateinit var etpass: TextView
     private lateinit var etconfigpass: TextView
-    private lateinit var etemail: TextView
+    private lateinit var eetemail: TextView
     private lateinit var btnlog: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+ 
         auth = FirebaseAuth.getInstance()
+ 
         etname = findViewById(R.id.etname)
-        etemail = findViewById(R.id.etemail)
+        eetemail = findViewById(R.id.etemail)
         etpass = findViewById(R.id.etpass)
         etconfigpass = findViewById(R.id.etconpass)
         etphone = findViewById(R.id.etphone)
@@ -45,13 +53,19 @@ class Signup : AppCompatActivity() {
         btnlog = findViewById(R.id.btnlog)
         db= FirebaseFirestore.getInstance()
 
+
+
+
+
         btnsignup.setOnClickListener {
 
 
             if (validatesignup()) {
 
                 val FullName = etname.text.toString()
-                val email = etemail.text.toString()
+ 
+                val email = eetemail.text.toString()
+ 
                 val phone = etphone.text.toString()
                 val password = etpass.text.toString()
 
@@ -61,32 +75,36 @@ class Signup : AppCompatActivity() {
                     "email" to email
                 )
                 val Users=db.collection("USERS")
-                val query = Users.whereEqualTo("email",email).get()
-                    .addOnSuccessListener {
-                            tasks->
+                val query = Users.whereEqualTo("email", email).get()
+                    .addOnSuccessListener { tasks->
                         if(tasks.isEmpty)
                         {
-                            auth.createUserWithEmailAndPassword(email,password)
-                                .addOnCompleteListener(this){
-                                        task->
+                            auth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(this){ task->
                                     if(task.isSuccessful)
                                     {
                                         Users.document(email).set(users)
-                                        val intent=Intent(this,LoginActivity::class.java)
+ 
+                                        val intent=Intent(this,front_terms_and_services::class.java)
                                         intent.putExtra("email",email)
+ 
                                         startActivity(intent)
                                         finish()
                                     }
                                     else
                                     {
-                                        Toast.makeText(this,"Authentication Failed", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(
+                                            this,
+                                            "Authentication Failed",
+                                            Toast.LENGTH_LONG
+                                        ).show()
                                     }
                                 }
                         }
                         else
                         {
-                            Toast.makeText(this,"User Already Registered", Toast.LENGTH_LONG).show()
-                            val intent= Intent(this,LoginActivity::class.java)
+                            Toast.makeText(this, "User Already Registered", Toast.LENGTH_LONG).show()
+                            val intent= Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                         }
                     }
@@ -95,15 +113,15 @@ class Signup : AppCompatActivity() {
         actionBar!!.hide()
 
                 val confirmPassword = etconfigpass.text.toString()
-                if (etemail.text.toString().isEmpty()) {
-                    etemail.error = "Please enter email"
-                    etemail.requestFocus()
+                if (eetemail.text.toString().isEmpty()) {
+                    eetemail.error = "Please enter email"
+                    eetemail.requestFocus()
 
                 }
 
-                if (!Patterns.EMAIL_ADDRESS.matcher(etemail.text.toString()).matches()) {
-                    etemail.error = "Please enter valid email"
-                    etemail.requestFocus()
+                if (!Patterns.EMAIL_ADDRESS.matcher(eetemail.text.toString()).matches()) {
+                    eetemail.error = "Please enter valid email"
+                    eetemail.requestFocus()
 
                 }
                 if (etphone.text.toString().isEmpty()) {
@@ -131,7 +149,9 @@ class Signup : AppCompatActivity() {
                         User(
 
                             fullname = FullName,
-                            email = email,
+ 
+                            email = eetemail.toString(),
+ 
                             phone = phone,
                             password = password
                         )
@@ -190,16 +210,17 @@ class Signup : AppCompatActivity() {
 
     private fun validatesignup(): Boolean {
 
+ 
         var valid = true
-        etemail.error = null
+        eetemail.error = null
         etname.error = null
         etpass.error = null
         etconfigpass.error = null
         etphone.error = null
 
 
-        if (sanitize(etemail as EditText).isEmpty()) {
-            etemail.error = "Email can not be empty"
+        if (sanitize(eetemail as EditText).isEmpty()) {
+            eetemail.error = "Email can not be empty"
             valid = false
         }
 
@@ -220,6 +241,7 @@ class Signup : AppCompatActivity() {
             etphone.error = "phone number can not be empty"
             valid = false
         }
+ 
 
 
         return valid

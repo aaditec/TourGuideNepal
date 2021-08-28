@@ -26,9 +26,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+
+                        >
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:visibility="visible"
@@ -41,29 +46,37 @@
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="MissingClass" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ProgressBar
+                            android:visibility="invisible"
+                            android:id="@+id/progressbar_pic"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
 
-                    <TextView
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/ettvfullname"
+                            android:text="Full Name"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/ettvfullname"
-                        android:text="Full Name"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/ettvemail"
+                            android:text="something@gmail.com"
+                            android:textSize="18dp"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/ettvemail"
-                        android:text="something@gmail.com"
-                        android:textSize="18dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+
+
 
                 </LinearLayout>
 
@@ -168,14 +181,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Email"
-                        android:textColor="@color/black"
-                       />
- 
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -184,12 +191,6 @@
                             android:textSize="17dp"
                             android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/txtemail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Email here"/>
- 
                     <TextView
                         android:id="@+id/eemail"
                         android:layout_width="match_parent"
@@ -198,7 +199,7 @@
                         android:textSize="17dp"
                         android:textStyle="bold"/>
 
- 
+
 
                 </LinearLayout>
 
@@ -236,11 +237,25 @@
                         android:hint="Mobile number here"
                         android:textSize="17dp"
                         android:textStyle="bold"/>
-
                 </LinearLayout>
-
             </LinearLayout>
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:visibility="invisible"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
+            <Button
+
+    android:id="@+id/btnsave"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:textColor="@color/white"
+    android:text="Save"
+    />
         </LinearLayout>
 
     </ScrollView>

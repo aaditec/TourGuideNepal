@@ -33,9 +33,9 @@ class forgotpassword_activity : AppCompatActivity() {
 
             btn_submit.setOnClickListener { sendPasswordResetEmail() }
         }
-
     }
-
+ 
+  
     private fun sendPasswordResetEmail() {
         val email = et_forget_email?.text.toString()
         if (!TextUtils.isEmpty(email)) {
@@ -63,7 +63,7 @@ class forgotpassword_activity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-
+ 
         val intent = Intent(this@forgotpassword_activity, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
