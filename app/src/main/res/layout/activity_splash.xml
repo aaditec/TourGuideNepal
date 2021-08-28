@@ -15,12 +15,12 @@
         android:fontFamily="cursive"
         android:text="Tour Guide Nepal"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/travelvehicle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/centerlogo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.232" />
 
     <ImageView
         android:id="@+id/centerlogo"
@@ -31,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/logo" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/travelvehicle"
@@ -42,24 +43,10 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/centerlogo"
-        app:layout_constraintVertical_bias="0.391"
+        app:layout_constraintVertical_bias="0.49"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/vehicletravel"
         tools:ignore="MissingClass" />
 
-    <Button
-        android:id="@+id/btnstarted"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginRight="26dp"
-        android:backgroundTint="#04947e"
-        android:text="get started"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/travelvehicle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.slider.Slider
 import com.makeramen.roundedimageview.RoundedImageView
 
 class SliderAdapter internal  constructor(
