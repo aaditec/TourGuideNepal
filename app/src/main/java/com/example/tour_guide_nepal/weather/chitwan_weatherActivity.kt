@@ -30,7 +30,7 @@ class chitwan_weatherActivity : AppCompatActivity() {
             super.onPreExecute()
             /* Showing the ProgressBar, Making the main design GONE */
             findViewById<ProgressBar>(R.id.loader).visibility = View.VISIBLE
-            findViewById<LinearLayout>(R.id.mainContainer).visibility = View.GONE
+            findViewById<RelativeLayout>(R.id.mainContainer).visibility = View.GONE
             findViewById<TextView>(R.id.errorText).visibility = View.GONE
         }
 
