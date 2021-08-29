@@ -40,7 +40,7 @@ class AboutUsFragment : Fragment() {
         viewPager2=view.findViewById(R.id.viewPager_ImageSlider)
 
         val sliderItems: MutableList<SliderItem> = ArrayList()
-        sliderItems.add(SliderItem(R.drawable.roshandon))
+        sliderItems.add(SliderItem(R.drawable.roshan_don))
         sliderItems.add(SliderItem(R.drawable.tamanddon))
         sliderItems.add(SliderItem(R.drawable.bhantanadon))
         sliderItems.add(SliderItem(R.drawable.roshnidon))

@@ -11,10 +11,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/about1"
                         android:layout_width="70dp"
@@ -33,7 +38,7 @@
                         android:layout_toRightOf="@id/about1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-
+            </LinearLayout>
                 <TextView
                     android:gravity="center"
                     android:id="@+id/about3"
@@ -112,6 +117,6 @@
                    android:paddingEnd="70dp"/>
 
 
-            </RelativeLayout>
+            </LinearLayout>
             </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
