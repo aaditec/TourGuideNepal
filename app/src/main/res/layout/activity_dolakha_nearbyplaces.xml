@@ -16,28 +16,32 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#06a14c"
+            android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/Busstation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -64,10 +68,12 @@
 
                     <LinearLayout
                         android:id="@+id/Restaurent"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
@@ -93,10 +99,12 @@
 
                     <LinearLayout
                         android:id="@+id/Hospital"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
@@ -123,14 +131,18 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/Atm"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -157,10 +169,12 @@
 
                     <LinearLayout
                         android:id="@+id/Hotel"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
@@ -186,10 +200,12 @@
 
                     <LinearLayout
                         android:id="@+id/Policestation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
@@ -216,14 +232,18 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/Shopingmall"
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:gravity="center"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -250,10 +270,12 @@
 
                     <LinearLayout
                         android:id="@+id/Cafe"
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
@@ -279,10 +301,12 @@
 
                     <LinearLayout
                         android:id="@+id/Livemap"
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
@@ -312,6 +336,8 @@
                 android:id="@+id/nearByPlacesRecycle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
                 android:layout_weight="9"
                 android:background="#EBE7E7"
 

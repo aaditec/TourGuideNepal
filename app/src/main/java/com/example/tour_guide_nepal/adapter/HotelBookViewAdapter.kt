@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
-import com.example.tour_guide_nepal.Hotelform_update_activity
+import com.example.tour_guide_nepal.hotel.Hotelform_update_activity
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.Repository.HotelBookRepository
 import kotlinx.coroutines.CoroutineScope

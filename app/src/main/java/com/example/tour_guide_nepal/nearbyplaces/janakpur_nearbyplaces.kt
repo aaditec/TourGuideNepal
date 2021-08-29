@@ -10,17 +10,14 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tour_guide_nepal.Hotelbooking_Activity
+import com.example.tour_guide_nepal.hotel.Hotelbooking_Activity
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.service.model.NearByPlaceModel
 import com.example.tour_guide_nepal.view.adapter.NearByPlacesAdapter
-import com.example.tour_guide_nepal.view.ui.RealTimeMap
 import com.example.tour_guide_nepal.viewmodel.NearByPlacesViewModel
 import kotlinx.android.synthetic.main.activity_chitwan_nearbyplaces.*
 import kotlinx.android.synthetic.main.activity_chitwan_nearbyplaces.Hospital
 import kotlinx.android.synthetic.main.activity_chitwan_nearbyplaces.Restaurent
-import kotlinx.android.synthetic.main.near_by_places.*
-import org.jetbrains.anko.startActivity
 import java.lang.Exception
 
 class janakpur_nearbyplaces : AppCompatActivity() {

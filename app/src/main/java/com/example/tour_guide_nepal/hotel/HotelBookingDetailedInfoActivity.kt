@@ -1,9 +1,10 @@
-package com.example.tour_guide_nepal
+package com.example.tour_guide_nepal.hotel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
+import com.example.tour_guide_nepal.R
 import kotlinx.android.synthetic.main.activity_hotel_booking_detailed_info.*
 
 class HotelBookingDetailedInfoActivity : AppCompatActivity() {

@@ -10,18 +10,19 @@
         android:background="#FEDBD0">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="150dp"
+            android:layout_width="50dp"
+            android:layout_height="180dp"
             android:src="@drawable/hotelicon"/>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -137,7 +138,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <TextView

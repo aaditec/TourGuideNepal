@@ -1,16 +1,14 @@
-package com.example.tour_guide_nepal
+package com.example.tour_guide_nepal.hotel
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
+import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.Repository.HotelBookRepository
 import com.example.tour_guide_nepal.adapter.HotelBookViewAdapter
 import kotlinx.coroutines.CoroutineScope

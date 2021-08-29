@@ -1,10 +1,11 @@
-package com.example.tour_guide_nepal
+package com.example.tour_guide_nepal.hotel
 
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
+import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.Repository.HotelBookRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

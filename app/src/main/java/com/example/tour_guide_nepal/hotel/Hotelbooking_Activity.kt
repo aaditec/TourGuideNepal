@@ -1,4 +1,4 @@
-package com.example.tour_guide_nepal
+package com.example.tour_guide_nepal.hotel
 
 import android.app.DatePickerDialog
 import android.graphics.Color
@@ -8,14 +8,13 @@ import android.widget.*
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
+import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.Repository.HotelBookRepository
 import com.example.tour_guide_nepal.notification.NotificationChannels
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.jetbrains.anko.spinner
-import org.jetbrains.anko.toast
 import java.util.*
 
 class Hotelbooking_Activity : AppCompatActivity() {

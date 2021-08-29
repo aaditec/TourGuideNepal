@@ -1,4 +1,4 @@
-package com.example.tour_guide_nepal
+package com.example.tour_guide_nepal.vehicle
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tour_guide_nepal.ENTITY.Vehicle
+import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.adapter.VehiclesAdapter
 import com.example.tour_guide_nepal.viewmodel.VehiclesViewModel
 

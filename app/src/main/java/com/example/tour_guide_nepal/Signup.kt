@@ -82,10 +82,10 @@ class Signup : AppCompatActivity() {
                                     if(task.isSuccessful)
                                     {
                                         Users.document(email).set(users)
- 
+
                                         val intent=Intent(this,front_terms_and_services::class.java)
                                         intent.putExtra("email",email)
- 
+
                                         startActivity(intent)
                                         finish()
                                     }
@@ -148,7 +148,7 @@ class Signup : AppCompatActivity() {
 
                             fullname = FullName,
  
-                            email = eetemail.toString(),
+                            email = email,
  
                             phone = phone,
                             password = password

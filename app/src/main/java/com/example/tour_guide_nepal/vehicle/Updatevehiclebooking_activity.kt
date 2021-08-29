@@ -1,4 +1,4 @@
-package com.example.tour_guide_nepal
+package com.example.tour_guide_nepal.vehicle
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import com.example.tour_guide_nepal.ENTITY.VehicleRentEntity
+import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.Repository.VehicleRentRepository
 import com.example.tour_guide_nepal.view.ui.DetailsActivity
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
