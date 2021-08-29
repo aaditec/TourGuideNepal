@@ -47,7 +47,7 @@
         <activity android:name=".vehicle.TwowheelActivity" />
         <activity android:name=".vehicle.Vehicle_booking_form_activity" />
         <activity android:name=".vehicle.Vehiclebooking_activity" />
-        <activity android:name=".Vehiclelist" />
+        <activity android:name=".vehicle.Vehiclelist" />
  
         <activity android:name=".video.pokhara_video_activity" />
         <activity android:name=".forgotpassword_activity" />
@@ -60,10 +60,10 @@
         <activity android:name=".video.mustang_video_activity" />
         <activity android:name=".video.solukhumbu_video_activity" />
         <activity android:name=".video.tanahun_video_activity" />
-        <activity android:name=".HotelBookingDetailedInfoActivity" />
-        <activity android:name=".Hotelform_update_activity" />
-        <activity android:name=".HotelBookingInfo" />
-        <activity android:name=".Hotelbooking_Activity" />
+        <activity android:name=".hotel.HotelBookingDetailedInfoActivity" />
+        <activity android:name=".hotel.Hotelform_update_activity" />
+        <activity android:name=".hotel.HotelBookingInfo" />
+        <activity android:name=".hotel.Hotelbooking_Activity" />
         <activity android:name=".view.ui.DetailsActivity" />
         <activity android:name=".view.ui.RealTimeMap" />
         <activity android:name=".nearbyplaces.tanahun_nearbyplaces" />
@@ -121,9 +121,7 @@
         <activity android:name=".place_details.gorkha_detail_activity" />
         <activity android:name=".place_details.dolakha_detail_activity" />
         <activity android:name=".place_details.chitwan_detail_activity" />
- 
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
+
  
         <activity android:name=".Signup" />
     </application>

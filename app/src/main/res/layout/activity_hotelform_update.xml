@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".Hotelform_update_activity">
+    tools:context=".hotel.Hotelform_update_activity">
 
     <ScrollView
         android:layout_width="match_parent"

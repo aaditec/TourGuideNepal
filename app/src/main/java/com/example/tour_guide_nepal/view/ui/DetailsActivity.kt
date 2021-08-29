@@ -16,7 +16,6 @@ import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
@@ -26,13 +25,10 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.beust.klaxon.*
 import com.example.tour_guide_nepal.R
-import com.example.tour_guide_nepal.Signup
-import com.example.tour_guide_nepal.Vehiclelist
 import com.example.tour_guide_nepal.databinding.ActivityDetailsBinding
 import com.example.tour_guide_nepal.service.repository.LatLngInterPolator
 import com.example.tour_guide_nepal.vehicle.Fourwheel_Activity
 import com.example.tour_guide_nepal.vehicle.TwowheelActivity
-import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.example.tour_guide_nepal.view.animations.MarkerAnimation
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability

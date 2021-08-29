@@ -21,7 +21,9 @@ import com.example.tour_guide_nepal.fragments.AboutUsFragment
 import com.example.tour_guide_nepal.fragments.ProfileFragment
 import com.example.tour_guide_nepal.fragments.Select_cityFragment
 import com.example.tour_guide_nepal.fragments.Selectplaces
- 
+import com.example.tour_guide_nepal.hotel.HotelBookingInfo
+import com.example.tour_guide_nepal.hotel.Hotelbooking_Activity
+
 import com.example.tour_guide_nepal.termsandservices.back_terms_and_services
 import com.example.tour_guide_nepal.notification.NotificationChannels
 
