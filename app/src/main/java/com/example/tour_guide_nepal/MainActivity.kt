@@ -34,7 +34,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
     private val permissions = arrayOf(
         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        android.Manifest.permission.ACCESS_FINE_LOCATION
+        android.Manifest.permission.ACCESS_FINE_LOCATION,
+        android.Manifest.permission.CAMERA,
+        android.Manifest.permission.READ_EXTERNAL_STORAGE
     )
 
     private var counter = 0L
@@ -59,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         if (!hasPermission()) {
             requestPermission()
         }
-        welcomenotification()
 
         populateList()
         val adapter = ViewPagerAdapter(lstFragments, supportFragmentManager, lifecycle)
@@ -92,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_contact -> {
  
-                    Toast.makeText(this, "Emergency Contact Selected", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,Emergency_contact_activity::class.java))
                 }
                 R.id.nav_terms -> {
                     startActivity(Intent(this,back_terms_and_services::class.java))
@@ -130,21 +131,6 @@ class MainActivity : AppCompatActivity() {
         counter = System.currentTimeMillis()
     }
 
-    private fun welcomenotification() {
-        val notificationManager = NotificationManagerCompat.from(this)
-
-        val notificationChannels = NotificationChannels(this)
-        notificationChannels.createNotificationChannels()
-
-        val notification = NotificationCompat.Builder(this, notificationChannels.channel_1)
-            .setSmallIcon(R.drawable.notification)
-            .setContentTitle("Tour Guide Nepal")
-            .setContentText("Welcome to Tour Guide Nepal")
-            .setColor(Color.BLUE)
-            .build()
-
-        notificationManager.notify(1, notification)
-    }
 
     private fun logout() {
         val builder = AlertDialog.Builder(this)

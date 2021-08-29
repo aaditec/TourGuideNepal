@@ -3,16 +3,21 @@ package com.example.tour_guide_nepal
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Patterns
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
+import com.example.tour_guide_nepal.notification.NotificationChannels
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -92,71 +97,9 @@ class LoginActivity : AppCompatActivity() {
         }
         FirebaseApp.initializeApp(this)
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         firebaseAuth = FirebaseAuth.getInstance()
 
-        Signin.setOnClickListener { view: View? ->
-            Toast.makeText(this, "Logging In", Toast.LENGTH_SHORT).show()
-            signInGoogle()
-        }
-    }
-
-    private fun signInGoogle() {
-        val signInIntent: Intent = mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, Req_Code)
-    }
-
-    // onActivityResult() function : this is where
-    // we provide the task and data for the Google Account
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Req_Code) {
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleResult(task)
-        }
-    }
-
-    private fun handleResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account: GoogleSignInAccount? = completedTask.getResult(ApiException::class.java)
-            if (account != null) {
-                UpdateUI(account)
-            }
-        } catch (e: ApiException) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    // this is where we update the UI after Google signin takes place
-    private fun UpdateUI(account: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-//                SavedPreference.setEmail(this, account.email.toString())
-//                SavedPreference.setUsername(this, account.displayName.toString())
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (GoogleSignIn.getLastSignedInAccount(this) != null) {
-            startActivity(
-                Intent(
-                    this, MainActivity
-                    ::class.java
-                )
-            )
-            finish()
-        }
 
     }
 
@@ -171,6 +114,7 @@ class LoginActivity : AppCompatActivity() {
                         var intent =Intent(this,MainActivity::class.java)
                         intent.putExtra("email",email)
                         startActivity(intent)
+                        welcomenotifiy()
                         finish()
                     } else {
                         Toast.makeText(this, "Wrong Details", Toast.LENGTH_LONG).show()
@@ -231,6 +175,24 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun welcomenotifiy() {
+        Handler().postDelayed({
+            val notificationManager = NotificationManagerCompat.from(this)
+            val notificationChannels = NotificationChannels(this)
+            notificationChannels.createNotificationChannels()
+
+            val notification = NotificationCompat.Builder(this, notificationChannels.channel_1)
+                .setSmallIcon(R.drawable.notification)
+                .setContentTitle("Tour Guide Nepal")
+                .setContentText("Welcome to Tour Guide Nepal")
+                .setColor(Color.BLUE)
+                .build()
+
+            notificationManager.notify(1, notification)
+
+        }, 3000.toLong())
     }
 
     private fun savepref() {
