@@ -53,7 +53,7 @@ class ProfileFragment : Fragment() {
         private lateinit var eeemail: TextView
         private lateinit var etemail: TextView
         private lateinit var etphone: TextView
-    private lateinit var btnsave: Button
+        private lateinit var btnsave: Button
 
 
 

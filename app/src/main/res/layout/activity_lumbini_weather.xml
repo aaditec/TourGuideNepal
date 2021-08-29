@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/weather5"
     android:orientation="vertical"
-    tools:context=".weather.lumbini_weatherActivity">
+    tools:context=".weather.lumbini_weatherActivity"
     android:padding="25dp">
 
     <RelativeLayout
@@ -32,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lumbini, Nepal"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/black"
                 android:textSize="24dp" />
 
@@ -55,9 +56,9 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="23dp"
-                tools:srcCompat="@drawable/lumbini" >
+                  />
 
-            </ImageView>
+
 
         </LinearLayout>
 
@@ -69,6 +70,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/status"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
@@ -79,14 +81,16 @@
 
             <TextView
                 android:id="@+id/temp"
-                android:layout_width="240dp"
-                android:layout_height="107dp"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#6ccdf0"
                 android:fontFamily="sans-serif-thin"
-                android:text="28°C"
+                android:text="30°C"
+                android:gravity="center"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="70dp" />
+                android:textSize="50dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

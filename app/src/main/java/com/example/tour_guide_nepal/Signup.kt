@@ -28,8 +28,6 @@ class Signup : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
-
-
  
     private lateinit var etname: TextView
     private lateinit var etphone: TextView
