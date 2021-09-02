@@ -24,8 +24,8 @@ import com.example.tour_guide_nepal.fragments.Selectplaces
 import com.example.tour_guide_nepal.hotel.HotelBookingInfo
 import com.example.tour_guide_nepal.hotel.Hotelbooking_Activity
 
-import com.example.tour_guide_nepal.termsandservices.back_terms_and_services
 import com.example.tour_guide_nepal.notification.NotificationChannels
+import com.example.tour_guide_nepal.termsandservices.termsandconditions
 
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this,Emergency_contact_activity::class.java))
                 }
                 R.id.nav_terms -> {
-                    startActivity(Intent(this,back_terms_and_services::class.java))
+                    startActivity(Intent(this,termsandconditions::class.java))
  
 
                 }

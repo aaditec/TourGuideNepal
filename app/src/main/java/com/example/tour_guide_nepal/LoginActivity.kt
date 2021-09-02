@@ -18,9 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tour_guide_nepal.API.ServiceBuilder
 import com.example.tour_guide_nepal.Repository.UserRepository
 import com.example.tour_guide_nepal.notification.NotificationChannels
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
@@ -37,7 +35,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var mGoogleSignInClient: GoogleSignInClient
     val Req_Code: Int = 123
     private lateinit var firebaseAuth: FirebaseAuth
 

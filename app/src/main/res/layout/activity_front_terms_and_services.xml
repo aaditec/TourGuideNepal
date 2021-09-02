@@ -12,8 +12,7 @@
         android:src="@drawable/terms_services"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_gravity="center_horizontal"
-         />
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:text="Terms &amp; Conditions"

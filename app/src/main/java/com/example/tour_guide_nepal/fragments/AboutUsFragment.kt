@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.SliderAdapter
-import com.example.tour_guide_nepal.SliderItem
+import com.example.tour_guide_nepal.imageslider.SliderItem
 import kotlin.math.abs
 
 
@@ -81,12 +81,12 @@ class AboutUsFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        sliderHandler.postDelayed(sliderRunnable,3000)
+        sliderHandler.postDelayed(sliderRunnable,4000)
     }
 
     override fun onResume() {
         super.onResume()
-        sliderHandler.postDelayed(sliderRunnable, 3000)
+        sliderHandler.postDelayed(sliderRunnable, 4000)
     }
 
 }

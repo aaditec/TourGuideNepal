@@ -17,7 +17,14 @@
 
     <string name="no_data_available">no_data_available</string>
     <string name="about_us">
-        Team scrum master is Roshan Gautam. He is motivated and excited to be the scrum master. He organizes and helps team members in each sprint activities. He is the voice of the team and he tries to make team collaboration. Till now, there is no problem with the scrum master.
+         Tour Guide Nepal is an easy to use, faster, better and comfortable guide for travellers. This application helps in travel around different places of Nepal. The application offers features from selecting city, booking hotels to knowing the interested city temperature or getting a ride in the city.
+           </string>
+    <string name="about_us1">
+        Tour Guide Nepal focus on providing excellent customer experience, hassle free navigations of the applications. Our team in the project is ready for making customer experience smooth and better.
+    </string>
+
+    <string name="aboutend">
+        Copyrights: Tour Guide Nepal
     </string>
     <string name="roshan_info">Team scrum master is Roshan Gautam. He is motivated and excited to be the scrum master. He organizes and helps team members in each sprint activities. He is the voice of the team and he tries to make team collaboration. Till now, there is no problem with the scrum master.</string>
 
