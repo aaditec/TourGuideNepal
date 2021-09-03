@@ -2,10 +2,11 @@ package com.example.tour_guide_nepal.fragments
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -33,9 +34,10 @@ class AboutUsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
+
        val view = inflater.inflate(R.layout.fragment_about_us, container, false)
         viewPager2=view.findViewById(R.id.viewPager_ImageSlider)
 
@@ -55,7 +57,7 @@ class AboutUsFragment : Fragment() {
 
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer(30))
-        compositePageTransformer.addTransformer {page, position ->
+        compositePageTransformer.addTransformer { page, position ->
             val r= 1 - abs(position)
             page.scaleY = 0.85f + r+ 0.25f
 
@@ -63,7 +65,7 @@ class AboutUsFragment : Fragment() {
 
         viewPager2.setPageTransformer(compositePageTransformer)
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 sliderHandler.removeCallbacks(sliderRunnable)
@@ -81,7 +83,7 @@ class AboutUsFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        sliderHandler.postDelayed(sliderRunnable,4000)
+        sliderHandler.postDelayed(sliderRunnable, 4000)
     }
 
     override fun onResume() {

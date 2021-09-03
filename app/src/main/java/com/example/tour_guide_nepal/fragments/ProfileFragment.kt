@@ -31,10 +31,9 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.coroutines.NonDisposableHandle.parent
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
- 
-
 
 @Suppress("UNREACHABLE_CODE", "DEPRECATION")
 class ProfileFragment : Fragment() {
@@ -42,107 +41,111 @@ class ProfileFragment : Fragment() {
     private val REQUEST_IMAGE_CAPTURE = 100
     private val currentUser = FirebaseAuth.getInstance().currentUser
 
-        private lateinit var db: FirebaseFirestore
-        private lateinit var imageUri: Uri
-        private lateinit var backhome: FrameLayout
-        private lateinit var imageView: ImageView
-        private lateinit var camera: ImageView
+    private lateinit var db: FirebaseFirestore
+    private lateinit var imageUri: Uri
+    private lateinit var backhome: FrameLayout
+    private lateinit var imageView: ImageView
+    private lateinit var camera: ImageView
 
-        private lateinit var etfullname: TextView
-        private lateinit var eefullname: TextView
-        private lateinit var eeemail: TextView
-        private lateinit var etemail: TextView
-        private lateinit var etphone: TextView
-        private lateinit var btnsave: Button
-
-
+    private lateinit var etfullname: TextView
+    private lateinit var eefullname: TextView
+    private lateinit var eeemail: TextView
+    private lateinit var etemail: TextView
+    private lateinit var etphone: TextView
+    private lateinit var btnsave: Button
 
 
 
-        @SuppressLint("SetTextI18n")
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            // Inflate the layout for this fragment
 
 
-            val view = inflater.inflate(R.layout.fragment_profile, container, false)
-            etfullname = view.findViewById(R.id.ffullname)
-            eefullname = view.findViewById(R.id.ettvfullname)
-            eeemail = view.findViewById(R.id.ettvemail)
-            etemail = view.findViewById(R.id.eemail)
-            etphone = view.findViewById(R.id.pphone)
-            backhome = view.findViewById(R.id.backhome)
-            camera = view.findViewById(R.id.camera)
-            btnsave = view.findViewById(R.id.btnsave)
+    @SuppressLint("SetTextI18n")
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
 
 
-            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
-            val isLogin = sharedPref.getString("Email", "1")
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-            if (isLogin == "1") {
-                var email = requireActivity().intent.getStringExtra("email")
-                if (email != null) {
-                    setText(email)
-                    with(sharedPref.edit())
-                    {
-                        putString("Email", email)
-                        apply()
-                    }
-                } else {
-                    var intent = Intent(activity, LoginActivity::class.java)
-                    startActivity(intent)
 
+        etfullname = view.findViewById(R.id.ffullname)
+        eefullname = view.findViewById(R.id.ettvfullname)
+        eeemail = view.findViewById(R.id.ettvemail)
+        etemail = view.findViewById(R.id.eemail)
+        etphone = view.findViewById(R.id.pphone)
+        backhome = view.findViewById(R.id.backhome)
+        camera = view.findViewById(R.id.camera)
+        btnsave = view.findViewById(R.id.btnsave)
+
+
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val isLogin = sharedPref.getString("Email", "1")
+
+        if (isLogin == "1") {
+            var email = requireActivity().intent.getStringExtra("email")
+            if (email != null) {
+                setText(email)
+                with(sharedPref.edit())
+                {
+                    putString("Email", email)
+                    apply()
                 }
             } else {
-                setText(isLogin)
-            }
-
-            backhome.setOnClickListener {
-                startActivity(Intent(activity, MainActivity::class.java))
-            }
-
-            camera.setOnClickListener {
-
-                intentcamera()
-            }
-            btnsave.setOnClickListener {
-
-                val photo = when {
-                    ::imageUri.isInitialized -> imageUri
-                    currentUser?.photoUrl == null -> Uri.parse(DEFAULT_IMAGE_URL)
-                    else -> currentUser.photoUrl
-                }
-
-                val name = ettvfullname.text.toString().trim()
-
-                if (name.isEmpty()) {
-                    ettvfullname.error = "name required"
-                    ettvfullname.requestFocus()
-                    return@setOnClickListener
-                }
-
-                val updates = UserProfileChangeRequest.Builder()
-                    .setDisplayName(name)
-                    .setPhotoUri(photo)
-                    .build()
-
-                progressbar.visibility = View.VISIBLE
-
-                currentUser?.updateProfile(updates)
-                    ?.addOnCompleteListener { task ->
-                        progressbar.visibility = View.INVISIBLE
-                        if (task.isSuccessful) {
-                            context?.toast("Profile Updated")
-                        } else {
-                            context?.toast(task.exception?.message!!)
-                        }
-                    }
+                var intent = Intent(activity, LoginActivity::class.java)
+                startActivity(intent)
 
             }
-            return view
+        } else {
+            setText(isLogin)
         }
+
+        backhome.setOnClickListener {
+            startActivity(Intent(activity, MainActivity::class.java))
+        }
+
+        camera.setOnClickListener {
+
+            intentcamera()
+        }
+        btnsave.setOnClickListener {
+
+            val photo = when {
+                ::imageUri.isInitialized -> imageUri
+                currentUser?.photoUrl == null -> Uri.parse(DEFAULT_IMAGE_URL)
+                else -> currentUser.photoUrl
+            }
+
+            val name = ettvfullname.text.toString().trim()
+
+            if (name.isEmpty()) {
+                ettvfullname.error = "name required"
+                ettvfullname.requestFocus()
+                return@setOnClickListener
+            }
+
+            val updates = UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .setPhotoUri(photo)
+                .build()
+
+            progressbar.visibility = View.VISIBLE
+
+            currentUser?.updateProfile(updates)
+                ?.addOnCompleteListener { task ->
+                    progressbar.visibility = View.INVISIBLE
+                    if (task.isSuccessful) {
+                        context?.toast("Profile Updated")
+                    } else {
+                        context?.toast(task.exception?.message!!)
+                    }
+                }
+
+        }
+        return view
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -152,13 +155,13 @@ class ProfileFragment : Fragment() {
                 .into(camera)
         }
     }
-        private fun intentcamera() {
-            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { pictureIntent ->
-                pictureIntent.resolveActivity(activity?.packageManager!!)?.also {
-                    startActivityForResult(pictureIntent, REQUEST_IMAGE_CAPTURE)
-                }
+    private fun intentcamera() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { pictureIntent ->
+            pictureIntent.resolveActivity(activity?.packageManager!!)?.also {
+                startActivityForResult(pictureIntent, REQUEST_IMAGE_CAPTURE)
             }
         }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -199,26 +202,27 @@ class ProfileFragment : Fragment() {
 
     }
 
-        private fun setText(email: String?) {
-            db = FirebaseFirestore.getInstance()
-            if (email != null) {
-                db.collection("USERS").document(email).get()
-                    .addOnSuccessListener { tasks ->
-                        ffullname.text = tasks.get("Name").toString()
-                        ettvfullname.text = tasks.get("Name").toString()
-                        ettvemail.text = tasks.get("email").toString()
-                        pphone.text = tasks.get("Phone").toString()
-                        eemail.text = tasks.get("email").toString()
+    private fun setText(email: String?) {
+        db = FirebaseFirestore.getInstance()
+        if (email != null) {
+            db.collection("USERS").document(email).get()
+                .addOnSuccessListener { tasks ->
+                    ffullname.text = tasks.get("Name").toString()
+                    ettvfullname.text = tasks.get("Name").toString()
+                    ettvemail.text = tasks.get("email").toString()
+                    pphone.text = tasks.get("Phone").toString()
+                    eemail.text = tasks.get("email").toString()
 
-                    }
-            }
+                }
+        }
 
-        }}
-
-
-
+    }
+}
 
 
 
 
-  
+
+
+
+
