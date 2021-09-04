@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/gradient_loginback"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:src="@drawable/solukhumbu"
@@ -25,7 +21,6 @@
                 android:layout_height="300dp"/>
 
             <LinearLayout
-                android:layout_marginLeft="25dp"
                 android:layout_marginTop="-240dp"
                 android:padding="20dp"
                 android:layout_width="wrap_content"
@@ -48,15 +43,15 @@
                     android:fontFamily="cursive"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:layout_width="300dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 app:cardCornerRadius="14dp"
-                android:layout_width="360dp"
                 android:alpha=".9"
+                android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal">
 
@@ -228,7 +223,6 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Don't have an account?"
                     android:textSize="17dp"
@@ -239,7 +233,6 @@
                     android:layout_gravity="center_vertical"
                     android:id="@+id/linkregister"
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Create one"
                     android:textStyle="bold"
@@ -249,7 +242,4 @@
 
         </LinearLayout>
 
-    </ScrollView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
