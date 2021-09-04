@@ -61,6 +61,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back2"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -69,6 +70,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back21"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -88,6 +90,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back3"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -96,6 +99,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back31"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -114,6 +118,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back8"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -132,6 +137,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back9"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -150,6 +156,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back10"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -168,6 +175,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/back11"
         android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -176,6 +184,8 @@
         android:layout_marginTop="20dp"
         android:text="@string/back12"
         android:textSize="16dp"
+        android:textStyle="italic|bold"
+        android:background="@drawable/layout_border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
