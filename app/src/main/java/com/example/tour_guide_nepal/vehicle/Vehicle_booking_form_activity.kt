@@ -124,7 +124,7 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
         val hirenumber = hirembnumber.text.toString()
         val noofperson = hirenoofperson.text.toString()
         val vehicletype = spinner2.selectedItem.toString()
-        val noofvehicle = no_of_vehicle.toString()
+        val noofvehicle = no_of_vehicle.value.toString()
         val hirestartdate = hirestartdate.text.toString()
         val hireenddate = hireenddate.text.toString()
         val hirecomments = hirecomments.text.toString()
@@ -154,7 +154,7 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        startActivity(Intent(this@Vehicle_booking_form_activity,DetailsActivity::class.java))
+                        startActivity(Intent(this@Vehicle_booking_form_activity,ViewVehicleRent::class.java))
                     }
                 }
             } catch (ex: Exception) {

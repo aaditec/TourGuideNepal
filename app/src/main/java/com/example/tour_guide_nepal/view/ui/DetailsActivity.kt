@@ -29,6 +29,7 @@ import com.example.tour_guide_nepal.databinding.ActivityDetailsBinding
 import com.example.tour_guide_nepal.service.repository.LatLngInterPolator
 import com.example.tour_guide_nepal.vehicle.Fourwheel_Activity
 import com.example.tour_guide_nepal.vehicle.TwowheelActivity
+import com.example.tour_guide_nepal.vehicle.Vehiclebooking_activity
 import com.example.tour_guide_nepal.view.animations.MarkerAnimation
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
@@ -491,39 +492,39 @@ open class DetailsActivity : AppCompatActivity(), OnMapReadyCallback, LocationLi
 
     private fun bottomSheetShow() {
 
-        val view = layoutInflater.inflate(R.layout.bottom_sheet, null)
+        val viewdialog = layoutInflater.inflate(R.layout.bottom_sheet, null)
         val dialog = BottomSheetDialog(this)
 
 
-        view.SelectBike.setOnClickListener {
+        viewdialog.SelectBike.setOnClickListener {
             currentLocationMarker!!.remove()
             currentLocationMarker = null
             vehicle = "BIKE"
 
             Log.d("DetailsActivity", "$vehicle")
             startActivity(Intent(this, TwowheelActivity::class.java))
-            Toast.makeText(applicationContext, "Bike Selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Bike Clicked", Toast.LENGTH_SHORT).show()
             showMarker(currentLocation!!)
             dialog.dismiss()
         }
 
-        view.SelectCar.setOnClickListener {
+        viewdialog.SelectCar.setOnClickListener {
             currentLocationMarker!!.remove()
             currentLocationMarker = null
             vehicle = "CAR"
 
             Log.d("DetailsActivity", "$vehicle")
             startActivity(Intent(this, Fourwheel_Activity::class.java))
-            Toast.makeText(applicationContext, "Car Selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Car Clicked", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
 
             showMarker(currentLocation!!)
         }
 
-        dialog.setContentView(view)
+        dialog.setContentView(viewdialog)
         var height = 250
 
-        Log.d("DetailsActivity", "Height" + view.height)
+        Log.d("DetailsActivity", "Height" + viewdialog.height)
         var latLngBounds: LatLngBounds = builder.build()
 
 //        var width = resources.displayMetrics.widthPixels - dpToPx(100, applicationContext)
