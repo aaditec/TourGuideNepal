@@ -34,7 +34,6 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
     private lateinit var hireenddate : TextView
     private lateinit var hirecomments : EditText
     private lateinit var btnrent : Button
-    private lateinit var btnvupdate: Button
     private lateinit var  no_of_vehicle : ScrollableNumberPicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,13 +50,12 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
         hireenddate = findViewById(R.id.hireenddate)
         hirecomments = findViewById(R.id.hirecomments)
         btnrent = findViewById(R.id.btnrent)
-        btnvupdate= findViewById(R.id.btnvupdate)
         no_of_vehicle = findViewById(R.id.no_of_vehicle)
 
-        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,title)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, title)
         spinner1.adapter = adapter
 
-        val adapter1 = ArrayAdapter(this,android.R.layout.simple_list_item_1,type_of_vehicle)
+        val adapter1 = ArrayAdapter(this, android.R.layout.simple_list_item_1, type_of_vehicle)
         spinner2.adapter = adapter1
 
         //calendar
@@ -106,7 +104,7 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
         }
 
         val intent = intent.getParcelableExtra<VehicleRentEntity>("Rent_Vehicle_Details")
-        if (intent !=null){
+        if (intent != null) {
             hirename.setText(intent.fullname)
             hireemail.setText(intent.email)
             hirembnumber.setText(intent.phone)
@@ -116,52 +114,6 @@ class Vehicle_booking_form_activity : AppCompatActivity() {
             hirecomments.setText(intent.traveldetail)
 
 
-        }
-
-
-        btnvupdate.setOnClickListener {
-            updatevehicle()
-        }
-    }
-
-    private fun updatevehicle() {
-        val intent = intent.getParcelableExtra<VehicleRentEntity>("Rent_Vehicle_Details")
-        val title = spinner1.selectedItem.toString()
-        val fullname = hirename.text.toString()
-        val email = hireemail.text.toString()
-        val phone = hirembnumber.text.toString()
-        val numberofpeople = hirenoofperson.text.toString()
-        val vehicletype = spinner2.selectedItem.toString()
-        val numberofvehicle = no_of_vehicle.toString()
-        val tripstartdate = hirestartdate.text.toString()
-        val tripenddate = hireenddate.text.toString()
-        val traveldetail = hirecomments.text.toString()
-
-        val vehicleRentEntity = VehicleRentEntity(
-            title= title,
-            fullname= fullname,
-            email= email,
-            phone= phone,
-            numberofpeople= numberofpeople,
-            vehicletype= vehicletype,
-            numberofvehicle= numberofvehicle,
-            tripstartdate= tripstartdate,
-            tripenddate= tripenddate,
-            traveldetail= traveldetail
-        )
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val vehicleRentRepository = VehicleRentRepository()
-                val response = vehicleRentRepository.updateVehicleRent(intent?._id!!,vehicleRentEntity)
-                if (response.message != null){
-                    withContext(Dispatchers.Main){
-                        Toast.makeText(this@Vehicle_booking_form_activity, "updated successfully", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            } catch (ex:Exception){
-                withContext(Dispatchers.Main){
-                }
-            }
         }
     }
 

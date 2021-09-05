@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vehicle.updatevehiclebooking_activity">
+    tools:context=".vehicle.Updatevehiclebooking_activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -255,22 +255,13 @@
 
 
                 <Button
-                    android:id="@+id/btnupdate"
+                    android:id="@+id/btnveupdate"
                     android:layout_marginTop="10dp"
                     android:text="update"
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"/>
-
-                <Button
-                    android:id="@+id/btnvrent"
-                    android:layout_marginTop="30dp"
-                    android:text="rent"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
 
             </LinearLayout>

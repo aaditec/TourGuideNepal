@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
@@ -9,10 +9,15 @@
         android:layout_height="match_parent"
         android:background="#FEDBD0">
 
-        <ImageView
-            android:layout_width="50dp"
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/vehicletype"
+            android:layout_width="60dp"
             android:layout_height="180dp"
-            android:src="@drawable/hotelicon"/>
+            android:text="Vehicle type"
+            android:layout_marginStart="5dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -29,10 +34,19 @@
 
 
                 <TextView
-                    android:id="@+id/bemail"
+                    android:id="@+id/ttitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:text="Mr."
+                    android:textSize="15sp"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/tname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aashish"
                     android:textSize="15sp"
                     android:textStyle="italic" />
 
@@ -44,11 +58,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/bhotelname"
+                    android:id="@+id/temail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
-                    android:text="hotelname"
+                    android:text="syangtanaashish7@gmail.com"
                     android:textSize="15sp"
                     android:textStyle="italic" />
             </LinearLayout>
@@ -60,20 +74,28 @@
 
 
                 <TextView
-                    android:id="@+id/bname"
+                    android:id="@+id/tphone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="fullname"
+                    android:text="9865036355"
                     android:textSize="15sp"
                     android:textStyle="italic" />
 
                 <TextView
-                    android:id="@+id/bphone"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="no. of person:-"
+                    android:layout_marginEnd="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/tnoofperson"
+                    android:layout_weight="0.5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Phone"
+                    android:text="112"
                     android:textSize="15sp"
                     android:textStyle="italic" />
 
@@ -85,28 +107,19 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/broomtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="no. of Vehicle:-"
+                    android:layout_marginEnd="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/tnoofvehicle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="roomtype"
-                    android:textSize="15sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="guest num:- "
-                    android:textSize="15sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/bnoofguest"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="no.of_guest"
+                    android:text="112"
                     android:textSize="15sp"
                     android:textStyle="italic" />
             </LinearLayout>
@@ -124,8 +137,9 @@
                     android:textSize="15sp"
                     android:textStyle="italic" />
 
+
                 <TextView
-                    android:id="@+id/bdatefrom"
+                    android:id="@+id/tripdatefrom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
@@ -142,7 +156,7 @@
                     android:textStyle="italic" />
 
                 <TextView
-                    android:id="@+id/bdateto"
+                    android:id="@+id/tripdateto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
@@ -164,7 +178,7 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/bcomment"
+                    android:id="@+id/tcomment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -183,7 +197,7 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/editupdate"
+                android:id="@+id/teditupdate"
                 android:layout_width="25dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -193,7 +207,7 @@
                 android:src="@android:drawable/ic_menu_edit" />
 
             <ImageButton
-                android:id="@+id/delete"
+                android:id="@+id/tdelete"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -205,4 +219,4 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

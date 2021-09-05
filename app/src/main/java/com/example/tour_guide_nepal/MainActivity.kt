@@ -26,6 +26,8 @@ import com.example.tour_guide_nepal.hotel.Hotelbooking_Activity
 
 import com.example.tour_guide_nepal.notification.NotificationChannels
 import com.example.tour_guide_nepal.termsandservices.termsandconditions
+import com.example.tour_guide_nepal.vehicle.Updatevehiclebooking_activity
+import com.example.tour_guide_nepal.vehicle.ViewVehicleRent
 
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
@@ -97,11 +99,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_terms -> {
                     startActivity(Intent(this,termsandconditions::class.java))
- 
-
                 }
-                R.id.nav_terms -> {
-
+                R.id.nav_viewvehiclerent -> {
+                    startActivity(Intent(this, ViewVehicleRent::class.java))
                 }
                 R.id.nav_rateapp -> {
                     startActivity(Intent(this,RateApp::class.java))
@@ -150,6 +150,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun userlogout() {
         val sharedPref=this?.getPreferences(Context.MODE_PRIVATE)?:return
+        val editsharedPref = this.getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+        val editor = editsharedPref.edit()
+        editor.clear()
+        editor.apply()
 
         sharedPref.edit().remove("Email").apply()
         var intent = Intent(this,LoginActivity::class.java)

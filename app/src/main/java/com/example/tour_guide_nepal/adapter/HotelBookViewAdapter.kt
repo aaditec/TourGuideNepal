@@ -14,6 +14,7 @@ import com.example.tour_guide_nepal.ENTITY.HotelBookDetails
 import com.example.tour_guide_nepal.hotel.Hotelform_update_activity
 import com.example.tour_guide_nepal.R
 import com.example.tour_guide_nepal.Repository.HotelBookRepository
+import com.example.tour_guide_nepal.hotel.HotelBookingInfo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -81,7 +82,7 @@ class HotelBookViewAdapter(
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Delete ${hotelbooklist.fullname}")
             builder.setMessage("Are you sure do you want to delete ${hotelbooklist.hotelname} ?")
-            builder.setIcon(android.R.drawable.ic_dialog_alert)
+            builder.setIcon(android.R.drawable.ic_delete)
             builder.setPositiveButton("Yes") {_,_ ->
                 deleteHotebook(hotelbooklist)
             }

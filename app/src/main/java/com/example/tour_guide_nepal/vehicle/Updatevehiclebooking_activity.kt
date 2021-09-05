@@ -16,10 +16,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 
-class updatevehiclebooking_activity : AppCompatActivity() {
+class Updatevehiclebooking_activity : AppCompatActivity() {
     private var title = arrayOf("Mr.","Miss")
     private var type_of_vehicle = arrayOf("Two Wheel","Four Wheel")
-
 
     private lateinit var spinner1: Spinner
     private lateinit var hirename : EditText
@@ -27,17 +26,15 @@ class updatevehiclebooking_activity : AppCompatActivity() {
     private lateinit var hirembnumber : EditText
     private lateinit var hirenoofperson : EditText
     private lateinit var spinner2 : Spinner
-    private lateinit var spinner3 : Spinner
     private lateinit var hirestartdate : TextView
     private lateinit var hireenddate : TextView
     private lateinit var hirecomments : EditText
     private lateinit var btnupdate : Button
-    private lateinit var btnvrent : Button
     private lateinit var  no_of_vehicle : ScrollableNumberPicker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vehicle_booking_form)
+        setContentView(R.layout.activity_updatevehiclebooking)
 
         spinner1 = findViewById(R.id.spinner1)
         hirename = findViewById(R.id.hirename)
@@ -48,8 +45,7 @@ class updatevehiclebooking_activity : AppCompatActivity() {
         hirestartdate = findViewById(R.id.hirestartdate)
         hireenddate = findViewById(R.id.hireenddate)
         hirecomments = findViewById(R.id.hirecomments)
-        btnvrent = findViewById(R.id.btnvrent)
-        btnupdate= findViewById(R.id.btnupdate)
+        btnupdate= findViewById(R.id.btnveupdate)
         no_of_vehicle = findViewById(R.id.no_of_vehicle)
 
         val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,title)
@@ -57,6 +53,7 @@ class updatevehiclebooking_activity : AppCompatActivity() {
 
         val adapter1 = ArrayAdapter(this,android.R.layout.simple_list_item_1,type_of_vehicle)
         spinner2.adapter = adapter1
+
 
         //calendar
         val c = Calendar.getInstance()
@@ -99,11 +96,8 @@ class updatevehiclebooking_activity : AppCompatActivity() {
             dpd.show()
 
         }
-        btnvrent.setOnClickListener {
-            rentvehicle()
-        }
 
-        val intent = intent.getParcelableExtra<VehicleRentEntity>("Rent_Vehicle_Details")
+        val intent = intent.getParcelableExtra<VehicleRentEntity>("VehicleRentDetails")
         if (intent !=null){
             hirename.setText(intent.fullname)
             hireemail.setText(intent.email)
@@ -121,16 +115,15 @@ class updatevehiclebooking_activity : AppCompatActivity() {
             updatevehicle()
         }
     }
-
     private fun updatevehicle() {
-        val intent = intent.getParcelableExtra<VehicleRentEntity>("Rent_Vehicle_Details")
+        val intent = intent.getParcelableExtra<VehicleRentEntity>("VehicleRentDetails")
         val title = spinner1.selectedItem.toString()
         val fullname = hirename.text.toString()
         val email = hireemail.text.toString()
         val phone = hirembnumber.text.toString()
         val numberofpeople = hirenoofperson.text.toString()
         val vehicletype = spinner2.selectedItem.toString()
-        val numberofvehicle = no_of_vehicle.toString()
+        val numberofvehicle = no_of_vehicle.value.toString()
         val tripstartdate = hirestartdate.text.toString()
         val tripenddate = hireenddate.text.toString()
         val traveldetail = hirecomments.text.toString()
@@ -153,64 +146,12 @@ class updatevehiclebooking_activity : AppCompatActivity() {
                 val response = vehicleRentRepository.updateVehicleRent(intent?._id!!,vehicleRentEntity)
                 if (response.message != null){
                     withContext(Dispatchers.Main){
-                        Toast.makeText(this@updatevehiclebooking_activity, "updated successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Updatevehiclebooking_activity, "updated successfully", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@Updatevehiclebooking_activity,ViewVehicleRent::class.java))
                     }
                 }
             } catch (ex:Exception){
                 withContext(Dispatchers.Main){
-                }
-            }
-        }
-    }
-
-    private fun rentvehicle() {
-        val title = spinner1.selectedItem.toString()
-        val hirename = hirename.text.toString()
-        val hireemail = hireemail.text.toString()
-        val hirenumber = hirembnumber.text.toString()
-        val noofperson = hirenoofperson.text.toString()
-        val vehicletype = spinner2.selectedItem.toString()
-        val noofvehicle = no_of_vehicle.toString()
-        val hirestartdate = hirestartdate.text.toString()
-        val hireenddate = hireenddate.text.toString()
-        val hirecomments = hirecomments.text.toString()
-
-        val vehicleRentEntity = VehicleRentEntity(
-            title=title,
-            fullname= hirename,
-            email = hireemail,
-            phone = hirenumber,
-            numberofpeople = noofperson,
-            vehicletype = vehicletype,
-            numberofvehicle = noofvehicle,
-            tripstartdate = hirestartdate,
-            tripenddate = hireenddate,
-            traveldetail = hirecomments
-        )
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val vehicleRentRepository = VehicleRentRepository()
-                val response = vehicleRentRepository.rentvehicle(vehicleRentEntity)
-
-                if (response.success == true) {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(
-                            this@updatevehiclebooking_activity,
-                            "Vehicle Rent Successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        startActivity(Intent(this@updatevehiclebooking_activity, DetailsActivity::class.java))
-                    }
-                }
-            } catch (ex: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        this@updatevehiclebooking_activity,
-                        "Error ${ex.localizedMessage}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
                 }
             }
         }

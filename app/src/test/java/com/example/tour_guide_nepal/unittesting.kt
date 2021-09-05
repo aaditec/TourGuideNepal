@@ -1,7 +1,8 @@
 package com.example.tour_guide_nepal
 
-import com.example.finalassignment.ENTITY.User
-import com.example.finalassignment.Repository.UserRepository
+
+import com.example.tour_guide_nepal.ENTITY.User
+import com.example.tour_guide_nepal.Repository.UserRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test

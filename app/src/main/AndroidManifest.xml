@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tour_guide_nepal">
- 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -11,7 +10,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
- 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -23,19 +21,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tour_Guide_Nepal"
         android:usesCleartextTraffic="true">
- 
-        <activity android:name=".termsandservices.termsandconditions"/>
+        <activity
+            android:name=".vehicle.Updatevehiclebooking_activity"
+            android:exported="true" />
+        <activity
+            android:name=".vehicle.ViewVehicleRent"
+            android:exported="true" />
+        <activity android:name=".termsandservices.termsandconditions" />
         <activity android:name=".termsandservices.front_terms_and_services" />
         <activity android:name=".updateprofile_activity" />
         <activity android:name=".Emergency_contact_activity" />
- 
         <activity android:name=".RateApp" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".fragments.Selectplaces" />
-
-
-
- 
         <activity android:name=".Splash_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,16 +40,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
- 
- 
         <activity android:name=".LoginActivity" />
-
         <activity android:name=".vehicle.Fourwheel_Activity" />
         <activity android:name=".vehicle.TwowheelActivity" />
         <activity android:name=".vehicle.Vehicle_booking_form_activity" />
         <activity android:name=".vehicle.Vehiclebooking_activity" />
         <activity android:name=".vehicle.Vehiclelist" />
- 
         <activity android:name=".video.pokhara_video_activity" />
         <activity android:name=".forgotpassword_activity" />
         <activity android:name=".video.lumbini_video_activity" />
@@ -125,8 +118,6 @@
         <activity android:name=".place_details.gorkha_detail_activity" />
         <activity android:name=".place_details.dolakha_detail_activity" />
         <activity android:name=".place_details.chitwan_detail_activity" />
-
- 
         <activity android:name=".Signup" />
     </application>
 

@@ -1,13 +1,14 @@
 package com.example.tour_guide_nepal
 
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.action.GeneralLocation
-import androidx.test.espresso.action.GeneralSwipeAction
-import androidx.test.espresso.action.Press
-import androidx.test.espresso.action.Swipe
+import androidx.test.espresso.action.*
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.ViewPagerActions.scrollLeft
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -34,12 +35,11 @@ class ViewProfileTest {
     }
     @Test
     fun viewProfileTest() {
-        Espresso.onView(withId(R.id.welcomelayout))
+        onView(withId(R.id.welcomelayout))
             .check(matches(isDisplayed()))
             .perform(customswipeLeft());
-        Espresso.onView(withId(R.id.etfullname))
+
+        onView(withId(R.id.ettvfullname))
             .check(matches(isDisplayed()))
-
-
     }
 }

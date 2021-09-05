@@ -27,7 +27,7 @@ interface VehicleRentApi {
         @Header("Authorization") token: String
     ): Response<GetAllVehicleRentResponse>
 
-    //Delete Book
+    //Delete Vehicle Rent
     @DELETE("uservehicle/delete/{id}")
     suspend fun deletevehiclerent(
         @Header("Authorization") token: String,

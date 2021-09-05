@@ -16,12 +16,17 @@
         <item
             android:id="@+id/nav_bookhotel"
             android:title="Book Hotel"
-            android:icon="@drawable/aboutus"/>
+            android:icon="@drawable/menuiconhotel"/>
 
         <item
             android:id="@+id/nav_viewbookhotel"
             android:title="View Book Hotel"
-            android:icon="@drawable/aboutus"/>
+            android:icon="@drawable/list1icon"/>
+
+        <item
+            android:id="@+id/nav_viewvehiclerent"
+            android:title="View Vehicle Rent"
+            android:icon="@drawable/list2icon"/>
 
         <item
             android:id="@+id/nav_contact"
