@@ -10,7 +10,6 @@
     android:orientation="vertical"
     android:background="#f2e9e9"
     android:id="@+id/selectplaces"
-    android:layout_gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
