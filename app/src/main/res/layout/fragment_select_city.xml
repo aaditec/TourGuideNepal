@@ -7,7 +7,6 @@
     tools:context=".fragments.Select_cityFragment">
 
 <LinearLayout
-    android:layout_gravity="center"
     android:orientation="vertical"
     android:background="#f2e9e9"
     android:id="@+id/selectplaces"

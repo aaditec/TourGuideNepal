@@ -14,10 +14,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import coil.transform.CircleCropTransformation
 import com.bumptech.glide.Glide
@@ -43,7 +40,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var imageUri: Uri
-    private lateinit var backhome: FrameLayout
+    private lateinit var backhome: LinearLayout
     private lateinit var imageView: ImageView
     private lateinit var camera: ImageView
 
