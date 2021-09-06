@@ -50,6 +50,7 @@ class ProfileFragment : Fragment() {
     private lateinit var etemail: TextView
     private lateinit var etphone: TextView
     private lateinit var btnsave: Button
+    private lateinit var choosephoto : ImageButton
 
 
 
@@ -74,6 +75,7 @@ class ProfileFragment : Fragment() {
         backhome = view.findViewById(R.id.backhome)
         camera = view.findViewById(R.id.camera)
         btnsave = view.findViewById(R.id.btnsave)
+        choosephoto = view.findViewById(R.id.choosephoto)
 
 
         val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
@@ -101,7 +103,7 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(activity, MainActivity::class.java))
         }
 
-        camera.setOnClickListener {
+        choosephoto.setOnClickListener {
 
             intentcamera()
         }

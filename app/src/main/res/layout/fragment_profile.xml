@@ -34,17 +34,31 @@
                         android:gravity="center_horizontal"
 
                         >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:visibility="visible"
-                            android:id="@+id/camera"
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:src="@drawable/camera"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:ignore="MissingClass" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/camera"
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+                                android:src="@drawable/camera"
+                                android:visibility="visible"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <ImageButton
+                                android:id="@+id/choosephoto"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/camera"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <ProgressBar
                             android:visibility="invisible"
